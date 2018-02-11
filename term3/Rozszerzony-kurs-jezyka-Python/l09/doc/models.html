@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>models</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/sgorawski/Education/Python/l09/models.py">/Users/sgorawski/Education/Python/l09/models.py</a></font></td></tr></table>
+    <p><tt>Module&nbsp;implementing&nbsp;data&nbsp;management,<br>
+including&nbsp;connecting&nbsp;to&nbsp;database,&nbsp;running&nbsp;queries<br>
+and&nbsp;mapping&nbsp;data&nbsp;to&nbsp;Python&nbsp;objects.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sqlite3.html">sqlite3</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.html#Contact">Contact</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Database">Database</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Contact">class <strong>Contact</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Encapsulates&nbsp;contact&nbsp;fields:<br>
+first&nbsp;name,&nbsp;surname,&nbsp;phone,&nbsp;email&nbsp;and&nbsp;last&nbsp;edition&nbsp;date<br>
+and&nbsp;checks&nbsp;if&nbsp;their&nbsp;format&nbsp;is&nbsp;correct.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Contact-__init__"><strong>__init__</strong></a>(self, first_name, surname, phone, email, last_edited=None)</dt><dd><tt>:param&nbsp;first_name:&nbsp;non-empty&nbsp;string<br>
+:param&nbsp;surname:&nbsp;non-empty&nbsp;string<br>
+:param&nbsp;phone:&nbsp;9&nbsp;digits<br>
+:param&nbsp;email:&nbsp;standard&nbsp;email&nbsp;address<br>
+:param&nbsp;last_edited:&nbsp;optional&nbsp;date</tt></dd></dl>
+
+<dl><dt><a name="Contact-get_fields"><strong>get_fields</strong></a>(self)</dt><dd><tt>Returns&nbsp;contact&nbsp;fields&nbsp;as&nbsp;tuple</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Database">class <strong>Database</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Connection&nbsp;with&nbsp;sqlite3&nbsp;database.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Database-__init__"><strong>__init__</strong></a>(self, db_filename)</dt><dd><tt>Creates&nbsp;database&nbsp;or&nbsp;connects&nbsp;to&nbsp;an&nbsp;existing&nbsp;one,<br>
+creates&nbsp;table&nbsp;with&nbsp;contacts&nbsp;if&nbsp;there&nbsp;is&nbsp;none.<br>
+&nbsp;<br>
+:param&nbsp;db_filename:&nbsp;name&nbsp;of&nbsp;database&nbsp;file</tt></dd></dl>
+
+<dl><dt><a name="Database-add_contact"><strong>add_contact</strong></a>(self, contact)</dt><dd><tt>Adds&nbsp;new&nbsp;contact&nbsp;to&nbsp;database.<br>
+&nbsp;<br>
+:param&nbsp;contact:&nbsp;instance&nbsp;of&nbsp;the&nbsp;<a href="#Contact">Contact</a>&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Database-delete_contact"><strong>delete_contact</strong></a>(self, rowid)</dt><dd><tt>Deletes&nbsp;contact&nbsp;found&nbsp;by&nbsp;id.</tt></dd></dl>
+
+<dl><dt><a name="Database-get_contact_fields"><strong>get_contact_fields</strong></a>(self, rowid)</dt><dd><tt>Runs&nbsp;query&nbsp;on&nbsp;database&nbsp;and&nbsp;returns&nbsp;fields&nbsp;of&nbsp;a&nbsp;contact&nbsp;found&nbsp;by&nbsp;id.<br>
+&nbsp;<br>
+:param&nbsp;rowid:&nbsp;contact&nbsp;id<br>
+:return:&nbsp;contact&nbsp;fields&nbsp;as&nbsp;tuple</tt></dd></dl>
+
+<dl><dt><a name="Database-get_contacts"><strong>get_contacts</strong></a>(self)</dt><dd><tt>Runs&nbsp;query&nbsp;on&nbsp;database&nbsp;and&nbsp;returns&nbsp;all&nbsp;contacts&nbsp;with&nbsp;their&nbsp;ids.<br>
+&nbsp;<br>
+:return:&nbsp;collection&nbsp;of&nbsp;contacts&nbsp;fields&nbsp;(as&nbsp;tuple)&nbsp;with&nbsp;ids</tt></dd></dl>
+
+<dl><dt><a name="Database-search_contacts"><strong>search_contacts</strong></a>(self, regex)</dt><dd><tt>Runs&nbsp;query&nbsp;on&nbsp;database&nbsp;and&nbsp;returns&nbsp;all&nbsp;contacts,&nbsp;which&nbsp;fields<br>
+(one&nbsp;or&nbsp;more)&nbsp;match&nbsp;given&nbsp;regular&nbsp;expression.<br>
+&nbsp;<br>
+:param&nbsp;regex:&nbsp;regular&nbsp;expression&nbsp;to&nbsp;match<br>
+:return:&nbsp;collection&nbsp;of&nbsp;contacts&nbsp;fields&nbsp;(as&nbsp;tuple)&nbsp;with&nbsp;ids</tt></dd></dl>
+
+<dl><dt><a name="Database-update_contact"><strong>update_contact</strong></a>(self, contact, rowid)</dt><dd><tt>Updates&nbsp;contact&nbsp;in&nbsp;database&nbsp;found&nbsp;by&nbsp;id.<br>
+&nbsp;<br>
+:param&nbsp;contact:&nbsp;instance&nbsp;of&nbsp;the&nbsp;<a href="#Contact">Contact</a>&nbsp;class&nbsp;with&nbsp;updated&nbsp;fields<br>
+:param&nbsp;rowid:&nbsp;id&nbsp;of&nbsp;contact&nbsp;to&nbsp;update</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

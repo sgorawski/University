@@ -1,0 +1,113 @@
+Hala Stulecia -> pl. Grunwaldzki:2000,000000
+Hala Stulecia -> Biskupin:2000,000000
+Grabiszyńska Cmentarz -> Oporów:500,000000
+Grabiszyńska Cmentarz -> FAT:1000,000000
+Kromera -> Mosty Warszawskie:500,000000
+Wyszyńskiego -> Prusa:500,000000
+Wyszyńskiego -> Nowowiejska:500,000000
+Katedra -> Urząd Wojewódzki:1000,000000
+Katedra -> pl. Grunwaldzki:1000,000000
+Arkady (Capitol) -> pl. Legionów:1000,000000
+Arkady (Capitol) -> Dworzec Główny:1000,000000
+Arkady (Capitol) -> Hallera:2000,000000
+Arkady (Capitol) -> Renoma:600,000000
+pl. Jana Pawła II -> Dmowskiego:1000,000000
+pl. Jana Pawła II -> pl. Orląt Lwowskich:500,000000
+pl. Jana Pawła II -> Rynek:500,000000
+pl. Jana Pawła II -> Leśnica:5000,000000
+pl. Legionów -> pl. Orląt Lwowskich:700,000000
+pl. Legionów -> Arkady (Capitol):1000,000000
+pl. Legionów -> Narodowe Forum Muzyki:500,000000
+pl. Legionów -> FAT:2000,000000
+Narodowe Forum Muzyki -> pl. Legionów:500,000000
+Narodowe Forum Muzyki -> Świdnicka:800,000000
+Narodowe Forum Muzyki -> Renoma:500,000000
+Narodowe Forum Muzyki -> Rynek:600,000000
+Poświętne -> Dworzec Nadodrze:4000,000000
+Poświętne -> pl. Staszica:4000,000000
+Dworzec Nadodrze -> pl. Staszica:500,000000
+Dworzec Nadodrze -> Słowiańska:1000,000000
+Dworzec Nadodrze -> Poświętne:4000,000000
+Dworzec Nadodrze -> Zawalna:1000,000000
+Mosty Warszawskie -> Nowowiejska:1000,000000
+Mosty Warszawskie -> Kromera:500,000000
+Renoma -> Arkady (Capitol):600,000000
+Renoma -> Narodowe Forum Muzyki:500,000000
+Kościuszki -> Pułaskiego:500,000000
+Kościuszki -> Komuny Paryskiej:500,000000
+Świdnicka -> Narodowe Forum Muzyki:800,000000
+Świdnicka -> Galeria Dominikańska:800,000000
+Świdnicka -> Rynek:1000,000000
+Pomorska -> pl. Staszica:800,000000
+Pomorska -> Dmowskiego:1000,000000
+Pomorska -> Rynek:1000,000000
+Krzyki -> Hallera:1500,000000
+Zawalna -> Dworzec Nadodrze:1000,000000
+pl. Orląt Lwowskich -> pl. Jana Pawła II:500,000000
+pl. Orląt Lwowskich -> pl. Legionów:700,000000
+pl. Grunwaldzki -> Most Grunwaldzki:500,000000
+pl. Grunwaldzki -> Piastowska:1500,000000
+pl. Grunwaldzki -> Hala Stulecia:2000,000000
+pl. Grunwaldzki -> Katedra:1000,000000
+Pułaskiego -> Dworzec Główny:1000,000000
+Pułaskiego -> Kościuszki:500,000000
+pl. Bema -> Galeria Dominikańska:2000,000000
+pl. Bema -> Nowowiejska:1500,000000
+Tarnogaj -> Dworzec Autobusowy:4000,000000
+Oporów -> Grabiszyńska Cmentarz:500,000000
+pl. Wróblewskiego -> Komuny Paryskiej:500,000000
+pl. Wróblewskiego -> Urząd Wojewódzki:800,000000
+pl. Wróblewskiego -> Księże Małe:3000,000000
+pl. Wróblewskiego -> Galeria Dominikańska:2000,000000
+Galeria Dominikańska -> Świdnicka:800,000000
+Galeria Dominikańska -> Urząd Wojewódzki:1000,000000
+Galeria Dominikańska -> Wzgórze Partyzantów:500,000000
+Galeria Dominikańska -> pl. Bema:2000,000000
+Galeria Dominikańska -> pl. Wróblewskiego:2000,000000
+Wzgórze Partyzantów -> Dworzec Główny:500,000000
+Wzgórze Partyzantów -> Galeria Dominikańska:500,000000
+Biskupin -> Hala Stulecia:2000,000000
+Księże Małe -> pl. Wróblewskiego:3000,000000
+Słowiańska -> Nowowiejska:600,000000
+Słowiańska -> Dworzec Nadodrze:1000,000000
+Hallera -> FAT:1500,000000
+Hallera -> Krzyki:1500,000000
+Hallera -> Arkady (Capitol):2000,000000
+Piastowska -> pl. Grunwaldzki:1500,000000
+Piastowska -> Prusa:800,000000
+Rynek -> Świdnicka:1000,000000
+Rynek -> pl. Jana Pawła II:500,000000
+Rynek -> Narodowe Forum Muzyki:600,000000
+Rynek -> Pomorska:1000,000000
+pl. Staszica -> Dworzec Nadodrze:500,000000
+pl. Staszica -> Pomorska:800,000000
+pl. Staszica -> Poświętne:4000,000000
+Dmowskiego -> Pomorska:1000,000000
+Dmowskiego -> pl. Jana Pawła II:1000,000000
+Komuny Paryskiej -> Kościuszki:500,000000
+Komuny Paryskiej -> pl. Wróblewskiego:500,000000
+Dworzec Główny -> Arkady (Capitol):1000,000000
+Dworzec Główny -> Pułaskiego:1000,000000
+Dworzec Główny -> Wzgórze Partyzantów:500,000000
+Dworzec Główny -> Dworzec Autobusowy:500,000000
+Nowowiejska -> Wyszyńskiego:500,000000
+Nowowiejska -> Słowiańska:600,000000
+Nowowiejska -> pl. Bema:1500,000000
+Nowowiejska -> Mosty Warszawskie:1000,000000
+FAT -> Grabiszyńska Cmentarz:1000,000000
+FAT -> Hallera:1500,000000
+FAT -> pl. Legionów:2000,000000
+Most Grunwaldzki -> Urząd Wojewódzki:500,000000
+Most Grunwaldzki -> pl. Grunwaldzki:500,000000
+Leśnica -> pl. Jana Pawła II:5000,000000
+Park Południowy -> Dworzec Autobusowy:4000,000000
+Urząd Wojewódzki -> pl. Wróblewskiego:800,000000
+Urząd Wojewódzki -> Most Grunwaldzki:500,000000
+Urząd Wojewódzki -> Galeria Dominikańska:1000,000000
+Urząd Wojewódzki -> Katedra:1000,000000
+Prusa -> Piastowska:800,000000
+Prusa -> Wyszyńskiego:500,000000
+Dworzec Autobusowy -> Dworzec Główny:500,000000
+Dworzec Autobusowy -> Park Południowy:4000,000000
+Dworzec Autobusowy -> Tarnogaj:4000,000000
+Arkady (Capitol) - Dworzec Autobusowy:1200

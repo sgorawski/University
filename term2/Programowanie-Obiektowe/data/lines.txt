@@ -1,0 +1,9 @@
+1:009688:3:Poświętne-Dworzec Nadodrze-Słowiańska-Nowowiejska-Wyszyńskiego-Prusa-Piastowska-pl. Grunwaldzki-Hala Stulecia-Biskupin
+2:ff5722:3:Krzyki-Hallera-Arkady (Capitol)-Dworzec Główny-Wzgórze Partyzantów-Galeria Dominikańska-Urząd Wojewódzki-Katedra-pl. Grunwaldzki-Hala Stulecia-Biskupin
+3:03a9f4:3:Leśnica-pl. Jana Pawła II-Rynek-Świdnicka-Galeria Dominikańska-pl. Wróblewskiego-Księże Małe
+4:00bcd4:2:Oporów-Grabiszyńska Cmentarz-FAT-pl. Legionów-Narodowe Forum Muzyki-Świdnicka-Galeria Dominikańska-Urząd Wojewódzki-Most Grunwaldzki-pl. Grunwaldzki-Hala Stulecia-Biskupin
+5:f44336:5:Oporów-Grabiszyńska Cmentarz-FAT-pl. Legionów-Arkady (Capitol)-Dworzec Główny-Wzgórze Partyzantów-Galeria Dominikańska-pl. Wróblewskiego-Księże Małe
+8:4caf50:3:Tarnogaj-Dworzec Autobusowy-Dworzec Główny-Wzgórze Partyzantów-Galeria Dominikańska-pl. Bema-Nowowiejska-Słowiańska-Dworzec Nadodrze-Zawalna
+11:9e9e9e:4:Oporów-Grabiszyńska Cmentarz-FAT-pl. Legionów-Arkady (Capitol)-Dworzec Główny-Wzgórze Partyzantów-Galeria Dominikańska-pl. Bema-Nowowiejska-Mosty Warszawskie-Kromera
+15:795548:3:Poświętne-pl. Staszica-Pomorska-Rynek-Narodowe Forum Muzyki-pl. Legionów-Arkady (Capitol)-Dworzec Autobusowy-Park Południowy
+20:ffeb3b:3:Oporów-Grabiszyńska Cmentarz-FAT-Hallera-Arkady (Capitol)-Renoma-Narodowe Forum Muzyki-Rynek-pl. Jana Pawła II-Leśnica

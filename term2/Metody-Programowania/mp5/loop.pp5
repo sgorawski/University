@@ -1,0 +1,7 @@
+fun f (x:bool) :bool = 
+	if x then true
+   else f(x)
+			  
+input a in
+	if a > 0 then if f(true) then a else -a
+		  else if f(false) then a else -a

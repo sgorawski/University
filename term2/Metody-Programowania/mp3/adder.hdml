@@ -1,0 +1,2 @@
+def adder(A, B) =
+    A + B

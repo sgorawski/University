@@ -1,0 +1,10 @@
+# C
+*
+!/**/
+!*.*
+!Makefile
+*.o
+*.txt
+
+# Python
+.ipynb_checkpoints

@@ -1,0 +1,4 @@
+fun f (u:unit): unit = ()
+
+in let x = f() in 1000
+	

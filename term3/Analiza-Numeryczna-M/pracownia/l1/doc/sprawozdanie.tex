@@ -1,0 +1,107 @@
+\documentclass{article}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{secdot}
+\usepackage{amsmath}
+
+\title{Sprawozdanie z zadania P1.5}
+\author{Sławomir Górawski}
+\date{12 listopada 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{Cel wykonanych doświadczeń}
+
+Liczby niewymierne można przybliżać przy użyciu skończonych ułamków łańcuchowych. Potrzebujemy do tego danych wejściowych, tj. w tym przypadku dwóch wektorów: $a=[a_1, a_2, ..., a_n]$ oraz $b=[b_0, b_1, ..., b_n]$, jak również odpowiedniego algorytmu, który wartość danego ułamka potrafi obliczyć. W zadaniu przedstawione zostały dwie metody: \textit{"schodami w górę"} oraz \textit{"schodami w dół"}. Oto używane w nich wzory, gdzie $C_n$ to wynik działania algorytmu, oraz ich główne cechy:
+
+\begin{enumerate}
+\item \textit{"Schodami w górę"}
+\begin{align*}
+&U_n=b_n,\\
+&U_k=\frac{a_k+1}{U_k+1}+b_k, & k=(n-1,n-2,\ldots,0)\\
+&C_n=U_0
+\end{align*}
+\begin{itemize}
+\item Bardziej intuicyjna - tak samo liczyłby człowiek "na papierze"
+\item Prostsza w implementacji
+\item Zajmująca mniej pamięci - dane wejściowe,jedna zmienna i licznik pętli
+\item Złożoność liniowa: stała liczba $c_1$ operacji poza pętlą, $n$ powtórzeń pętli ze stałą liczbą $c_2$ operacji, zatem $T(n)=c_1+nc_2=O(n)$ (przy założeniu efektywnej, iteracyjnej implementacji)
+\end{itemize}
+\item \textit{"Schodami w dół"}
+\begin{align*}
+    &P_{-1}=1, & &P_0=b_0, & &P_k=b_k P_{k-1} + a_k P_{k-2} & &k=(1,2,\ldots,n);\\
+    &Q_{-1}=0, & &Q_0=1, & &Q_k=b_k Q_{k-1} + a_k Q_{k-2} & &k=(1,2,\ldots,n).\\
+    &C_n=P_n/Q_n
+\end{align*}
+\begin{itemize}
+\item Możliwa do zdefiniowania funkcja kroku iteracji dla $P$ i $Q$ - wtedy, po zaprogramowaniu odpowiedniego algorytmu, po obliczeniu wartości ułamka łańcuchowego można szybko zwiększyć precyzję dokładając wartości $a_{n+1}$ i $b_{n+1}$ i otrzymując nowy wynik ze złożonością $O(1)$. W przypadku poprzedniej metody konieczne byłoby obliczenie wartości całego nowego ułamka od początku.
+\item Zajmująca nieco więcej pamięci - sześć zmiennych, tj. $p_{k-1}, p_k, p_{k+1}$ oraz $q_{k-1}, q_k, q_{k+1}$ plus licznik pętli
+\item Złożoność liniowa - rozumowanie analogiczne jak poprzednio
+\end{itemize}
+\end{enumerate}
+
+Z tej wstępnej analizy wynikałoby, że metody są bardzo podobne pod względem kosztów realizacji, z wyłączeniem szczególnego przypadku dynamicznego zwiększania wektórów $a$ i $b$ wspomnianego przy porównaniu. Ponadto oba algorytmy są numerycznie poprawne, co łatwo jest sprawdzić. Warto zatem przetestować w praktyce działanie obu algorytmów na ułamkach, które z założenia przybliżać mają znane wartości.
+
+\section{Opis użytych metod}
+
+W pliku \texttt{program.jl} zaimplementowane zostały oba algorytmy metodami iteracyjnymi gwarantującymi optymalną złożoność obliczeniową, w postaci funkcji dwuargumentowych przyjmujących wektory $a$ i $b$ i zwracających wynik w postaci liczby zmiennoprzecinkowej. Ponadto wydzielona została funkcja pojedynczego kroku iteracji dla metody \textit{"schodami w dół"}, co pozwoliło przetestować w praktyce przewagę tej metody w przypadku dynamicznego wyliczania coraz bardziej dokładnych wartości.
+
+Z kolei w dokumencie \texttt{program.ipynb} oba te algorytmy zostały przetestowane dla różnych ułamków łańcuchowych. Przyjęte zostało odpowiednio dokładne przybliżenie ich oczekiwanych wartości. Następnie wyliczane były wartości ułamków łańcuchowych przy użyciu obu metod dla kolejnych wartości $k$, co z założenia skutkować powinno dokładniejszemu przybliżeniu oczekiwanej wartości z każdą koleją iteracją. Wyniki w odniesieniu do dokładnej wartości przedstawione zostały na wykresach.
+
+Testy dokładności przeprowadzane były na różnych precyzjach arytmetyki dla każdego ułamka. Do demonstracji na wykresach wybrane zostały określone przedziały wartości $k$, które pozwalają najlepiej zauważyć interesujące wyniki. Brane pod uwagę były wartości kolejnych przybliżeń w odniesieniu do aproksymowanej wartości oraz błędy bezwzględne pojawiające się w kolejnych iteracjach.
+
+Oprócz dokładności mierzony był również czas wyliczania wartości ułamków dla kolejnych $k$ trzema metodami: \textit{"schodami w górę"}, \textit{"schodami w dół"} oraz \textit{"schodami w dół"} przy dynamicznym wyliczaniu kolejnych $P$ i $Q$ bez konieczności odtwarzania od nowa wcześniejszych przybliżeń.
+
+\section{Opis wykonanych doświadczeń}
+\subsection{Przykład \textit{b(i)} - przybliżanie wartości $\displaystyle\frac{\pi}{4}$}
+
+Wartości kolejnych wyrazów ciągów $a$ i $b$:
+$$a_1=1,\ a_2=1,\ a_3=9,\ a_4=25,\ a_5=49,\ldots,\ a_k=(2k-3)^2$$
+$$b_0=0,\ b_1=1,\ldots,\ b_k=min(2, k)$$
+
+Wykonane zostały pomiary dokładności dla co piątego $k$ z przedziału $[100, 200]$, dla precyzji 64-, 32- i 16-bitowej. We wszystkich tych przypadkach zaobserwowano oczekiwane wyniki: wartości zbiegające do $\pi/4$ w kolejnych iteracjach oraz malejące błędy bezwgledne. Z kolei przybliżenie oczekiwanej wartości w przypadku tego ułamka nawet po 200 iteracjach jest mało dokładne w porównaniu do następnych przykładów.
+
+W przypadku pomiarów czasu metody \textit{"schodami w górę"} oraz \textit{"schodami w dół"} wykazywały liniowy wzrost potrzebnego czasu wraz z kolejnymi iteracjami, ta druga około dwa razy większy od pierwszej, co nie dziwi, biorąc pod uwagę znacznie większą ilość obliczeń. Z kolei metoda \textit{"schodami w dół"} poddana modyfikacji utrzymywała stałą liczbę potrzebnego czasu w miarę wzrostu wartości $k$. Potwierdza to przypuszczenie, że w przypadku, gdy chcemy wyliczać kolejne przybliżenia po kolei, jest ona znacznie bardziej efektywna. Innymi słowy, jeśli znamy wartości ułamka dla iteracji $1,2,\ldots,k-1$, to wyliczenie następnej metodą \textit{"schodami w górę"} będzie miało złożoność czasową $O(k)$, zaś odpowienio zaimplementowaną metodą \textit{"schodami w dół"} - $O(1)$.
+
+\subsection{Przykład \textit{b(ii)} - przybliżanie wartości $e$}
+
+Wartości kolejnych wyrazów ciągów $a$ i $b$:
+$$b_0=2,\ a_k=b_k=k+1\ (k\geq1)$$
+
+W tym przypadku pomiary dokładności wykonywane były na precyzjach 128-, 64- i 32-bitowej. Obie metody do pewnego momentu przybliżały wartość $e$ z niewielkimi błędami. W każdej precyzji jednak od pewnego momentu w wynikach otrzymanych metodą \textit{"schodami w dół"} zaczęły pojawiać się błędy - tym wcześniej i tym większe, im mniejsza była precyzja arytmetyki. Nic podobnego nie zaobserwowano w przypadku metody \textit{"schodami w górę"}.
+
+Z pomiarów czasu wysnuto identyczne wnioski, jak w poprzednim przykładzie - liniowy wzrost potrzebnego czasu w metodach \textit{"schodami w górę"} oraz \textit{"schodami w dół"}, stały dla dynamicznej metody iteracyjnej.
+
+\newpage
+\subsection{Przykład dodatkowy - przybliżanie wartości $\sqrt{2}$}
+
+Wartości kolejnych wyrazów ciągów $a$ i $b$:
+$$b_0=1,\ a_k=1,\ b_k=2\ (k\geq1)$$
+
+Przetestowano dokładność dla precyzji: 128-, 64- i 32-bitowej. W pierwszym przypadku obie metody zbieżne do $\sqrt{2}$, w drugim i trzecim błędy w wyniku uzyskanym metodą \textit{"schodami w dół"}, podobnie jak w przykładzie 3.2. Metoda \textit{"schodami w górę"} wciąż nie wykazuje żadnych objawów niepoprawnego działania.
+
+Wyniki pomiaru czasu po raz kolejny analogiczne jak w przykładzie 3.1.
+
+\subsection{Przykład dodatkowy - przybliżanie warości $\displaystyle\phi=\frac{1+\sqrt{5}}{2}$}
+
+Wartości kolejnych wyrazów ciągów $a$ i $b$:
+$$b_0=1,\ a_k=b_k=1\ (k\geq1)$$
+
+Dla tego przykładu otrzymano wyniki podobne jak w 3.2 - obie metody zbiegają do $\phi$, jednak od pewnego momentu w metodzie \textit{"schodami w dół"} pojawiają się błędy - co ciekawe, zawsze po mniej więcej tej samej iteracji, niezależnie od precyzji (przetestowano na arytmetykach: 256-, 128- i 64-bitowej). Błędy te są radykalnie wręcz duże - rzędu wielkości $10^1$, a nawet więcej. Przy spodziewanym przybliżaniu liczby niewymiernej mniejszej od 2 jest to nie do przyjęcia.
+
+Pomiary czasu w tym przypadku dały ciekawe wyniki, inne niż dla dwóch poprzednich przykładów - metoda \textit{"schodami w dół"}, nawet bez stosowania iteracyjnego ulepszenia, okazała się znacznie szybsza od metody \textit{"schodami w górę"}. W obu poprzednich przykładach było odwrotnie. Najwyraźniej postać ułamka, który w tym przypadku jest bardzo prosty i oznacza tylko mnożenia przez 1 podczas wyliczania go \textit{"schodami w dół"}, była w stanie zrobić dużą różnicę w czasie.
+
+\section{Wnioski}
+
+Zarówno patrząc teoretycznie, jak i analizując wyniki doświadczeń, łatwo jest dojść do wniosku, że metoda \textit{"schodami w górę"} ma wiele zalet - jest prostsza w implementacji, bardziej intuicyjna i nie wykazuje podatności na błędy. Jedyna zaleta metody \textit{"schodami w dół"}, jaką udało mi się znaleźć podczas pracy nad zadniem, to szybkość, w przypadku, gdy potrzebujemy nie tylko przybliżenia dla wybranego $k$, ale także wszystkich poprzednich.
+
+\newpage
+Ilość zastosowań, w których byłoby to decydującą oklicznością przemawiającą za wyborem określonej metody, biorac pod uwagę moc obliczeniową obecnych komputerów oraz ryzyko pojawienia się błędów po którejś z kolei iteracji, wydaje mi się niewielka i w zdecydowanej większości przypadków rekomendowałbym zastosowanie metody \textit{"schodami w górę"} do przybliżania danych wartości przy użyciu skończonych ułamków łańcuchowych.
+
+\begin{thebibliography}{99}
+\bibitem{pa}  P. Van der Cruyssen, A continued fraction algorithm, Numerische Mathematik 37 (1981), 149–156
+\end{thebibliography}
+
+\end{document}

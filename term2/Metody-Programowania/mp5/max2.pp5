@@ -1,0 +1,6 @@
+fun maximum (x:int*int): int =
+	if fst x >= snd x then fst x
+				   else snd x
+	
+input a b in maximum(a,b)
+	

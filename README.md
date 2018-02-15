@@ -8,7 +8,7 @@ You are free to view, copy, use and modify anythig you find in here. If you want
 please give me credit. Any Pull Requests will be much appreciated!
 
 Materials from term 1 are mostly nonexistent, these from term 2 are a mess which I'm not likely to maintain,
-but from term 3 and higher everything shold be acceptably clear.
+but from term 3 and higher everything should be acceptably clear.
 
 Courses I've taken so far:
 

@@ -4,4 +4,4 @@ Solutions for tasks from the extended Python course, for all lists except of the
 
 Written for **Python 3.5** or higher only.
 
-For the project I've written a simple blogging platform in Flask. You can find it [here](https://github.com/sgorawski/mdb-project).
+For the project I've written a simple blogging platform in Flask. You can find it [here](project).

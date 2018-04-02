@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="my-4">Articles management</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Date</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>
+                        <a href="{{ url_for('articles.index', title=article.title) }}">
+                            {{ article.title }}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('users.index', username=article.author.username) }}">
+                            {{ article.author.username }}
+                        </a>
+                    </td>
+                    <td>
+                        {{ article.timestamp.date() }}
+                    </td>
+                    <td>
+                        <a href="{{ url_for('articles.edit', title=article.title) }}">Edit</a>
+                    </td>
+                    <td>
+                        <form class="form-inline" action="{{ url_for('articles.delete', title=article.title) }}" method="post">
+                            Delete
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

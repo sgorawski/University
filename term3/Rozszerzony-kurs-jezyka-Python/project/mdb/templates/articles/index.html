@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="mb-lg-5">
+        <h1>{{ article.title }}</h1>
+        <p class="text-muted">Created by
+            <a href="{{ url_for('users.index', username=article.author.username) }}">{{ article.author.username }}</a>
+            on {{ article.timestamp.isoformat(' ', 'minutes') }}</p>
+        {% if can_modify %}
+            <div class="btn-group">
+                <a class="btn btn-link" href="{{ url_for('articles.edit', title=article.title) }}">Edit article</a>
+                <form class="d-inline" action="{{ url_for('articles.delete', title=article.title) }}" method="post">
+                    <button class="btn btn-link">Delete article</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+    {{ text|safe }}
+{% endblock %}

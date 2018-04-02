@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="my-4">Users management</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Email</th>
+                <th scope="col">Role</th>
+                <th scope="col">Management</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>
+                        <a href="{{ url_for('users.index', username=user.username) }}">
+                            {{ user.username }}
+                        </a>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% if user.is_admin %}
+                            Admin
+                        {% else %}
+                            User
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not user.is_admin %}
+                            <form class="form-inline" action="{{ url_for('users.delete', username=user.username) }}" method="post">
+                                <button class="btn btn-link" type="submit">Delete</button>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

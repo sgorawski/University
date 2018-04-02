@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>Articles found</h1>
+    {% for article in articles %}
+        {% include "articles/sub_article.html" %}
+    {% else %}
+        <p class="text-muted">No articles matching search query found.</p>
+    {%  endfor %}
+    <h1 class="mt-5">Users found</h1>
+    {% if users %}
+        <ul class="list-group">
+            {% for user in users %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('users.index', username=user.username) }}">
+                        {{ user.username }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">No users matching search query found.</p>
+    {%  endif %}
+{% endblock %}

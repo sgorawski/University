@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="my-4">Administration panel</h1>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ url_for('admin.users') }}">Users</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ url_for('admin.articles') }}">Articles</a>
+        </li>
+    </ul>
+{% endblock %}

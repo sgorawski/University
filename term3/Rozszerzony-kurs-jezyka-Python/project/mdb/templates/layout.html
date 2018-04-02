@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+
+    <title>
+        {% if title %}
+            {{ title }}
+        {% else %}
+            MarkdownBlog
+        {% endif %}
+    </title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('core.index') }}">MarkdownBlog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav mr-auto">
+                {% if current_user.is_admin %}
+                    <a class="nav-item nav-link" href="{{ url_for('admin.index') }}">Admin</a>
+                {% endif %}
+                <a class="nav-item nav-link" href="{{ url_for('articles.create') }}">Create</a>
+            </div>
+            <div class="navbar-nav mr-auto">
+                <form class="form-inline" action="{{ url_for('core.index') }}">
+                    <div class="input-group">
+                        <input class="form-control" name="query" type="search">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="navbar-nav">
+                {% if current_user.is_anonymous %}
+                    <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
+                    <a class="nav-item btn btn-outline-secondary" href="{{ url_for('core.login') }}">Login</a>
+                {% else %}
+                    <img src="{{ current_user.get_image_url(size=30) }}" alt="" class="rounded-circle">
+                    <a class="nav-item nav-link" href="{{ url_for('users.index', username=current_user.username) }}">
+                        {{ current_user.username }}
+                    </a>
+                    <form action="{{ url_for('core.logout') }}" method="post">
+                        <button class="btn btn-outline-secondary" type="submit">Logout</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+            <div class="alert alert-primary">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endwith %}
+
+    <div class="container py-5">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

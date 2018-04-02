@@ -1,0 +1,210 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>models</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/sgorawski/Education/mdb-project/mdb/models.py">/Users/sgorawski/Education/mdb-project/mdb/models.py</a></font></td></tr></table>
+    <p><tt>Module&nbsp;with&nbsp;models,<br>
+bound&nbsp;using&nbsp;the&nbsp;SQLAlchemy&nbsp;ORM&nbsp;to&nbsp;the&nbsp;Sqlite3&nbsp;database.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="flask_login.mixins.html#UserMixin">flask_login.mixins.UserMixin</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.html#User">User</a>(<a href="flask_login.mixins.html#UserMixin">flask_login.mixins.UserMixin</a>, sqlalchemy.ext.declarative.api.Model)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial">sqlalchemy.ext.declarative.api.Model(<a href="flask_sqlalchemy.model.html#Model">flask_sqlalchemy.model.Model</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.html#Article">Article</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#User">User</a>(<a href="flask_login.mixins.html#UserMixin">flask_login.mixins.UserMixin</a>, sqlalchemy.ext.declarative.api.Model)
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Article">class <strong>Article</strong></a>(sqlalchemy.ext.declarative.api.Model)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;contains&nbsp;articles'&nbsp;title&nbsp;and&nbsp;content,<br>
+with&nbsp;a&nbsp;foreign&nbsp;key&nbsp;referring&nbsp;to&nbsp;the&nbsp;author.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Article">Article</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Model</dd>
+<dd><a href="flask_sqlalchemy.model.html#Model">flask_sqlalchemy.model.Model</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Article-__init__"><strong>__init__</strong></a>(self, title, content, author)</dt></dl>
+
+<dl><dt><a name="Article-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>content</strong></dt>
+</dl>
+<dl><dt><strong>id</strong></dt>
+</dl>
+<dl><dt><strong>timestamp</strong></dt>
+</dl>
+<dl><dt><strong>title</strong></dt>
+</dl>
+<dl><dt><strong>user_id</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x1112c5210; Article&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('article', MetaData(bind=None), Column('id...ignKey('user.id'), table=&lt;article&gt;), schema=None)</dl>
+
+<dl><dt><strong>__table_args__</strong> = {'extend_existing': True}</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'article'</dl>
+
+<hr>
+Methods inherited from sqlalchemy.ext.declarative.api.Model:<br>
+<dl><dt><strong>query</strong></dt>
+</dl>
+
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Model:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+<dl><dt><strong>query_class</strong> = &lt;class 'flask_sqlalchemy.BaseQuery'&gt;<dd><tt>SQLAlchemy&nbsp;:class:`~sqlalchemy.orm.query.Query`&nbsp;subclass&nbsp;with&nbsp;convenience&nbsp;methods&nbsp;for&nbsp;querying&nbsp;in&nbsp;a&nbsp;web&nbsp;application.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;default&nbsp;:attr:`~Model.query`&nbsp;object&nbsp;used&nbsp;for&nbsp;models,&nbsp;and&nbsp;exposed&nbsp;as&nbsp;:attr:`~SQLAlchemy.Query`.<br>
+Override&nbsp;the&nbsp;query&nbsp;class&nbsp;for&nbsp;an&nbsp;individual&nbsp;model&nbsp;by&nbsp;subclassing&nbsp;this&nbsp;and&nbsp;setting&nbsp;:attr:`~Model.query_class`.</tt></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_sqlalchemy.model.html#Model">flask_sqlalchemy.model.Model</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="User">class <strong>User</strong></a>(<a href="flask_login.mixins.html#UserMixin">flask_login.mixins.UserMixin</a>, sqlalchemy.ext.declarative.api.Model)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;contains&nbsp;user-specific&nbsp;fields,<br>
+including&nbsp;hashed&nbsp;password.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#User">User</a></dd>
+<dd><a href="flask_login.mixins.html#UserMixin">flask_login.mixins.UserMixin</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Model</dd>
+<dd><a href="flask_sqlalchemy.model.html#Model">flask_sqlalchemy.model.Model</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="User-__init__"><strong>__init__</strong></a>(self, username, email, password)</dt></dl>
+
+<dl><dt><a name="User-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="User-check_password"><strong>check_password</strong></a>(self, password)</dt></dl>
+
+<dl><dt><a name="User-get_image_url"><strong>get_image_url</strong></a>(self, size<font color="#909090">=80</font>)</dt><dd><tt>Method&nbsp;used&nbsp;to&nbsp;get&nbsp;user&nbsp;profile&nbsp;images,<br>
+utilizing&nbsp;the&nbsp;Gravatar&nbsp;API.&nbsp;If&nbsp;no&nbsp;image&nbsp;for&nbsp;an&nbsp;email&nbsp;is&nbsp;found,<br>
+a&nbsp;retro-style&nbsp;pixel&nbsp;art&nbsp;is&nbsp;returned.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>articles</strong></dt>
+</dl>
+<dl><dt><strong>email</strong></dt>
+</dl>
+<dl><dt><strong>id</strong></dt>
+</dl>
+<dl><dt><strong>is_admin</strong></dt>
+</dl>
+<dl><dt><strong>password_hash</strong></dt>
+</dl>
+<dl><dt><strong>username</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x1112a9a90; User&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('user', MetaData(bind=None), Column('id', ...ser&gt;, default=ColumnDefault(False)), schema=None)</dl>
+
+<dl><dt><strong>__table_args__</strong> = {'extend_existing': True}</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'user'</dl>
+
+<hr>
+Methods inherited from <a href="flask_login.mixins.html#UserMixin">flask_login.mixins.UserMixin</a>:<br>
+<dl><dt><a name="User-__eq__"><strong>__eq__</strong></a>(self, other)</dt><dd><tt>Checks&nbsp;the&nbsp;equality&nbsp;of&nbsp;two&nbsp;`<a href="flask_login.mixins.html#UserMixin">UserMixin</a>`&nbsp;objects&nbsp;using&nbsp;`get_id`.</tt></dd></dl>
+
+<dl><dt><a name="User-__ne__"><strong>__ne__</strong></a>(self, other)</dt><dd><tt>Checks&nbsp;the&nbsp;inequality&nbsp;of&nbsp;two&nbsp;`<a href="flask_login.mixins.html#UserMixin">UserMixin</a>`&nbsp;objects&nbsp;using&nbsp;`get_id`.</tt></dd></dl>
+
+<dl><dt><a name="User-get_id"><strong>get_id</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="flask_login.mixins.html#UserMixin">flask_login.mixins.UserMixin</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>is_active</strong></dt>
+</dl>
+<dl><dt><strong>is_anonymous</strong></dt>
+</dl>
+<dl><dt><strong>is_authenticated</strong></dt>
+</dl>
+<hr>
+Methods inherited from sqlalchemy.ext.declarative.api.Model:<br>
+<dl><dt><strong>query</strong></dt>
+</dl>
+
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Model:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+<dl><dt><strong>query_class</strong> = &lt;class 'flask_sqlalchemy.BaseQuery'&gt;<dd><tt>SQLAlchemy&nbsp;:class:`~sqlalchemy.orm.query.Query`&nbsp;subclass&nbsp;with&nbsp;convenience&nbsp;methods&nbsp;for&nbsp;querying&nbsp;in&nbsp;a&nbsp;web&nbsp;application.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;the&nbsp;default&nbsp;:attr:`~Model.query`&nbsp;object&nbsp;used&nbsp;for&nbsp;models,&nbsp;and&nbsp;exposed&nbsp;as&nbsp;:attr:`~SQLAlchemy.Query`.<br>
+Override&nbsp;the&nbsp;query&nbsp;class&nbsp;for&nbsp;an&nbsp;individual&nbsp;model&nbsp;by&nbsp;subclassing&nbsp;this&nbsp;and&nbsp;setting&nbsp;:attr:`~Model.query_class`.</tt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-load_user"><strong>load_user</strong></a>(user_id)</dt></dl>
+ <dl><dt><a name="-md5"><strong>md5</strong></a> = openssl_md5(...)</dt><dd><tt>Returns&nbsp;a&nbsp;md5&nbsp;hash&nbsp;object;&nbsp;optionally&nbsp;initialized&nbsp;with&nbsp;a&nbsp;string</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>db</strong> = &lt;SQLAlchemy engine=sqlite:////Users/sgorawski/Education/mdb-project/mdb.db&gt;<br>
+<strong>login</strong> = &lt;flask_login.login_manager.LoginManager object&gt;</td></tr></table>
+</body></html>

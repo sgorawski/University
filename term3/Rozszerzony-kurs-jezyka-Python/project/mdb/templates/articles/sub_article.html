@@ -1,0 +1,8 @@
+<div class="card mt-2">
+    <div class="card-body">
+    <h2 class="card-title"><a href="{{ url_for('articles.index', title=article.title) }}">{{ article.title }}</a></h2>
+    <h6 class="card-subtitle text-muted">
+        Created by <a href="{{ url_for('users.index', username=article.author.username) }}">{{ article.author.username }}</a>
+        on {{ article.timestamp.isoformat(' ', 'minutes') }}</h6>
+    </div>
+</div>

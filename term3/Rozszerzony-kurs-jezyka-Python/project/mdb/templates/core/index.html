@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>New articles</h1>
+    {% for article in articles %}
+        {% include "articles/sub_article.html" %}
+    {% else %}
+        <p>It seems that there are no articles to read.</p>
+        <p>Create a new one <a href="{{ url_for('articles.create') }}">here</a>.</p>
+    {%  endfor %}
+{% endblock %}

@@ -1,3 +1,0 @@
-input x y in
-  if x >= y then x + y
-  else x + z

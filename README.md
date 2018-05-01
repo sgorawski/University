@@ -1,21 +1,17 @@
 # University
 Materials and task solutions for my Computer Science studies at the University of Wrocław.
 
-This repository contains mostly solutions for practical problems which required writing code. If you're looking for
-more theory, I suggest checking out [wiedzmac](https://github.com/wiedzmac/University/) or [arsenic](http://arsenicrose.pl/).
-
-You are free to view, copy, use and modify anythig you find in here. If you want to share something with others,
-please give me credit. Any Pull Requests will be much appreciated!
+This repository contains mostly solutions for practical problems which required writing code.
 
 Materials from term 1 are mostly nonexistent, these from term 2 are a mess which I'm not likely to maintain,
-but from term 3 and higher everything should be acceptably clear.
+but from term 3 and higher everything should be quite clear.
 
 Courses I've taken so far:
 
 **Term 1:**
 - Logika dla Informatyków
 - Analiza Matematyczna
-- Wstep do programowania w języku Python
+- Wstep Do Programowania w Języku Python
 - Kultura Bezpieczeństwa Komputerowego
 - Podstawowy Warsztat Informatyka
 
@@ -33,5 +29,14 @@ Courses I've taken so far:
 - [Kurs rozszerzony języka Python](term3/Rozszerzony-kurs-jezyka-Python)
 - [Inżynieria Zespołu Programistycznego](https://github.com/sgorawski/IZP-glosowanie)
 
-Notatki do egzaminu z Systemów Operacyjnych tworzone w grupach **zpl**:
+**Term 4:**
+- Algorytmy i Struktury Danych
+- Architektury Systemów Komputerowych
+- Rachunek Prawdopodobieństwa i Statystyka
+- Kurs Projektowania Aplikacji z Bazami Danych
+- O Ekonomii i Gospodarce Inaczej
+
+Most of these have their separate repositories to be found on my profile.
+
+Operating Systems exam preparation notes created by the **zpl** groups:
 [SO-kompendium](https://github.com/sgorawski/SO-kompendium).

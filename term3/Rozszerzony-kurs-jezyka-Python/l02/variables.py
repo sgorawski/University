@@ -28,4 +28,4 @@ class Var(Formula):
         try:
             return vars_values[self.name]
         except KeyError:
-            throw ValueError("Variable %s has no defined value" % self.name)
+            raise ValueError("Variable %s has no defined value" % self.name)

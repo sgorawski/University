@@ -13,5 +13,5 @@ def measure_avg_time(name, flags, tests=10):
             re.search(br'[0-9]+\.[0-9]+', out).group().decode('ascii'))
         times.append(time)
     times.sort()
-    std_times = times[2:8]   # remove extreme results
+    std_times = times[(tests // 5):(4 * tests // 5)]   # remove extreme results
     return sum(std_times) / len(std_times)

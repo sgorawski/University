@@ -1,0 +1,8 @@
+lui	$s0,-12	# two operands here
+addi	$s0,$s1,-12
+addiu	$s0,$s1,-12
+slti	$s0,$s1,-12
+sltiu	$s0,$s1,-12
+andi	$s0,$s1,12
+ori	$s0,$s1,12
+xori	$s0,$s1,12

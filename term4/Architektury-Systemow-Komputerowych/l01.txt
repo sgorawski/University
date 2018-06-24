@@ -1,0 +1,316 @@
+// zad 1
+int copyBit(unsigned int x, short i, short k)
+{
+	int bit = (x & (1 << i)); // mask 00000000010000000000000000
+	x &= ~(1 << k);
+	return x | (bit >> i) << k;
+}
+
+// zad 2
+/*
+This algorithm is based on Divide and Conquer Algorithm. 
+Suppose there is a 8bit integer 213(11010101 in binary), the algorithm works like this(each time merge two neighbor blocks):
+
+	+------------------------------ - +
+	| 1 | 1 | 0 | 1 | 0 | 1 | 0 | 1 | <-x
+	 | 1 0 | | 0 1 | | 0 1 | | 0 1 | <-first time merge
+	   | 0 0 1 1 |     | 0 0 1 0 | <-second time merge
+		  | 0 0 0 0 0 1 0 1 | <-third time(answer = 00000101 = 5)
+
+In the above mentioned solution of counting set bits in a binary string, 
+the ultimate small problems (summing adjacent bits) can all be done in parallel, 
+and combining adjacent sums can also be done in parallel in a fixed number of steps at each stage. 
+The result is an algorithm that can be executed in log2(32) = 5 steps.
+*/
+
+// simple inefficient version
+unsigned int countSetBits(unsigned int n)
+{
+	unsigned int count = 0;
+	while (n > 0)
+	{
+		count += n & 1;
+		n >>= 1;
+	}
+	return count;
+}
+
+unsigned int bitCount(unsigned int x)
+{
+	x = (((x >> 1) & 0b01010101010101010101010101010101)
+		+ x & 0b01010101010101010101010101010101);
+	x = (((x >> 2) & 0b00110011001100110011001100110011)
+		+ x & 0b00110011001100110011001100110011);
+	x = (((x >> 4) & 0b00001111000011110000111100001111)
+		+ x & 0b00001111000011110000111100001111);
+	x = (((x >> 8) & 0b00000000111111110000000011111111)
+		+ x & 0b00000000111111110000000011111111);
+	x = (((x >> 16) & 0b00000000000000001111111111111111)
+		+ x & 0b00000000000000001111111111111111);
+	return x;
+}
+
+// shortedned version the same as above
+unsigned int count_bit(unsigned int x)
+{
+	x = (x & 0x55555555) + ((x >> 1) & 0x55555555);
+	x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
+	x = (x & 0x0F0F0F0F) + ((x >> 4) & 0x0F0F0F0F);
+	x = (x & 0x00FF00FF) + ((x >> 8) & 0x00FF00FF);
+	x = (x & 0x0000FFFF) + ((x >> 16) & 0x0000FFFF);
+	return x;
+}
+
+// GCC has a built in function in constant time usinglookup tables?
+//int __builtin_popcount (unsigned int x)
+
+
+// ZAD 3
+/*
+- Struct members are stored in the order they are declared. (This is required by the C99 standard, as mentioned here earlier.)
+- If necessary, padding is added before each struct member, to ensure correct alignment.
+- Each primitive type T requires an alignment of sizeof(T) bytes.
+
+A char (one byte) will be 1-byte aligned.
+A short (two bytes) will be 2-byte aligned.
+An int (four bytes) will be 4-byte aligned.
+A long (four bytes) will be 4-byte aligned.
+A float (four bytes) will be 4-byte aligned.
+A double (eight bytes) will be 8-byte aligned on Windows and 4-byte aligned on Linux (8-byte with -malign-double compile time option).
+A long long (eight bytes) will be 4-byte aligned.
+A long double (ten bytes with C++Builder and DMC, eight bytes with Visual C++, twelve bytes with GCC) will be 8-byte aligned with C++Builder, 2-byte aligned with DMC, 8-byte aligned with Visual C++, and 4-byte aligned with GCC.
+Any pointer (four bytes) will be 4-byte aligned. (e.g.: char*, int*)
+
+Alignment means that specific type must be at offset of multiply of this specification. Double must always start at 8n, short at 2n so on..
+It is important to note that the last member is padded with the number of bytes required so that the total size of the structure should be
+a multiple of the largest alignment of any structure member (alignment(int) in this case, which = 4 on linux-32bit/gcc)
+*/
+
+struct A 
+{ 
+	int8_t a; // 1 byte
+	// 3 bytes
+	void *b; // 4 bytes
+	int8_t c;  // 1 byte
+	// 1 bytes
+	int16_t d; // 2 bytes
+	// 12 is multiple of largest void* 4
+};
+
+struct A_better
+{
+	void *b; // 4 bytes
+	int16_t d; // 2 bytes
+	int8_t a; // 1 byte
+	int8_t c;  // 1 byte
+	// 8 is multiple of largest void* 4
+};
+
+struct B
+{ 
+	uint16_t a; // 2 bytes
+	// 6 bytes align because double must start at alignment*8
+	double b; // 8 bytes
+	void *c; // 4 bytes
+	// 4 bytes added so totalSize is multiply of double(8)
+};
+
+struct B_better
+{
+	double b; // 8 bytes
+	void* c; // 4 bytes
+	uint16_t a; // 2 bytes
+	// 2 bytes align so totalSize is multiply of double(8)
+};
+
+void countSize() {
+	cout << "Size of A: " << sizeof(A) << endl; // will tell 12
+	cout << "Size of B: " << sizeof(B) << endl; // will tell 24 (but should 16 on linux?)
+
+	cout << "Size of A_better: " << sizeof(A_better) << endl; // will tell 8
+	cout << "Size of B_better: " << sizeof(B_better) << endl; // will tell 16
+}
+
+/*
+Memory addressing is much faster when using byte addressing like this!
+Padding is only inserted when a structure member is followed by a member with a larger alignment requirement or at the end of the structure.
+???notsure: So we just need to put elements sorted in decreasing size alignment to get optimal solution.
+*/
+
+// ZAD 4
+
+/*
+volatile:
+	http://www.informit.com/articles/article.aspx?p=1832575&seqNum=3
+
+static:
+	1. local variables inside function: (maintain in memory throughout the whole time. can be used to count functions calling for instance.
+	https://www.cprogramming.com/tutorial/statickeyword.html
+
+	2. global variables:
+	static int i;
+	int j;
+
+	A variable declared as static at the top level of a source file (outside any function definitions) 
+	is only visible throughout that file ("file scope", also known as "internal linkage"). 
+	In this usage, the keyword static is known as an "access specifier".
+
+	i has internal linkage so you can't use the name i in other source files (strictly translation units) to refer to the same object.
+	j has external linkage so you can use j to refer to this object if you declare it extern in another translation unit.
+
+	i is not visible outside the module; j is globally accessible.
+	That is, another module, which is linked to it, can do
+	extern int j;
+	and then be able to read and write the value in j. 
+	The same other module cannot access i, but could declare its own instance of it, even a global one—which is not visible to the first module.
+
+	3. static functions are functions that are only visible to other functions in the same file (more precisely the same translation unit).
+
+	More: https://en.wikipedia.org/wiki/Static_(keyword)#Static_global_variable
+
+<restrict>: 
+The restrict keyword is a declaration of intent given by the programmer to the compiler.
+It says that for the lifetime of the pointer, only the pointer itself or a value directly derived from it (such as pointer + 1) 
+will be used to access the object to which it points. This limits the effects of pointer aliasing, aiding optimizations. 
+https://en.wikipedia.org/wiki/Restrict
+*/
+
+// ZAD 5
+/*
+a += b[j + 1] + b[--j]
+
+j1 := j + 1
+j2 := j - 1
+
+j11 := j1 * 4
+j22 := j2 * 4
+
+b1 := b + j11
+b2 := b + j22
+
+b1_value := *b1
+b2_value := *b2
+
+a := a + b1_value
+a := a + b2_value
+
+
+a[i++] -= b * (c[j*2] + 1);
+a[i] = a[i] - b * (c[j*2] + 1); i++;
+
+
+j1 := j * 2
+c1 := c + j1*4
+c_value := *c1
+c_value := c_value + 1
+c_value := b * c_value
+a_i := a + i*4
+a_i_value := *a_i
+c_value := a_i_value - c_value
+*a_i := c_value
+i := i + 1
+*/
+
+// ZAD 6
+/*
+vs->d = us[1].a + us[j].c
+
+
+us[1].a:
+
+struct A ma rozmiar 12
+
+temp := us + 12 // temp = &us[1]
+temp := us + 0 // temp = &us[1].a
+a := *temp // a = us[1].a
+
+j12 := 12 * j
+temp := us + j12 // temp = &us[j]
+temp := temp + 8 // temp = &us[j].c
+c := *temp // c = us[j].c
+
+ac := a + c
+
+vs_ref = vs + d // vs_ref = vs.d
+*vs_ref = ac // vs->d = a + c
+*/
+
+// ZAD 7
+/*
+LABEL insertionsort:				<<start>>
+	i := 0
+	FOR:							<<for>>
+		if i >= length goto ENDFOR
+
+		j := i						<<for_initialize>>
+		WHILE:						<<whileCondition>>
+			v1 := j > 0
+			4j := 4 * j
+			arrJ := arr + 4j
+			arrJ1 := arrJ - 4
+			arrJ_v := *arrJ
+			arrJ1_v := *arrJ1
+			v2 := arrJ_v < arrJ1_v
+			v3 := v1 && v2
+			if (v3) goto ENDWHILE
+
+			*arrJ := arrJ1			<<whileBody>>
+			*arrJ1 := arrJ
+			j := j - 1
+
+			goto WHILE:
+		ENDWHILE:					<<endWhile>>
+
+		i := i + 1
+		goto FOR
+	ENDFOR:							<<endFor>>
+*/
+
+
+// ZAD 8
+// It copies $count$ bytes starting from memory pointed by from into memory pointed by to
+// each case copies exactly one byte!
+void secret(uint8_t *to, uint8_t *from, size_t count) 
+{ 
+	size_t n = (count + 7) / 8; 
+	switch (count % 8)
+	{ 
+	case 0: 
+		do 
+		{ 
+			*to++ = *from++; 
+	case 7: *to++ = *from++; 
+	case 6: *to++ = *from++; 
+	case 5: *to++ = *from++; 
+	case 4: *to++ = *from++; 
+	case 3: *to++ = *from++; 
+	case 2: *to++ = *from++; 
+	case 1: *to++ = *from++; 
+		} while (--n > 0); 
+	} 
+}
+
+void secret_modified(uint8_t* to, uint8_t* from, size_t count) {
+	size_t n = (count + 7) / 8; // sufit count/8
+	int reszta = count % 8;
+	if (reszta == 0) goto label_0;
+	else if (reszta == 1) goto label_1;
+	else if (reszta == 2) goto label_2;
+	else if (reszta == 3) goto label_3;
+	else if (reszta == 4) goto label_4;
+	else if (reszta == 5) goto label_5;
+	else if (reszta == 6) goto label_6;
+	else if (reszta == 7) goto label_7;
+
+label_0: *to++ = *from++;
+label_7: *to++ = *from++;
+label_6: *to++ = *from++;
+label_5: *to++ = *from++;
+label_4: *to++ = *from++;
+label_3: *to++ = *from++;
+label_2: *to++ = *from++;
+label_1: *to++ = *from++;
+	if (n == 0) return;
+	n--;
+	goto label_0;
+}

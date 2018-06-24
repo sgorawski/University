@@ -1,0 +1,6 @@
+sll	$s0,$s1,1	# with shift amount
+srl	$s0,$s1,1
+sra	$s0,$s1,1
+sllv	$s0,$s1,$s2	# with variable
+srlv	$s0,$s1,$s2
+srav	$s0,$s1,$s2

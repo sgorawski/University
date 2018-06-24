@@ -1,0 +1,8 @@
+mult	$s0,$s1	# two operands
+multu	$s0,$s1
+div	$s0,$s1
+divu	$s0,$s1
+mfhi	$s0	# one operand
+mthi	$s0
+mflo	$s0
+mtlo	$s0

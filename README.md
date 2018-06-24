@@ -30,13 +30,11 @@ Courses I've taken so far:
 - [Inżynieria Zespołu Programistycznego](https://github.com/sgorawski/IZP-glosowanie)
 
 **Term 4:**
-- Algorytmy i Struktury Danych
-- Architektury Systemów Komputerowych
-- Rachunek Prawdopodobieństwa i Statystyka
-- Kurs Projektowania Aplikacji z Bazami Danych
+- [Algorytmy i Struktury Danych](term4/Algorytmy-i-Struktury-Danych)
+- [Architektury Systemów Komputerowych](term4/Architektury-Systemow-Komputerowych)
+- [Rachunek Prawdopodobieństwa i Statystyka](term4/Rachunek-Prawdopodobienstwa-i-Statystyka)
+- [Kurs projektowania aplikacji z bazami danych](term4/Kurs-projektowania-aplikacji-z-bazami-danych)
 - O Ekonomii i Gospodarce Inaczej
-
-Most of these have their separate repositories to be found on my profile.
 
 Operating Systems exam preparation notes created by the **zpl** groups:
 [SO-kompendium](https://github.com/sgorawski/SO-kompendium).

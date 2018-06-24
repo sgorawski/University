@@ -1,17 +1,19 @@
 #include <cstdio>
 #include <vector>
 
-
-int binsearch(std::vector<int> vec, int start, int end, int x) {
+int binsearch(std::vector<int> vec, int start, int end, int x)
+{
 	if (start == end)
 		return (vec[start] >= x ? start : start + 1);
 	int half = (start + end) / 2;
-	if (vec[half] < x) return binsearch(vec, half + 1, end, x);
+	if (vec[half] < x)
+		return binsearch(vec, half + 1, end, x);
 	return binsearch(vec, start, half, x);
 }
 
 
-int main() {
+int main()
+{
 	int n;
 	scanf("%d", &n);
 

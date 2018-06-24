@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <exception>
 
-class NotFound : std::exception {} nf;
+class NotFound : std::exception { } nf;
 
 const int MAX_NODES_COUNT = 50000;
 

@@ -3,7 +3,6 @@
 
 #define NONE 0
 
-
 class Tree {
 private:
 	struct Node {
@@ -15,7 +14,8 @@ private:
 	int *post_order;
 
 public:
-	Tree(int nodes_count) {
+	Tree(int nodes_count)
+	{
 		nodes = new Node[nodes_count + 1];
 		for (auto i = 0; i <= nodes_count; i++)
 			nodes[i] = {NONE, NONE};
@@ -23,19 +23,22 @@ public:
 		post_order = new int[nodes_count + 1]();
 	}
 
-	~Tree() {
+	~Tree()
+	{
 		delete[] nodes;
 		delete[] pre_order;
 		delete[] post_order;
 	}
 
-	void insertNode(int node, int parent) {
+	void insertNode(int node, int parent)
+	{
 		int prev_child = nodes[parent].left_child;
 		nodes[parent].left_child = node;
 		nodes[node].right_sibling = prev_child;
 	}
 
-	void dfs() {
+	void dfs()
+	{
 		int current, next;
 		int pre_counter = 1;
 		int post_counter = 1;
@@ -60,14 +63,16 @@ public:
 		}
 	}
 
-	bool isAncestor(int node1, int node2) {
+	bool isAncestor(int node1, int node2)
+	{
 		return (pre_order[node1] < pre_order[node2] &&
 				post_order[node1] > post_order[node2]);
 	}
 };
 
 
-int main() {
+int main()
+{
 	int nodes_count, queries_count, parent;
 	scanf("%d %d", &nodes_count, &queries_count);
 	Tree tree = Tree(nodes_count);

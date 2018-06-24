@@ -1,9 +1,7 @@
 #include <cstdio>
 #include <array>
 
-
-typedef std::array<std::array<long long, 2>, 2> Matrix;
-
+using Matrix = std::array<std::array<long long, 2>, 2>;
 
 Matrix mtxMultMod(Matrix a, Matrix b, int m) {
 	Matrix res;
@@ -14,14 +12,13 @@ Matrix mtxMultMod(Matrix a, Matrix b, int m) {
 	return res;
 }
 
-
 Matrix fastMtxPowMod(Matrix a, int exp, int m) {
-	if (exp == 0) return {{{1, 0}, {0, 1}}};
+	if (exp == 0)
+		return {{{1, 0}, {0, 1}}};
 	Matrix x = fastMtxPowMod(a, exp/2, m);
 	x = mtxMultMod(x, x, m);
 	return (exp % 2 == 0 ? x : mtxMultMod(a, x, m));
 }
-
 
 int fibMod(int n, int m) {
 	Matrix fib_mtx = {{{1, 1}, {1, 0}}};

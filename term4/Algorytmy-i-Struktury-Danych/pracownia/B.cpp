@@ -4,7 +4,6 @@
 #include <map>
 #include <algorithm>
 
-
 class Digraph {
 private:
 	using Node = std::pair<int, int>;
@@ -14,11 +13,13 @@ private:
 	std::map<Node, int> paths;
 
 public:
-	Digraph(int edges_count) {
+	Digraph(int edges_count)
+	{
 		edges.resize(edges_count);
 	}
 
-	void loadEdges() {
+	void loadEdges()
+	{
 		Node from, to;
 		for (auto&& edge : edges) {
 			scanf("%d %d", &from.first, &from.second);
@@ -27,11 +28,13 @@ public:
 		}
 	}
 
-	void topoSort() {
+	void topoSort()
+	{
 		std::sort(edges.begin(), edges.end());
 	}
 
-	void countPathsMod(int mod) {
+	void countPathsMod(int mod)
+	{
 		paths[edges[0].first] = 1;
 
 		Node from, to;
@@ -46,13 +49,15 @@ public:
 		}
 	}
 
-	int getPathsCountAtNode(int y, int x) {
+	int getPathsCountAtNode(int y, int x)
+	{
 		return paths[Node(y, x)];
 	}
 };
 
 
-int main() {
+int main()
+{
 	int height, width, edges_count;
 	const int MOD = 999979;
 	scanf("%d %d %d", &height, &width, &edges_count);

@@ -3,7 +3,9 @@
 #include <queue>
 #include <deque>
 #include <utility>
+#include <exception>
 
+class Error : std::exception { } err;
 
 class Solution {
 private:
@@ -12,14 +14,16 @@ private:
     std::vector<Station> ranges;
 
 public:
-    Solution(int stations_count, int total_distance, int fuel_tank_capacity) {
+    Solution(int stations_count, int total_distance, int fuel_tank_capacity)
+    {
         this->stations_count = stations_count;
         this->total_distance = total_distance;
         this->fuel_tank_capacity = fuel_tank_capacity;
         ranges.resize(stations_count + 2);
     }
 
-    void loadStations() {
+    void loadStations()
+    {
         int distance, cost;
         std::queue<Station> ranges_queue;
         ranges[0] = Station(0, 0);
@@ -28,7 +32,8 @@ public:
             scanf("%d %d", &distance, &cost);
             while (ranges_queue.front().second < distance) {
                 ranges_queue.pop();
-                if (ranges_queue.empty()) throw -1;
+                if (ranges_queue.empty())
+			throw err;
             }
             ranges[i] = Station(
                 cost, ranges_queue.front().first);
@@ -36,13 +41,15 @@ public:
         }
         while (ranges_queue.front().second < total_distance) {
             ranges_queue.pop();
-            if (ranges_queue.empty()) throw -1;
+            if (ranges_queue.empty())
+		    throw err;
         }
         ranges[stations_count + 1] = Station(
             0, ranges_queue.front().first);
     }
 
-    int getCost() {
+    int getCost()
+    {
         int difference, new_cost, new_range;
         std::deque<Station> window;
         window.emplace_front(0, 1);
@@ -73,14 +80,15 @@ public:
 };
 
 
-int main() {
+int main()
+{
     int stations_count, total_distance, fuel_tank_capacity;
     scanf("%d %d %d", &stations_count, &total_distance, &fuel_tank_capacity);
 
     Solution solution = Solution(stations_count, total_distance, fuel_tank_capacity);
     try {
         solution.loadStations();
-    } catch(int) {
+    } catch(Error) {
         printf("NIE\n");
         return 0;
     }

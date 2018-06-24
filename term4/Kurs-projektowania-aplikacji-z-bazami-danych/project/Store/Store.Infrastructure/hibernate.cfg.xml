@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory>
+    <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+    <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
+    <property name="connection.connection_string">Server=tcp:dbapps.database.windows.net,1433;Initial Catalog=Store;Persist Security Info=False;User ID=sgorawski;Password=AzureAdmin69;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;</property>
+    
+    <mapping assembly="Store.Domain" />
+  </session-factory>
+</hibernate-configuration>

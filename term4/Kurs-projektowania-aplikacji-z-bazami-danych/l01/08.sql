@@ -1,0 +1,4 @@
+ALTER TABLE SalesLT.Customer
+ADD CreditCardNumber VARCHAR(16) NOT NULL DEFAULT '0000000000000000'
+CONSTRAINT ValidCard
+CHECK (CreditCardNumber NOT LIKE '%[^0-9]%')

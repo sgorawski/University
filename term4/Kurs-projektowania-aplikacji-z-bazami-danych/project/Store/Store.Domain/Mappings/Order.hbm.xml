@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Store.Domain"
+                   namespace="Store.Domain.Model.Order">
+  <class name="Order" table="Orders">
+    <id name="Id">
+      <column name="Id" />
+      <generator class="native" />
+    </id>
+    <property name="CustomerId" />
+    <property name="ShipmentId" />
+    <set name="OrderItems" cascade="all">
+      <key column="OrderId" />
+      <composite-element class="OrderItem">
+        <property name="ProductId" />
+        <property name="ProductPrice" />
+        <property name="ProductQuantity" />
+      </composite-element>
+    </set>
+  </class>
+</hibernate-mapping>

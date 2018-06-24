@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Store.Domain"
+                   namespace="Store.Domain.Model.Product">
+  <class name="Product" table="Products">
+    <id name="Id">
+      <column name="Id" />
+      <generator class="native" />
+    </id>
+    <property name="Name" />
+    <property name="Description" />
+    <property name="ImageUrl" />
+    <property name="Price" />
+    <property name="Quantity" />
+  </class>
+</hibernate-mapping>

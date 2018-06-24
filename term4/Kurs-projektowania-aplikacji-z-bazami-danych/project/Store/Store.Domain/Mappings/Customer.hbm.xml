@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Store.Domain"
+                   namespace="Store.Domain.Model.Customer">
+  <class name="Customer" table="Customers">
+    <id name="Id">
+      <column name="Id" />
+      <generator class="native" />
+    </id>
+    <property name="Name" />
+    <property name="Email" />
+    <component name="Address" class="Store.Domain.Model.Shared.Address">
+      <property name="Country" />
+      <property name="City" />
+      <property name="Detail" />
+      <property name="ZipCode" />
+    </component>
+  </class>
+</hibernate-mapping>

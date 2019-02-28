@@ -1,40 +1,49 @@
 # University
+
 Materials and task solutions for my Computer Science studies at the University of Wrocław.
 
 This repository contains mostly solutions for practical problems which required writing code.
 
 Materials from term 1 are mostly nonexistent, these from term 2 are a mess which I'm not likely to maintain,
-but from term 3 and higher everything should be quite clear.
+but from term 3 and above everything should be quite clear.
 
-Courses I've taken so far:
+Courses I've taken so far (translations may be crude):
 
 **Term 1:**
-- Logika dla Informatyków
-- Analiza Matematyczna
-- Wstep Do Programowania w Języku Python
-- Kultura Bezpieczeństwa Komputerowego
-- Podstawowy Warsztat Informatyka
+- Logic for Computer Science
+- Calculus
+- Introduction to Programming in Python
+- Computer Security Culture
+- Programmer's Basic Toolkit
 
 **Term 2:**
 - Algebra
-- [Metody Programowania](term2/Metody-Programowania)
-- Analiza Matematyczna 2
-- [Programowanie Obiektowe](term2/Programowanie-Obiektowe)
-- [Sieci Neuronowe i Deep Learning](https://github.com/sgorawski/nn_assignments)
+- [Programming Methodology](term2/programming-methodology)
+- Calculus 2
+- [Object-Oriented Programming](term2/object-oriented-programming)
+- [Neural Networks and Deep Learning](https://github.com/sgorawski/nn_assignments)
 
 **Term 3:**
-- [Analiza Numeryczna (M)](term3/Analiza-Numeryczna-M)
-- Matematyka Dyskretna (M)
-- [Systemy Operacyjne. Podstawy](term3/Systemy-Operacyjne-Podstawy)
-- [Kurs rozszerzony języka Python](term3/Rozszerzony-kurs-jezyka-Python)
-- [Inżynieria Zespołu Programistycznego](https://github.com/sgorawski/IZP-glosowanie)
+- [Numerical Analysis (M)](term3/numerical-analysis-m)
+- Discrete Mathematics (M)
+- [Operating Systems Basics](term3/operating-systems-basics)
+- [Extended Python Course](term3/extended-python-course)
+- [Programming Team Engineering](https://github.com/sgorawski/IZP-glosowanie)
 
 **Term 4:**
-- [Algorytmy i Struktury Danych](term4/Algorytmy-i-Struktury-Danych)
-- [Architektury Systemów Komputerowych](term4/Architektury-Systemow-Komputerowych)
-- [Rachunek Prawdopodobieństwa i Statystyka](term4/Rachunek-Prawdopodobienstwa-i-Statystyka)
-- [Kurs projektowania aplikacji z bazami danych](term4/Kurs-projektowania-aplikacji-z-bazami-danych)
-- O Ekonomii i Gospodarce Inaczej
+- [Algorithms and Data Structures](term4/algorithms-and-data-structures)
+- [Computer Systems](term4/computer-systems)
+- [Probability and Statistics](term4/probability-and-statistics)
+- [Database Applications](term4/database-applications)
+- A Different Perspective on Economy
+
+**Term 5:**
+- [Design and Deployment of Cloud Systems](term5/design-and-deployment-of-cloud-systems)
+- [Data Mining](term5/data-mining)
+- [Functional Programming](term5/functional-programming)
+- [Natural Language Processing](term5/natural-language-processing)
+- [Blockchain and its Applications](term5/blockchain-and-its-applications)
+- Human-Computer Interaction
 
 Operating Systems exam preparation notes created by the **zpl** groups:
 [SO-kompendium](https://github.com/sgorawski/SO-kompendium).

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: website
+  labels:
+    app: website
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: website
+  template:
+    metadata:
+      labels:
+        app: website
+    spec:
+      containers:
+      - name: website
+        image: sgorawski/website:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: READER_URL
+          value: "http://reader-service"
+        - name: WRITER_URL
+          value: "http://writer-service"

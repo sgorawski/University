@@ -1,0 +1,66 @@
+102060 | czekoladki wczoraj dała Judyta Stefanowi
+61236 | Stefanowi czekoladki wczoraj dała Judyta
+54432 | Stefanowi czekoladki wczoraj Judyta dała
+36288 | czekoladki wczoraj Judyta dała Stefanowi
+34020 | dała Judyta Stefanowi czekoladki wczoraj
+22680 | dała czekoladki wczoraj Judyta Stefanowi
+22680 | czekoladki wczoraj Judyta Stefanowi dała
+21870 | Judyta Stefanowi czekoladki wczoraj dała
+13608 | dała Stefanowi czekoladki wczoraj Judyta
+9072 | dała Judyta czekoladki wczoraj Stefanowi
+----------
+7644 | miała dwa rogate koziołki Babuleńka
+7644 | rogate koziołki Babuleńka miała dwa
+5096 | Babuleńka miała dwa rogate koziołki
+5096 | miała dwa Babuleńka rogate koziołki
+4368 | Babuleńka koziołki rogate miała dwa
+4368 | miała dwa Babuleńka koziołki rogate
+4368 | miała dwa rogate Babuleńka koziołki
+4368 | rogate miała dwa Babuleńka koziołki
+2548 | Babuleńka rogate koziołki miała dwa
+2548 | rogate koziołki miała dwa Babuleńka
+----------
+1152 | wieczorem kobietę spotkałem Wczoraj pewną piękną
+1152 | wieczorem kobietę spotkałem Wczoraj piękną pewną
+1152 | wieczorem kobietę pewną spotkałem Wczoraj piękną
+1152 | wieczorem kobietę piękną spotkałem Wczoraj pewną
+1152 | spotkałem Wczoraj pewną wieczorem kobietę piękną
+1152 | spotkałem Wczoraj pewną piękną wieczorem kobietę
+1152 | spotkałem Wczoraj piękną wieczorem kobietę pewną
+1152 | spotkałem Wczoraj piękną pewną wieczorem kobietę
+1152 | pewną wieczorem kobietę spotkałem Wczoraj piękną
+1152 | pewną spotkałem Wczoraj piękną wieczorem kobietę
+----------
+15523200 | Karolinie koralowego królowej koloru Król kupił korale Karol
+15523200 | korale Karol Król kupił Karolinie koralowego królowej koloru
+10348800 | Król kupił korale Karol Karolinie koralowego królowej koloru
+10348800 | Karolinie koralowego królowej koloru kupił korale Karol Król
+10348800 | Karolinie koralowego królowej koloru korale Karol Król kupił
+8131200 | kupił Karolinie koralowego królowej korale Karol Król koloru
+8131200 | Karolinie koralowego królowej korale Karol Król koloru kupił
+7761600 | Król kupił Karolinie koralowego królowej koloru korale Karol
+7761600 | korale Karol Karolinie koralowego królowej koloru Król kupił
+6098400 | Król koloru kupił Karolinie koralowego królowej korale Karol
+----------
+58464 | Boże coś Polskę naszą ojczyznę
+58464 | Boże coś ojczyznę naszą Polskę
+19488 | naszą Polskę Boże coś ojczyznę
+19488 | naszą ojczyznę Boże coś Polskę
+10962 | Boże coś Polskę ojczyznę naszą
+10962 | Boże coś ojczyznę Polskę naszą
+4032 | Boże coś naszą Polskę ojczyznę
+4032 | Boże coś naszą ojczyznę Polskę
+4032 | naszą Polskę ojczyznę Boże coś
+4032 | naszą ojczyznę Polskę Boże coś
+----------
+653545872 | ostra Dwa razy na baranina grubym
+217848624 | grubym ostra Dwa razy na baranina
+190211112 | ostra na Dwa razy baranina grubym
+190211112 | baranina grubym ostra na Dwa razy
+108924312 | na baranina grubym ostra Dwa razy
+95105556 | baranina ostra na Dwa razy grubym
+95105556 | grubym baranina ostra na Dwa razy
+93363696 | baranina grubym ostra Dwa razy na
+63403704 | ostra baranina grubym na Dwa razy
+63403704 | ostra na Dwa razy grubym baranina
+

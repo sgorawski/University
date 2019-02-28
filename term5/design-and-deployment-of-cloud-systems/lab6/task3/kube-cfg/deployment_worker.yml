@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker
+  labels:
+    app: worker
+spec:
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+      - name: worker
+        image: sgorawski/worker:latest
+        env:
+        - name: BROKER_URL
+          value: "broker-service"
+        - name: TASK_QUEUE_NAME
+          value: "tasks"
+        - name: RESULT_QUEUE_NAME
+          value: "results"

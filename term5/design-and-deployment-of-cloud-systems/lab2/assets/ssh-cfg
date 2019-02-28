@@ -1,0 +1,4 @@
+{% for ip in host_ips %}
+Host {{ip}}
+	ForwardAgent yes
+{% endfor %}

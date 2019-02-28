@@ -1,0 +1,25 @@
+- hosts: all
+  become: yes
+  tasks:
+        - name: Install haproxy
+          apt:
+                  name: haproxy
+                  state: present
+                  update_cache: yes
+        - name: Enable init script
+          replace:
+                  dest: /etc/default/haproxy
+                  regexp: ENABLED=0
+                  replace: ENABLED=1
+        - name: Update haproxy config
+          template:
+                  src: assets/haproxy.cfg
+                  dest: /etc/haproxy/haproxy.cfg
+                  backup: yes
+          notify:
+                  - Restart haproxy
+  handlers:
+          - name: Restart haproxy
+            service:
+                    name: haproxy
+                    state: restarted

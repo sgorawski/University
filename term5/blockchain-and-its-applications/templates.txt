@@ -1,0 +1,14 @@
+-- LIST UNSPENT
+./btc.sh listunspent 0 999999 '["<ADDR>"]'
+
+-- CREATE RAW TRANSACTION
+./btc.sh createrawtransaction '[{"txid": "<TXID>", "vout": <N>}]' '{"<ADDR1>": <X>, "<ADDR2>": <X>}'
+
+-- SIGN TRANSACTION
+./btc.sh signrawtransactionwithkey <RAWTX> '["<PRIVATEKEY>"]'
+
+-- SEND TRANSACTION
+./btc.sh sendrawtransaction <TX> true
+
+-- GET TRANSACTION INFO
+./btc.sh getrawtransaction <TXID> true

@@ -1,0 +1,34 @@
+- hosts: all
+  become: yes
+  tasks:
+          - name: Install nginx
+            apt:
+                    name: nginx
+                    state: present
+                    update_cache: true
+          - name: Install site config
+            copy:
+                    src: ./assets/site.conf
+                    dest: /etc/nginx/conf.d/site.conf
+            notify:
+                    - Restart Nginx
+          - name: Remove nginx default cfg
+            file:
+                    path: /etc/nginx/sites-enabled/default
+                    state: absent
+          - name: Install rsync
+            apt:
+                    name: rsync
+                    state: present
+          - name: Install site
+            synchronize:
+                    src: "{{ site_dirpath }}"
+                    dest: /opt/html
+                    rsync_opts:
+                            - --chown=www-data:www-data
+                    delete: yes
+  handlers:
+          - name: Restart Nginx
+            service:
+                    name: nginx
+                    state: restarted

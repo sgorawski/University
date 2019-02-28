@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: writer
+  labels:
+    app: writer
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: writer
+  template:
+    metadata:
+      labels:
+        app: writer
+    spec:
+      containers:
+      - name: writer
+        image: sgorawski/writer:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: DBNAME
+          value: db
+        - name: USER
+          value: postgres
+        - name: PASSWORD
+          value: postgres
+        - name: HOST
+          value: "35.242.213.248"
+        - name: PORT
+          value: "5432"

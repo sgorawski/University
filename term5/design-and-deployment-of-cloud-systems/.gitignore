@@ -1,0 +1,7 @@
+clouds*
+gcp
+.terraform
+terraform.*
+*.retry
+venv
+.vscode

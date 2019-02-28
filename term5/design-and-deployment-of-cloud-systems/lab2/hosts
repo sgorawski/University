@@ -1,0 +1,13 @@
+[app-servers]
+35.158.97.229
+52.59.17.63
+3.120.159.203
+
+[load-balancer]
+18.195.65.251
+
+[bastion-host]
+18.194.108.45
+
+[all:vars]
+ansible_user=admin

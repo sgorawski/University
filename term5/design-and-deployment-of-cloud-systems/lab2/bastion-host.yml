@@ -1,0 +1,19 @@
+- hosts: bastion-host
+  become: yes
+  tasks:
+          - include_role:
+                  name: ssh
+          - include_role:
+                  name: users
+          - name: Add ssh forwarding
+            template:
+                    src: assets/ssh-cfg
+                    dest: .ssh/config
+                    backup: yes
+  vars:
+          host_ips:
+                  - 172.31.47.4
+                  - 172.31.34.17
+                  - 172.31.42.241
+                  - 172.31.43.14
+

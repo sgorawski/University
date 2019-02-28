@@ -1,0 +1,19 @@
+---
+
+- name: Add www-data group
+  group:
+          name: www-data
+          state: present
+- name: Prepare Alice and Bob users
+  user:
+          name: "{{ item }}"
+          groups:
+                  - www-data
+          state: present
+  with_items: "{{ users }}"
+- name: Add Alice and Bob keys
+  authorized_key:
+          user: "{{ item }}"
+          key: "{{ lookup('file', 'ssh/' + item + '.key.pub') }}"
+          state: present
+  with_items: "{{ users }}"

@@ -1,0 +1,14 @@
+{
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "require": {
+    "moneyphp/money": "^3.2",
+    "myclabs/php-enum": "^1.7",
+    "ramsey/uuid": "^3.8",
+    "doctrine/orm": "^2.6",
+    "ramsey/uuid-doctrine": "^1.5"
+  }
+}

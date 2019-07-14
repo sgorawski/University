@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if accounts is empty %}
+        <p>No accounts found</p>
+    {% else %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Description</th>
+                <th>Points</th>
+                <th>Status</th>
+            </tr>
+            {% for account in accounts %}
+            <tr>
+                <td>{{ account.id }}</td>
+                <td>{{ account.email }}</td>
+                <td>{{ account.description }}</td>
+                <td>{{ account.points }}</td>
+                <td>{{ account.status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+{% endblock %}

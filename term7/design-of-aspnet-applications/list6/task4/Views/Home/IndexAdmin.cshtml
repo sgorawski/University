@@ -1,0 +1,8 @@
+﻿@using System.Security.Principal
+@model IPrincipal
+
+Hello,
+<span>@Html.DisplayFor(m => m.Identity.Name)</span>
+@Html.ActionLink("Logout", "Logout")
+
+<h1>Admin</h1>

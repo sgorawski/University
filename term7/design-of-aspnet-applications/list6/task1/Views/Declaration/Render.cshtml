@@ -1,0 +1,58 @@
+﻿@model ASPNET_Z6.Models.Declaration
+
+@{
+    ViewBag.Title = "Render";
+}
+
+<div class="decl">
+    <table class="decl-table">
+        <thead>
+            <tr>
+                <th colspan="2" class="decl-th">
+                    @Html.DisplayNameFor(m => m.ClassName)
+                </th>
+                <th colspan="2" class="decl-th">
+                    @Html.DisplayNameFor(m => m.TaskSet)
+                </th>
+                <th colspan="4" class="decl-th">
+                    @Html.DisplayNameFor(m => m.StudentName)
+                </th>
+                <th colspan="3" class="decl-th">
+                    @Html.DisplayNameFor(m => m.Date)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="2" class="decl-td">
+                    @Html.DisplayFor(m => m.ClassName)
+                </td>
+                <td colspan="2" class="decl-td">
+                    @Html.DisplayFor(m => m.TaskSet)
+                </td>
+                <td colspan="4" class="decl-td">
+                    @Html.DisplayFor(m => m.StudentName)
+                </td>
+                <td colspan="3" class="decl-td">
+                    @Html.DisplayFor(m => m.Date)
+                </td>
+            </tr>
+            <tr>
+                <td class="decl-td">Task no.</td>
+                @for (int i = 1; i <= ASPNET_Z6.Models.Declaration.TOTAL_NUM_TASKS; i++)
+                {
+                    <td class="decl-td">@i</td>
+                }
+            </tr>
+            <tr>
+                <td class="decl-td">Points</td>
+                @for (int i = 0; i < ASPNET_Z6.Models.Declaration.TOTAL_NUM_TASKS; i++)
+                {
+                    <td class="decl-td">
+                        @Html.DisplayFor(m => m.TasksPoints[i])
+                     </td>
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,8 @@
+﻿@using ASPNET_Z6_5.Extensions
+@model ASPNET_Z6_5.Models.User
+
+@using (Html.BeginForm())
+{
+    @Html.LoginFor(m => m.UserName, m => m.Password)
+    <input type="submit" value="Login" />
+}

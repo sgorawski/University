@@ -1,0 +1,28 @@
+﻿@model ASPNET_Z7.Models.Product
+
+@Html.ActionLink("Back", "Index")
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tbody>
+            <tr class="form-group">
+                <td>@Html.LabelFor(m => m.Name)</td>
+                <td>@Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr class="form-group">
+                <td>@Html.LabelFor(m => m.Description)</td>
+                <td>@Html.EditorFor(m => m.Description, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr class="form-group">
+                <td>@Html.LabelFor(m => m.Price)</td>
+                <td>@Html.EditorFor(m => m.Price, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr class="form-group">
+                <td>@Html.LabelFor(m => m.ImageURL)</td>
+                <td>@Html.EditorFor(m => m.ImageURL, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Submit" class="btn btn-primary" />
+}

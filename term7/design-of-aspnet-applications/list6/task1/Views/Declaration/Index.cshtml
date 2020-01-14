@@ -1,0 +1,65 @@
+﻿@model ASPNET_Z6.Models.Declaration
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tbody>
+            <tr>
+                <td>@Html.LabelFor(m => m.StudentName)</td>
+                <td>
+                    @Html.EditorFor(m => m.StudentName)
+                    @Html.ValidationMessageFor(m => m.StudentName)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Date)</td>
+                <td>
+                    @Html.EditorFor(m => m.Date)
+                    @Html.ValidationMessageFor(m => m.Date)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.ClassName)</td>
+                <td>
+                    @Html.EditorFor(m => m.ClassName)
+                    @Html.ValidationMessageFor(m => m.ClassName)
+                </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TaskSet)</td>
+                <td>
+                    @Html.EditorFor(m => m.TaskSet)
+                    @Html.ValidationMessageFor(m => m.TaskSet)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Task no.</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < ASPNET_Z6.Models.Declaration.TOTAL_NUM_TASKS; i++)
+            {
+                <tr>
+                    <td>@Html.Label((i + 1).ToString())</td>
+                    <td>
+                        @Html.EditorFor(m => m.TasksPoints[i])
+                        @Html.ValidationMessageFor(m => m.TasksPoints[i])
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <input type="submit" value="Create" />
+}

@@ -52,5 +52,8 @@ Courses I've taken so far:
 - [Design and Implementation of Advanced PHP Applications](term6/design-and-implementation-of-advanced-php-applications)
 - Diploma Project
 
+### Term 7:
+- [Design of ASP.NET Applications](term7/design-of-aspnet-applications)
+
 Operating Systems exam preparation notes created by the **zpl** groups:
 [SO-kompendium](https://github.com/sgorawski/SO-kompendium).

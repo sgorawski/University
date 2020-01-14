@@ -1,0 +1,20 @@
+﻿@using (Html.BeginForm())
+{
+    <table>
+        <tbody>
+            <tr>
+                <td>Username</td>
+                <td>@Html.TextBox("Username")</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>@Html.TextBox("Email")</td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>@Html.Password("Password")</td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="submit" value="Register" />
+}

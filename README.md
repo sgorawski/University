@@ -22,8 +22,6 @@ Courses I've taken (names in Polish, so that they can be more easily found by an
 - [Programowanie obiektowe](term2/Programowanie%20obiektowe)
 - [Sieci neuronowe](term2/Sieci%20neuronowe)
   
-  _Neural networks_
-
 ### Term 3:
 - [Analiza numeryczna (M)](term3/Analiza%20numeryczna%20(M))
 - Matematyka dyskretna (M)
@@ -39,7 +37,7 @@ Courses I've taken (names in Polish, so that they can be more easily found by an
 - O ekonomii i gospodarce inaczej
 
 ### Term 5:
-- [Projektowanie i wdrażanie systemów w chmurze](term5/Projektowanie%20i%20wdrażanie%20systemów%20w%20chmurze)
+- [Projektowanie i wdrażanie systemów w chmurze](term5/Projektowanie%20i%20wdrazanie%20systemow%20w%20chmurze)
 - [Eksploracja danych](term5/Eksploracja%20danych)
 - [Programowanie funkcyjne](term5/Programowanie%20funkcyjne)
 - [Przetwarzanie języka naturalnego](term5/Przetwarzanie%20jezyka%20naturalnego)

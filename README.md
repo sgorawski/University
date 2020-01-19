@@ -22,7 +22,7 @@ Courses I've taken so far:
 - [Programming Methodology](term2/programming-methodology)
 - Calculus 2
 - [Object-Oriented Programming](term2/object-oriented-programming)
-- [Neural Networks and Deep Learning](https://github.com/sgorawski/nn_assignments)
+- [Neural Networks and Deep Learning](term2/Sieci neuronowe)
 
 ### Term 3:
 - [Numerical Analysis (M)](term3/numerical-analysis-m)

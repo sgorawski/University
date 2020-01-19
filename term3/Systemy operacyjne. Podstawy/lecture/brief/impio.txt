@@ -1,0 +1,59 @@
+W celu zwiększenia wydajności, transfer między dyskiem a pamięcią odbywa się w blokach [block]. Każdy blok ma jeden lub więcej sektorów [sectors] 
+System plików [file system] zapewnia wydajny i wygodny dostęp do dysku, pozwalając na łatwe przechowywanie, namierzanie i odczytywanie danych.
+Warswty:
+sterowanie wejściem-wyjściem [I/O control] składa się z modułu obsługi urządzenia [device driver] i obsługi przerywań. Zmienia wysokopoziomowe polecenia na niskopoziomowe polecenia wykonywane przez sterownik urządzenia [hardware controller].
+Podstawowy system plików [basic file system] zajmuje się wydawaniem ogólnych poleceń do odpowiedniego modułu sterowania, blokami, buforami, cache'ami różnych systemów plików. 
+Moduł organizacji pliku [file-organization module] wie o plikach i ich logicznych blokach, jak również fizycznych blokach. Znając sposób alokacji, potrafi przetłumaczyć adres bloku logicznego na adres bloku fizycznego. 
+Poziom logiczny [logical file system] odpowiada za [metadata information], czyli wszelkie informacje o strukturze systemu plików poza faktycznymi danymi. Blok kontrolny pliku [file-control block, FCB] (np. i-węzeł [inode] w UNIX)
+
+Na dysku
+Blok sterujący rozruchem [boot control block] zawiera informacje potrzebne do uruchomienia systemu [partition boot sector / boot block
+Blok sterujący partycji [volume control block] zawiera informacje o partycji: [superblock / master file table].
+Struktura katalogów, używana do organizacji plików.
+FCB dla każdego pliku
+
+W pamięci
+Tablica montaży [mount table] zawiera informacje o zamontowanych partycjach
+Cache struktury katalogów
+Ogólnosystemowa tablica otwartych plików [system-wide open-file table] zawiera kopię FCB dla każdego otwartego pliku
+Procesowa tablica otwartych plików [per-process open-file table] zawiera wskaźniki do odpowiednich pól w tablicy wyżej
+Bufory bloków
+
+Operacje te odbywają się przez wskaźnik zwany deskryptorem pliku [file descriptor] / uchwytem plikowym [file handle].
+Strefy [partition] dzielimy na surowe [raw] i przyrządzone ["cooked"], w zależności od tego, czy (nie)znajduje się na nich jakiś system plików.
+Informacje o rozruchu mogą być przechowywane jak to opisano wyżej. Uruchamianie zaczyna się od ustalonej lokacji [boot loader] zna już strukturę systemu plików i wie jak wczytać jądro (rozruch dwustopniowy)
+Strefa główna [root partition], zawierająca jądro, jest montowana podczas rozruchu.
+
+Wirtualny system plików (virtual file system, VFS) to warstwa abstrakcji która
+oddziela ogólne operacje systemów plików od ich implementacji.
+dostarcza mechanizm reprezentowania pliku przez sieć w unikalny sposób. Bazuje na strukturze zwanej [vnode]
+Np. VFS składa się z:
+i-węzłów reprezentujących pojedyncze pliki
+[file object], reprezentującego otwarte pliki
+[superblock object] reprezentującego cały system plików
+[dentry object] reprezentującego pojedyncze katalogi
+VFS udostępnia API w postaci wywołań open, close, read, itd.
+
+Metody przydziału
+Przydział ciągły [contiguous allocation] zakłada, że każdy plik obejmuje zbiór sąsiadujących ciągle bloków
+Przydział listowy [linked allocation] zakłada, że plik jest listą bloków, tj każdy blok pliku zawiera wskaźnik na następny blok. Tablica rozmieszczenia plików (FAT): której rezerwujemy część dysku (np początek) na tablicę numerowaną numerami bloków, gdzie wartość elementu tablicy oznacza albo blok następny, albo koniec pliku, albo puste miejsce.
+Przydział indeksowy [indexed allocation] ma [index block]. Każdy plik posiada własny [index block], który jest tablicą adresów bloków. Wtedy katalog posiada wskaźniki na [index block] pliku.Po pierwsze ([linked scheme]) możemy łączyć [index block] w listy. Po drugie ([multilevel index]) zakłada, by [index block] był adresowany z innego [index block]. Po trzecie - schemat kombinowany [combined scheme] - (używane w uniksie) jest rozwiązanie pośrednim.
+
+W celu zarządzania wolnym miejscem przechowuje się listy wolnych obszarów [free-space list], które niekoniecznie muszą być implementowane jako listy:
+Mapa bitowa [bit map/bit vector] każdy blok jest reprezentowany przez bit - 1 gdy wolny, 0, gdy zaalokowany. Zaleta: prostota. Wada: rozmiar.
+Lista [linked link] polega na połączeniu wszystkich wolnych bloków w listę z wskaźnikiem na pierwszy z nich.
+
+Pamięć podręczna buforów [buffer cache] przechowuje bloki zakładając, że wkrótce zostaną użyte ponownie. 
+Pamięć podręczna stron [page cache] używa ona technik pamięci wirtualnej, by cache'ować dane pliku jako strony zamiast bloków. Kiedy używamy pamięci podręcznej stron do stron procesów i plików, mówimy o ujednoliconej pamięci wirtualnej [unified virtual memory].
+Ujednolicona pamięć podręczna buforów rozwiązuje podwójne cache'owanie, poprzez połączenie pamięci pomocniczych.
+Kolejnym zagadnieniem jest [asynchronous write / synchronous write]. Zazwyczaj stosowane jest to pierwsze polegające na zapisywaniu zmian do cache'u i zwrotu kontroli sterowania. W drugim przypadku należy czekać, aż zmiany dotrą na urządzenie.
+Inne techniki. [Free-behind] usuwa stronę z bufora jak tylko kolejna strona jest żądana. [Read-ahead] wraz z żądaną stroną wczytujemy i cache'ujemy kilka kolejnych.
+
+[Consistency checker] to program (np. fsck w Linuksie), który porównuje dane z struktury katalogów i bloki na dysku, szukając wszelkich różnic.
+Niektóre systemy są ze strukturą dziennika (systemy transakcyjne)W nich zmiany metadata są zapisywane w logach. Każdy zestaw operacji wykonywany w danym zadaniu to transakcja [transaction]. Wraz z zapisem uważa się je za dokonane, i kontrola wraca do procesu. W międzyczasie, polecenia są faktycznie wykonywane. Transakcje są przechowywane w [circular buffer], co pozwala pozwala odtworzyć zadania po usterce.
+
+NFS network file system] służą do uzyskiwania dostępu do plików w sieciach w ramach relacji klient-serwer (można być oboma).
+Aby korzystać z udostępnionych plików, najpierw musi wystąpić montowanie.  Serwery przechowują listę eksportową [export list], w której wyszczególnione są katalogi do montowania wraz z nazwami maszyn, które mogą je montować. Ponadto przechowywana jest lista klientów wraz z obecnie zamontowanymi katalogami.
+Protokól NFS. Poza standardowymi rozwiązaniami (odczyt, zapis, itd.) rzuca się w oczy brak operacji open() i close(). Jest to celowy zabieg, ponieważ w NFS serwery są bezstanowe, tzn. nie przechowują informacji o klientach pomiędzy kolejnymi dostępami
+
+Tłumaczenie nazw [path-name translation]. Ścieżka pliku jest rozbijana na składowe (np. /usr/local/dir1/file.txt -> usr, local, dir1) i wykonuje się lookup() dla każdej pary składowa/v-węzeł katalogu.

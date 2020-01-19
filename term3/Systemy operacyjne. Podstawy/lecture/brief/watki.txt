@@ -1,0 +1,38 @@
+W¹tek (thread) lub proces lekki (Lightweight process - LWP) – jednostka wykorzystywana przez proces.
+
+Proces wielow¹tkowy to taki, w którym jest wiele kontrolowanych przep³ywów sterowania.
+
+W procesie jednow¹tkowym w¹tkiem jest przep³yw sterowania (control flow).
+
+W¹tki maj¹:
+- wspóln¹ pamiêæ,
+- wspólne zasoby (dziêki czemu oszczêdzamy na czasie w porównaniu z tworzeniem procesów oraz prze³¹czaniem procesów),
+- w³asny stos i licznik rozkazów.
+
+Zbiór rejestrów, stosy i obszar prywatnej pamiêci okreœla siê jako
+kontekst (context) w¹tków.
+
+Do podstawowych struktur danych w¹tku nale¿¹:
+-ETHREAD (blok wykonawczy w¹tku),
+-KTHREAD (blok w¹tku j¹dra),
+-TEB (blok œrodowiska w¹tku).
+
+W¹tki u¿ytkownika (user-level thread) mog¹ byæ obs³ugiwane przez maszynê wirtualn¹.
+W¹tki j¹dra (kernel-level thread) s¹ obs³ugiwane przez jadro.
+
+W¹tki mog¹ sie znajdowaæ w nastêpuj¹cych stanach (podobnie jak procesy):
+- gotowoœci,
+- zablokowania,
+- aktywnoœci,
+- koñczenia.
+
+W¹tki mog¹ tworzyæ w¹tki potomne i mog¹ blokowaæ siê do czasu zakoñczenia wywo³añ systemowych. Jeœli jeden w¹tek jest zablokowany, to mo¿e dzia³aæ inny w¹tek. Jednak w odró¿nieniu od procesów w¹tki nie s¹ niezale¿ne od siebie - dany w¹tek mo¿e czytaæ i zapisywaæ stosy dowolnych innych w¹tków, czyli nie ma mo¿liwoœci ochrony na poziomie w¹tków.
+
+Korzyœci
+- Responsiveness (zdolnoœæ do reagowania, np. serwer wielow¹tkowy)
+- Resource sharing (dzielenie zasobów) 
+- Economy (ekonomika, tworzenie i prze³¹czanie w¹tków jest tañsze,  ponadto zob. wy¿ej)
+- Utilization of MP architectures (spo¿ytkowanie architektur wieloprocesorowych)
+
+
+

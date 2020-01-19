@@ -1,0 +1,54 @@
+Cele:
+	-pliki na dysku istnieją długoterminowo - nie znikają po zakończeniu sesji użytkownika
+	-pliki mogą być dzielone między procesami
+
+części składowe systemu plików:
+	-zbiór plików
+	-struktura katalogowa
+	-strefy [dyskowe], czyli partycje (czasem)
+
+Plik - nazwany zbiór powiązanych logicznie informacji zmagazynowanych w pamięci pomocniczej
+
+operacje na plikach:
+	-tworzenie (create)
+	-zapisywanie (write)
+	-czytanie (read)
+	-przemieszczanie w pliku (reposition within file)
+	-usuwanie (delete)
+	-skracanie (truncate)
+	-otwarcie pliku
+	-zamknięcie pliku
+
+atrybuty pliku:
+	-nazwa
+	-identyfikator
+	-typ
+	-położenie
+	-rozmiar
+	-ochrona
+	-czas, data i identyfikator użytkownika
+
+operacje wykonywane na katalogu:
+	-odnajdywanie pliku
+	-tworzenie pliku
+	-usuwanie pliku
+	-wyprowadzenie katalogu
+	-przemianowanie pliku
+	-obchód systemu plików
+
+cele logiczne organizacji katalogów:
+	-sprawność
+	-nazewnictwo
+	-grupowanie
+
+System plików musi być zamontowany przed użyciem.
+Niezamontowany system plików jest montowany w punkcie montażu (mount point)
+
+Rodzaje praw dostępu:
+	-czytanie
+	-pisanie
+	-wykonywanie
+	-dopisywanie
+	-usuwanie
+	-wgląd w metadane
+

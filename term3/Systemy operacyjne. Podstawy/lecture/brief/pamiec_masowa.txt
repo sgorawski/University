@@ -1,0 +1,32 @@
+PAMIĘĆ MASOWA
+
+Planowanie dostępu do dysku (disk sheduling)
+	Czas dostępu (random-access / positioning time): czas wyszukania (seek time) – przemieszczenie ramienia, opóźnienie obrotowe (rotational latency) – obrót dysku.
+	Przepustowość, szerokość pasma (bandwidth) – (przesył danych) / (czas obsługi).
+	Algorytmy: FCFS (first-come, first-served), SSTF (shortest seek-time first), SCAN (krawędź -> krawędź, obsługując zamówienia), C-SCAN (circular, jak SCAN, ale cylindry = lista cykliczna), C-LOOK (jak C-SCAN, ale tylko do najdalszego zamówienia).
+
+Zarządzanie dyskiem
+	Formatowanie niskiego poziomu (low-level formatting) - podzielenie dysku na sektory.
+	Przygotowanie dysku: podział na grupy cylindrów - partycje (partition), formatowanie logiczne.
+	Program rozruchowy (bootstrap) – stan początkowy systemu, uruchamia SO. ROM.
+	Oszczędzanie sektorów (sector spraring) – zapas sektorów niewidocznych dla SO.
+	Obszar wymiany (swap space) - przechowywanie obrazów  procesów / stron usuniętych.
+
+RAID - nadmiarowa tablica niezależnych dysków (redundant array of independent disks)
+	Paskowanie dysku (disk stripping) – grupa dysków = jednostka pamięci
+	- odbicie lustrzane (mirroring) - dubluje dyski.
+	- parzystość w przeplocie bloków (block interleaved parity) – dysk na bloki parzystości.
+	Żelazny zapas (hot-spare) - dyski do zastępowania uszkodzonego dysku.
+
+Pamięć trzeciorzędna
+	Dyski wymienne:
+		- magnetooptyczny (magneto-optic disk) – materiał magnetyczny, efekt Kerra.
+		- optyczny (optical disk) – materiał: światło laserowe -> zmiana własności.
+		- zmiennofazowy (phase-change disk) – różna faza - różna przezroczystość.
+		- WORM (write-once read-many-times) – zapis: wypalone otwory w folii, nie można zmienić.
+	Taśmy magnetyczne - duża pojemność, długi czas losowego dostępu. Surowy nośnik, na wyłączny użytek, zazwyczaj tylko dla programu, który ją utworzył. Funkcje: znajdź (locate), pozycja czytania (read position), odstęp (space).
+
+Hierarchia: pamięć trzeciorzędna jako rozszerzenie systemu plików – archiwizacja.
+
+- przepustowość stała (sustained bandwidth) – szybkość dużych przesyłań danych.
+- przepustowość efektywna (effective bandwidth) – średnia z całego czasu we-wy.

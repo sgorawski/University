@@ -1,0 +1,55 @@
+Procesy
+
+Proces (process) – program będący w trakcie wykonywania
+- systemowe
+- użytkownika
+
+Sekcja tekstu(text section) – kod programu
+licznik rozkazów (program couter) – adres następnego rozkazu
+zawartość rejestrów procesora
+stos procesu( process stack) – tymczasowe dane procesu ( parametry metod, zmienne lokalne)
+sekcja danych (data section) – zmienne globalne
+
+Program nie jest procesem. Program - pasywny obiekt na dysku, proces  - aktywnie wykonywany
+
+Blok kontrolny procesu (process control block , PCB), blok kontrolny zadania - 
+stan procesu
+licznik rozkazów 
+rejestry procesora : akumulatory , rejestry indeksowe, wskaźniki stosu, rejestry ogólnego przeznaczenie, rejestry warunków, 
+informacje o planowaniu przydziału procesora : priorytet, wskaźniki do kolejek planowania
+informacje o zarządzaniu pamięcią : np zawartości rejestrów granicznych , tablice stron, tablice segmentów
+informacje do rozliczeń – ilość zużytego czasu procesora, czasu rzeczywistego, ograniczenia czasowe, numery kont, zadań, procesów
+informacje o stanie wejścia wyjścia – wykaz otwartych plików i przydzielonych procesowi urządzeń wejścia wyjścia
+
+kolejki zadań (job queue) – kolejka ze wszytkimi procesami w systemie
+kolejka procesów gotowych (ready queue) – kolejka z procesami, które nie czekają na żadne zdarzenie.  Zazwyczaj ma postać listy powiązanej jednokierunkowej ze wskaźnikami na początek i koniec. 
+Kolejka do urządzenia ( device queue)  - kolejka procesów wymagających zdarzenia wykonanego przez dane urządzenie do kontynuacji działania. 
+
+Po zakończeniu procesu jest on usuwany ze wszystkich kolejek i zwalnia się pamięć jego bloku kontrolnego i wszystkie przydzielone mu zasoby. 
+
+Planista długoterminowy ( long-term scheduler) , planista zadań ( job scheduler) -  wybiera proces z puli procesów w pamięci masowej  i ładuje je do pamięci operacyjnej. Nadzoruje stopień wieloprogramowości ( liczbę procesów w pamięci). Nie we wszystkich systemach występuje. Jak go nie ma pamięć operacyjna znacząco może ograniczać płynność pracy systemu. 
+Planista krótkoterminowy (short-term scheduler), planista przydziału procesora ( CPU scheduler)  - wybiera, który z gotowych procesów jest ekspediowane na procesor.  Podejmuje decyzje co najmniej raz na 100 ms.
+Planista średnioterminowy (medium-term scheduler) – usuwa z pamięci operacyjnej procesu i przenosi je do masowej, ale z zapisaniem danych potrzebnych do wznowienia ich. Proces ten to wymiana (swapping) 
+
+Proces ograniczony przez we-w (I/O bound process)  - proces który większość czasu spędza na czekaniu na operacje we – wy – w kolejkach urządzeń
+
+Proces ograniczony przez procesor (CPU bound process) – proces który większość czasu spędza na wykonywaniu obliczeń na procesorze i rzadko wykonuje operacje we-wy – w kolejce gotowych
+
+Planista długoterminowy musi dobrze dobrać mieszankę procesów (process mix), żeby żaden z rodzajów nie dominował. 
+
+System przekazywania komunikatów
+Komunikaty mają stałą lub zmienną długość. Pomiędzy dwoma procesami do komunikacji musi istnieć łącze komunikacyjne ( communication link).  Realizowane przez send i receive. Do komunikacji potrzebne jest spójne nazewnictwo procesów (adresowanie komunikatu ) 
+
+Komunikacja bezpośrednia – send( adresat, komunikat) , receive( nadawca/ _, komunikat) 
+Komunikacja pośrednia – komunikaty przez skrzynki pocztowe (mail – boxes)/ porty (ports)
+Przekazywane z blokowaniem = synchroniczne (synchronous)
+Przekazywanie bez blokowania = asynchroniczne (asynchronous)
+
+Komunikacja klient serwer
+Gniazdo (socket) – punkt końcowy komunikacji. Identyfikuje się za pomocą adresu IP skonkatenowanego z numerem portu. Serwer nasłuchuje na odpowiednich portach. Jest to popularny i wydajny, ale można przesyłać tylko pozbawione struktury strumienie bajtów.
+Zdalne wywołanie procedur  RPC
+Komunikaty są adresowane do demona RPC prowadzącego nasłuch portu RPC na odległym systemie i zawierają identyfikator funcji oraz parametry potrzebne do jej wywołania. Wynik funkcji zostanie odesłany z powrotem w oddzielnym komunikacie.
+
+Zdalne wywoływanie metod (remote method invocation RMI)
+Własność systemu Java, za jego pomocą można wywłać metodę zdalnego obiektu.  
+

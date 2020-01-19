@@ -1,0 +1,16 @@
+Bezpieczeństwo - krótka notatka
+
+1. Bezpieczeństwo musi obejmować zewnętrzne otoczenie systemu i ochronę jego zasobów. 
+2. Naruszenia bezpieczeństwa (security violations): podszywanie się, atak z odbicia, zmodyfikowanie komunikatu, atak “człowiek pośrodku”, przechwycenie sesji.
+3. Zagrożenia programowe ( program threats ) - koń trojański, boczne drzwi, bomba logistyczna, przepełnienie stosu lub bufora, wirusy
+4. Zagrożenia systemowe i sieciowe (system and network threats) - robaki, skanowanie portów, celowe przeciążenie serwera
+5. Szyfrowanie (encryption): a) symetryczne - ten sam klucz służy do szyfrowania i odszyfrowania; b) asymetryczne - klucz publiczny + klucz prywatny (np. RSA)
+6. Uwierzytelnianie (authentication) a) Może dowodzić, że komunikat nie został naruszony (streszczenie komunikatu jako hasz). b) Czasem jest potrzebne tylko uwierzytelnienie a nie poufność - np. podpisanie poprawki oprogramowania
+7. Certyfikaty cyfrowe (digital certificates)  a) Dowodzą tego, kto jest właścicielem klucza publicznego. b) Certyfikatem może być klucz publiczny podpisany przez organ zaufany. c) Organ publiczny jest zaufany, a jego klucze publiczne są dołączane do przeglądarek sieciowych. 
+8. Zapora sieciowa (firewall) - jest umieszczana między komputerem zaufanym, a niezaufanym. Ogranicza dostęp przez sieć między dwoma domenami bezpieczeństwa. 
+
+
+
+
+
+

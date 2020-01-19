@@ -1,0 +1,11 @@
+jednostka centralna (central processing unit) - procesor
+sterowniki urzadzeń (device controller) - pośrednicy pomiędzy szyną a urządzeniami
+program rozruchowy (bootstrap program) - program określający stan początkowy wszystkich elementów systemu i ładujący i uruchamiający system operacyjny
+przerwania (interrupts) - wywołania systemowe / monitora
+(a)synchroniczne we/wy - operacje we/wy (nie) są cały czas kontrolowane przez CPU
+bezpośredni dostęp do pamięci operacyjnej (DMA - direct memory access) - pozwalanie urządzeniom we/wy na samodzielne zapisywanie/pobieranie danych do/z pamięci operacyjnej
+pamięć pomocnicza (secondary storage) - duża i nieulotna pamięć służąca do trwałego zapisywania rzadziej potrzebnych danych
+rejestr bazowy - najmniejszy dostępny adres fizyczny dla programu
+rejestr graniczny - liczba dostępnego miejsca dla programu
+tryb monitora - tryb systemu, nadzorcy, uprzywilejowany. Umożliwia wykonywanie rozkazów uprzywilejowanych.
+tryb użytkownika - tryb użytkownika.

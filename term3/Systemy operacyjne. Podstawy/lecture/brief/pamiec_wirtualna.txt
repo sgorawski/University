@@ -1,0 +1,26 @@
+Stronicowanie na żądanie; leniwa wymiana (lazy swapping):
+    - sprowadzanie stron do pamięci, gdy są potrzebne
+obszar wymiany - przechowuje na dysku nieuzywane strony
+bit poprawności - czy strona znajduje się  w pamięci operacyjnej?
+brak strony (page-fault) - przerwanie, gdy strony nie ma w pamięci
+bit modyfikacji -  czy strona była modyfikowana po sprowadzeniu do pamięci?
+Algorytmy wyboru ofiary podczas zastępowania stron; ofiarą  jest strona, która:
+    - FIFO - najdłużej znajduje się  w pamięci,
+    - LRU (Least Recently Used) - najdłużej nie była używana,
+    - alg. drugiej szansy - jak FIFO, ale kazda strona ma drugą szansę
+Algorytmy zliczające - korzystają ze sprzętowych liczników odwołań;
+ofiarą jest strona, do której:
+    - LFU (Least Frequently Used) - było najmniej odwołań,
+    - MRU - było najwięcej odwołań.
+Przydział ramek:
+    - lokalny - każdy proces ma swoją pulę do zastępowania,
+    - globalny - ofiara jest wybierana spośród wszystkich,
+    - stały - każdy ma swoją stałą pulę, można rywalizować o pozostałe,
+    - priotytetowy - można zastępować strony procesów o <= priorytecie,
+    - zliczanie częstości braków stron - proces, u którego często występuje brak
+      strony, dostaje więcej ramek.
+Szamotanie (trashing):
+    Proces ma za mało ramek - marnowanie działania systemu na wymianę stron.
+Zbiór roboczy (working set) - zapobieganie szamotaniu:
+    - zbiór stron, do których nastąpiło odwołanie w ciągu ostatnich l instrukcji,
+      jeśli jest ich więcj niż rozmiar pamięci, zabija się jeden z procesów.

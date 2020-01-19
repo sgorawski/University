@@ -1,0 +1,13 @@
+System operacyjny - program, pośrednik, stwarza wygodne i wydajne środowisko do pracy z komputerem. Jest to program, który w komputerze działa nieustannie.
+Założenia systemu operacyjnego - wygoda, wydajność i niezawodność
+Spooling - wykorzystywanie dysku jako bufora do zadań
+Pula zadań (job pool) - zadania oczekujące na wykonanie na dysku
+System wieloprogramowy - system umożliwiający przełączanie kontekstu między zadaniami
+System wsadowy - system obsługujący poprawne sekwencyjne wykonywanie programów
+System interakcyjny - system działający na zasadzie pytanie - odpowiedź
+System z podziałem czasu - system dzielący czas procesora na kwanty i przydzielający je kolejno zadaniom / użytkownikom, zwiększając w ten sposób poziom wieloprogramowości
+System równoległy - system zarządzający wieloma ściśle powiązanymi zasobami
+System rozproszony - system zarządzający wieloma luźno powiązanymi zasobami
+Wieloprzetwarzanie symetryczne - sytuacja, gdy każdy z wielu ściśle powiązanych procesorów ma własną, identyczną kopię  systemu operacyjnego.
+Wieloprzetwarzanie asymetryczne - występuje procesor główny, zarządzający innymi
+System czasu rzeczywistego - system o ścisłych wymaganiach dotyczących czasów wykonania poszczególnych zadań (rygorystyczny - ścisłe ograniczenia, łagodny - tylko prioryretowanie zadań)

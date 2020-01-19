@@ -1,0 +1,9 @@
+*
+!*/
+!/.gitignore
+!/README.md
+*/*
+!*/.keep
+!detailed/*.pdf
+!brief/*.txt
+!extras/*.pdf

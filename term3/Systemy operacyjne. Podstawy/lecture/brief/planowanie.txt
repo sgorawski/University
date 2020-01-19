@@ -1,0 +1,19 @@
+Wykonanie procesu = fazy procesora + Fazy wejścia-wyjścia
+Planowanie bez wywyłaszczeń - proces zwraca kontrolę tylko przy zakończeniu  lub przejściu w inny stan
+Planista krótkoterminowy - wybiera proces do wykonywania
+Ekspedytor - program odpowiedzialny za przełączenie konteksu
+Opóźnienie ekspedycji - narzut czasu związany z praca ekspedytora
+Kryteria planowania: wykorzystanie procesora, przepustowość (: pożądana maksymalizacja) czas cyklu przetwarzania, czas oczekiwania, czas odpowiedzi (: pożądana minimalizacja)
+Diagramy Gantta - diagram wykonywanego procesu od czasu
+Planowanie metodą FCFS - pierwszy zgłoszony, pierwszy obsługiwany
+Efekt konwoju - wiele mniejszych zadań czeka na zakończenie większego 
+Planowanie metodą SJF -  Najpierw najkrótsze zadania (gdy z wywyłaszczeniem SRTF). Algorytm optymalny.
+Określanie długości następnej fazy CPU dzięki średniej wykładniczej
+Planowanie priorytetowe - większy priorytet wcześniej
+Problem głodzenia - procesy o niskimm priorytecie mogą zostań niedopuszczone do działania. Postarzanie procesów - podnoszenie priorytetu z wiekiem.
+Planowanie RR (rotacyjne) - kolejka cykliczna, w której procesy przełączają się co niewielką jednostkę (kwant) czasu. Kwant nie może być zbyt duży, by zminimalizować opóźnienie ekspedycji.
+Kolejki wielopoziomowe - podział procesów na kolejki dla osobnych kategorii
+Kolejka wielopoziomowa ze sprzężeniem zwrotnym - przenoszenie zadań do kolejki wyżej (awansowanie) i niżej (degradowanie zadań): liczba kolejek, algorytm planowania każdej kolejki, zasady awansowania/degradowania procesów, zasady określania, w której kolejce znajduje się proces wymagający obsługi.
+Planowanie wieloprocesorowe - asymetryczne, gdy jeden procesor sprawuje kontrolę (funkcje systemowe) a pozostałe wykonują instrukcje, symetryczne gdy każdy procesor planuje swoją pracę
+Równoważenie obciążeń - dbanie o równy przydział zadań do poszczególnych procesorów
+Planowanie w czasie rzeczywistym. Rygorystyczne systemy czasu rzeczywistego - gwarantują wykonanie zadania przed ustalonym deadlinem. Łagodne systemy czasu rzeczywistego - nie (dają priorytet)

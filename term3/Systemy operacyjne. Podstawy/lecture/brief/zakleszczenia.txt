@@ -1,0 +1,41 @@
+0. Słowniczek
+zakleszczenie - deadlock
+żądanie - request
+zwolnienie - release
+graf przydziału zasobów sytemu - system resource-allocation graph
+krawędź zamówienia - request edge
+krawędź przydziału - assignment edge
+zapobieganie zakleszczeniom - deadlock prevention
+unikanie zakleszczeń - deadlock avoidance
+ciąg bezpieczny - safe sequence
+stan zagrożenia - unsafe state
+krawędź deklaracji - claim edge
+algorytm bankiera - banker's algorithm
+graf oczekiwania - wait-for graph
+zagłodzenie procesu - process starvation
+
+1. Przykład zasobów: obszar pamięci, cykle procesora, pliki, urządzenia wejścia/wyjścia
+2. Niepodzielny zasób - zasobu może używać w danym czasie tylko jeden proces (np. drukarka)
+3. Wywłaszczenie - odebranie zasobu jednemu procesowi i oddanie go innemu
+4. Graf przydziału zasobów - graf skierowany opisujący zamówienia i przydziały zasobów
+5. Postępowanie z zakleszczeniami
+    - nie dopuścić do nich
+    - pozwolić na nie, wykryć i usunąć
+    - zlekceważyć problem (najpopularniejsze rozwiązanie)
+6. Unikanie zakleszczeń - Utrzymujemy system w stanie bezpiecznym za pomocą:
+    - Algorytm przydziału zasobów - stosowany gdy każdy zasób ma tylko jeden egzemplarz
+    - Algorytm bankiera - dopuszcza by każdy typ zasobu miał wiele egzemplarzy
+        + Algorytm bezpieczeństwa - Roztrzyga czy system jest w stanie bezpiecznym
+        + Algorytm zamawiania zasobów
+7. Wykrywanie zakleszczenia - nie zapobiegamy zakleszczeniom, za to mamy:
+    - algorytm sprawdzający stan systemu w celu wykrycia, czy wystąpiło zakleszczenie
+    - algorytm likwidowania zakleszczenia
+8. Likwidowanie zakleszczenia można realizować poprzez:
+    - Zakończenie procesu
+        + Zaniechanie wszystkich zakleszczonych procesów
+        + Usuwanie procesów pojedynczo, aż do wyeliminowania cyklu zakleszczenia
+    - Wywłaszczenie zasobów. Występujące problemy:
+        + Wybór ofiary - który zasób/proces wybrać?
+        + Wycofanie - pozbawienie procesu zasobu i cofnięcie go do bezpiecznego stanu
+        + Głodzenie - istnieje ryzyko, że wywłaszczenie będzie stale dotyczyć
+            jednego procesu, proces stale oczekujący jest "głodzony"

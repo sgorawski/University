@@ -1,0 +1,10 @@
+Ochrona - krótka  notatka
+1. Ochrona (protection) jest realizowana za pomocą mechanizmu, który nadzoruje dostęp programów, procesów lub użytkowników do zasobów zdefiniowanych w systemie komputerowym.
+2. Naczelna zasada: minimalizacja przywilejów (principle of least privilege)
+Programy, użytkownicy i systemy powinny mieć tylko tyle przywilejów, ile trzeba do wykonania ich zadań. 
+3. Prawo dostępu (access right)  - <nazwa-obiektu, zbiór praw> (np. owner, copy, control),gdzie zbiór praw jest podzbiorem operacji dozwolonych na obiekcie. 
+4. Domena (domain) - zbiór praw dostępu
+System ochrony można postrzegać jako macierz dostępów (access matrix). 
+5. Mechanizm zamka-klucza (lock-key scheme) Proces w domenie ma dostęp do obiektu tylko wtedy, kiedy domena ma klucz pasujący do jednego z zamków obiektu.
+6. Kontrola dostępu podług roli (role-based access control) - Przywilej oznacza prawo wykonania wywołania systemowego; może być przypisany procesowi.
+

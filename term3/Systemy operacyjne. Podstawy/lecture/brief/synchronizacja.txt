@@ -1,0 +1,13 @@
+Wspó³bie¿noœæ -> niespójnoœci danych (przeplot/interliving, wyœcig);
+porz¹dkowanie proc. / synchronizacja -> spójnoœæ;
+instrukcje wykonujemy niepodzielnie – w ca³oœci bez przerwañ;
+sekcja krytyczna – fragment z danymi dzielonymi;
+sekcje kodu: wejœciowa -> krytyczna -> wyjœciowa -> reszta;
+rozwi¹zanie wymaga: wzajemne wykluczanie (mutual exlusion), postêp, ograniczone czekanie (spe³nia np. algorytm piekarni);
+semafory: eliminuje czekanie aktywne (busy waiting);
+dwa dzia³ania: wait i signal; g³odzenie – blokowanie nieskoñczone;
+klasyczne problemy: ograniczonego buforowania (bounded-buffer), czytelników i pisarzy, obiaduj¹cych filozofów; region krytyczny;
+monitor – wysokopoziomowa konstrukcja synchronizacji;
+poprawnoœæ systemy wymaga: w³aœciwej kolejnoœci wykonywania wywo³añ monitora, nie zignorujemy bramki mutex;
+zamki adaptacyjne – ochrona krótkich segmentów kodu; warunkowe i blokady – ochrona danych u¿ywanych czêsto (g³ownie do czytania);
+turniket – typu kolejka, porz¹dkuje wykazy w¹tków na nabycie zamka adapt lub blokady;

@@ -1,0 +1,48 @@
+Zarządzanie pamięcią
+
+1. Pamięć logiczna
+  - Translacja - MMU
+
+2. Wiązanie adresów
+  - w fazie kompilacji (compile time) - kod bezwzględny
+  - w fazie ładowania (load time) - kod przemieszczalny (relocatable code)
+  - w fazie wykonywania (execution time) - wiązanie może być odłożone aż do wykonania
+
+3. Konsolidacja dynamiczna (dynamic linking)
+  - Konsolidacja odkładana do fazy wykonywania.
+
+4. Ładowanie dynamiczne
+  - Podprogram ładujemy leniwie, kiedy potrzebujemy.
+
+5. Nakładki
+
+6. Wymiana
+  - w systemach mobilnych
+
+
+7. Przydział pamięci
+  - Przydział ciągły
+  - Dynamiczny przydział pamięci
+    - Polityka wyboru dziur:
+      - first-fit - pierwsza wystarczająca
+      - best-fit - najmniejsza wystarczająca
+      - worst-fit - największa wystarczająca
+  - Fragmentacja
+    - zewnętrzną (external) - zamówienie zrealizowane kilkoma dziurami
+    - wewnętrzną (internal) - dziura większa niż potrzeba, nieużytki są
+  - Stronicowanie
+    - Podział pamięci na bloki równej długości
+    - ramkami (frames) pamięci fizycznej
+    - stronami (pages) pamięci logicznej
+  - Tablica stron
+    - Translacja adresu logicznego na fizyczny
+    - Implementacja
+  - Pamięć podręczna dla tablicy stron
+    - TLB (translation look-aside buffers)
+    - Pamięć asocjacyjna
+  - Struktury tablicy stron
+    - Stronicowanie hierarchiczne (hierarchical paging)
+    - Haszowane tablice stron (hashed page tables)
+    - Odwrócone tablice stron (inverted page tables)
+
+8. Segmentacja - dzielenie pamięci na logicznie pogrupowane segmenty.

@@ -1,0 +1,36 @@
+SYSTEMY WEJŚCIA-WYJŚCIA
+
+Sprzęt wejścia-wyjścia
+Port (port)
+Szyna, magistrala (bus)
+Łańcuch (daisy chain)
+Sterownik (controller) - komunikacja: specjalne polecenia we-wy / odwzorowanie operacji we-wy w pamięci operacyjnej (memory-mapped I/O).
+Adapter główny (host adapter)
+Rejestry portu we-wy: stan (status), sterowanie (control), dane wyjściowe (data-out), dane wejściowe (data-in).
+
+Odpytywanie (polling) – czekanie aktywne procesora na urządzenie.
+Uzgadnianie (handshaking): urządzenie - bit zajętości (busy), procesor - bit gotowości polecenia (command-ready).
+
+Linia zgłaszania przerwań (interrupt request line) – sprawdzane po każdym rozkazie. Sygnał -> procedura obsługi przerwania (interrupt-handler). Optymalizacja: maskowanie (dwie linie zgłaszania), wektor przerwań (adresy procedur), system poziomów priorytetów przerwań (interrupt priority level).
+
+Bezpośredni dostęp do pamięci (DMA, direct memory access) - nadzór nad szyną pamięci - przesyłanie bez pomocy CPU.
+
+Użytkowy interfejs wejścia-wyjścia – ogólne klasy urządzeń, ukrywają różnice sprzętowe. Warstwa modułów urządzeń - ukrywa różnice pomiędzy sterownikami.
+	Rodzaje urządzeń: znakowy/blokowy, sekwencyjny/swobodny, synchroniczna/asynchroniczna, użytkowanie wspólne/na zasadzie wyłączności, szybkość działania.
+tylko czytanie/tylko pisanie/czytanie i pisanie.
+Znakowe: get, put. Blokowe: czytaj, pisz, szukaj. Sieciowe: interfejs gniazda – select.
+Czasomierz programowalny (programmable interval timer) – upływ określonego czasu -> przerwanie.
+
+	Blokowanie - zawieszenie procesu do końca we-wy.
+	Bez blokowania - buforowanie we-wy, nie wstrzymuje aplikacji, kończy się tak szybko jak to tylko możliwe.
+	Asynchroniczne odwołanie - proces nie czeka na zakończenie operacji, kontynuuje działanie.
+
+Podsystem wejścia-wyjścia w jądrze
+Bufor (buffer) – obszar w pamięci, dane przesyłane między urządzeniami (lub aplikacją). Potrzeba: różna prędkość działania urządzeń, różne jednostki przesyłanych danych, semantyka kopii.
+Przechowywanie podręczne - kopie danych – szybszy dostęp.
+Spooling – bufor na dane dla urządzenia, które nie dopuszcza do przeplatania danych w strumieniu.
+Rezerwowanie urządzeń - przydział na wyłączność - wywołania systemowe przydziału i zwalniania urządzenia.
+
+Operacje we-wy: uprzywilejowane, przez wywołania systemowe. Ochrona miejsca odwzorowań.
+
+Poprawa wydajności: mniej przełączeń kontekstu, kopiowania danych, przerwań; korzystanie z DMA, równoważenie wydajności procesora, pamięci, szyny i operacji we-wy.

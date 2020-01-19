@@ -1,59 +1,56 @@
-# University
+# Informatyka UWr
 
-Materials and task solutions for my Computer Science studies at the University of Wrocław.
+Assignments and solutions for my Computer Science studies at the University of Wrocław.
 
-This repository contains mostly solutions for practical problems which required writing code.
+This repository is focused on practical assignments which required writing code.
 
-Materials from term 1 are mostly nonexistent,
-these from term 2 are a mess which I'm not likely to maintain,
-but from term 3 and above everything should be quite clear.
+I have no materials from term 1, and barely any from term 2.
 
-Courses I've taken so far:
+Courses I've taken (names in Polish, so that they can be more easily found by anyone interested):
 
 ### Term 1:
-- Logic for Computer Science
-- Calculus
-- Introduction to Programming in Python
-- Computer Security Culture
-- Programmer's Basic Toolkit
+- Logika dla Informatyków
+- Analiza matematyczna
+- Wstęp do programowania w języku Python
+- Kultura bezpieczeństwa komputerowego
+- Podstawowy warsztat informatyka
 
 ### Term 2:
 - Algebra
-- [Programming Methodology](term2/programming-methodology)
-- Calculus 2
-- [Object-Oriented Programming](term2/object-oriented-programming)
-- [Neural Networks and Deep Learning](term2/Sieci neuronowe)
+- [Metody programowania](term2/Metody%20programowania)
+- Analiza matematyczna 2
+- [Programowanie obiektowe](term2/Programowanie%20obiektowe)
+- [Sieci neuronowe](term2/Sieci%20neuronowe)
+  
+  _Neural networks_
 
 ### Term 3:
-- [Numerical Analysis (M)](term3/numerical-analysis-m)
-- Discrete Mathematics (M)
-- [Operating Systems Basics](term3/operating-systems-basics)
-- [Extended Python Course](term3/extended-python-course)
-- [Programming Team Engineering](https://github.com/sgorawski/IZP-glosowanie)
+- [Analiza numeryczna (M)](term3/Analiza%20numeryczna%20(M))
+- Matematyka dyskretna (M)
+- [Systemy Operacyjne. Podstawy](term3/Systemy%20operacyjne.%20Podstawy)
+- [Kurs rozszerzony języka Python](term3/Kurs%20rozszerzony%20jezyka%20Python)
+- [Inżynieria zespołu programistycznego](https://github.com/czapiga/IZP-glosowanie)
 
 ### Term 4:
-- [Algorithms and Data Structures](term4/algorithms-and-data-structures)
-- [Computer Systems](term4/computer-systems)
-- [Probability and Statistics](term4/probability-and-statistics)
-- [Database Applications](term4/database-applications)
-- A Different Perspective on Economy
+- [Algorytmy i struktury danych](term4/Algorytmy%20i%20struktury%20danych)
+- [Architektury systemów komputerowych](term4/Architektury%20systemow%20komputerowych)
+- [Rachunek prawdopodobieństwa i statystyka](term4/Rachunek%20prawdopodobienstwa%20i%20statystyka)
+- [Kurs projektowania aplikacji z bazami danych](term4/Kurs%20projektowania%20aplikacji%20z%20bazami%20danych)
+- O ekonomii i gospodarce inaczej
 
 ### Term 5:
-- [Design and Deployment of Cloud Systems](term5/design-and-deployment-of-cloud-systems)
-- [Data Mining](term5/data-mining)
-- [Functional Programming](term5/functional-programming)
-- [Natural Language Processing](term5/natural-language-processing)
-- [Blockchain and its Applications](term5/blockchain-and-its-applications)
-- Human-Computer Interaction
+- [Projektowanie i wdrażanie systemów w chmurze](term5/Projektowanie%20i%20wdrażanie%20systemów%20w%20chmurze)
+- [Eksploracja danych](term5/Eksploracja%20danych)
+- [Programowanie funkcyjne](term5/Programowanie%20funkcyjne)
+- [Przetwarzanie języka naturalnego](term5/Przetwarzanie%20jezyka%20naturalnego)
+- [Seminarium: Blockchain i jego zastosowania](term5/Seminarium:%20Blockchain%20i%20jego%20zastosowania)
+- Komunikacja człowiek-komputer
 
 ### Term 6:
-- [Computer Networks](term6/computer-networks)
-- [Artificial Intelligence](term6/artificial-intelligence)
-- [Design and Implementation of Advanced PHP Applications](term6/design-and-implementation-of-advanced-php-applications)
-- Diploma Project
+- [Sieci komputerowe](term6/Sieci%20komputerowe)
+- [Sztuczna inteligencja](term6/Sztuczna%20inteligencja)
+- [Kurs: Projektowanie i implementacja zaawansowanych aplikacji PHP](term6/Kurs:%20Projektowanie%20i%20implementacja%20zaawansowanych%20aplikacji%20PHP)
+- Projekt dyplomowy
 
 ### Term 7:
-- [Design of ASP.NET Applications](term7/design-of-aspnet-applications)
-
-Operating Systems exam preparation notes created by the **zpl** groups:
-[SO-kompendium](https://github.com/sgorawski/SO-kompendium).
+- [Kurs projektowania aplikacji ASP.NET](term7/Kurs%20projektowania%20aplikacji%20ASP.NET)

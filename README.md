@@ -6,49 +6,49 @@ This repository is focused on practical assignments which required writing code.
 
 I have no materials from term 1, and barely any from term 2.
 
-Courses I've taken (names in Polish, so that they can be more easily found by anyone interested):
+Courses I've taken (directory names in Polish, so that they can be more easily found by anyone interested):
 
 ### Term 1:
-- Logika dla Informatyków
-- Analiza matematyczna
-- Wstęp do programowania w języku Python
-- Kultura bezpieczeństwa komputerowego
-- Podstawowy warsztat informatyka
+- Logic for Computer Science
+- Calculus
+- Introduction to programming in Python
+- Computer security culture
+- Programmers basic toolkit
 
 ### Term 2:
 - Algebra
-- [Metody programowania](term2/Metody%20programowania)
-- Analiza matematyczna 2
-- [Programowanie obiektowe](term2/Programowanie%20obiektowe)
-- [Sieci neuronowe](term2/Sieci%20neuronowe)
+- [Programming](Metody_programowania)
+- Calculus 2
+- [Object-oriented programming](Programowanie_obiektowe)
+- [Neural networks](Sieci_neuronowe)
   
 ### Term 3:
-- [Analiza numeryczna (M)](term3/Analiza%20numeryczna%20(M))
-- Matematyka dyskretna (M)
-- [Systemy Operacyjne. Podstawy](term3/Systemy%20operacyjne.%20Podstawy)
-- [Kurs rozszerzony języka Python](term3/Kurs%20rozszerzony%20jezyka%20Python)
-- [Inżynieria zespołu programistycznego](https://github.com/czapiga/IZP-glosowanie)
+- [Numerical analysis (M)](Analiza_numeryczna_M)
+- Discrete mathematics (M)
+- [Operating systems basics](Systemy_operacyjne_Podstawy)
+- [Extended Python course](Kurs_rozszerzony_jezyka_Python)
+- [Programming team engineering](https://github.com/czapiga/IZP-glosowanie)
 
 ### Term 4:
-- [Algorytmy i struktury danych](term4/Algorytmy%20i%20struktury%20danych)
-- [Architektury systemów komputerowych](term4/Architektury%20systemow%20komputerowych)
-- [Rachunek prawdopodobieństwa i statystyka](term4/Rachunek%20prawdopodobienstwa%20i%20statystyka)
-- [Kurs projektowania aplikacji z bazami danych](term4/Kurs%20projektowania%20aplikacji%20z%20bazami%20danych)
-- O ekonomii i gospodarce inaczej
+- [Algorithms and data structures](Algorytmy_i_struktury_danych)
+- [Computer systems](Architektury_systemow_komputerowych)
+- [Probablity and statistics](Rachunek_prawdopodobienstwa_i_statystyka)
+- [Database applications](Kurs_projektowania_aplikacji_z_bazami_danych)
+- A different perspective on economy
 
 ### Term 5:
-- [Projektowanie i wdrażanie systemów w chmurze](term5/Projektowanie%20i%20wdrazanie%20systemow%20w%20chmurze)
-- [Eksploracja danych](term5/Eksploracja%20danych)
-- [Programowanie funkcyjne](term5/Programowanie%20funkcyjne)
-- [Przetwarzanie języka naturalnego](term5/Przetwarzanie%20jezyka%20naturalnego)
-- [Seminarium: Blockchain i jego zastosowania](term5/Seminarium:%20Blockchain%20i%20jego%20zastosowania)
-- Komunikacja człowiek-komputer
+- [Design and deployment of cloud systems](Projektowanie_i_wdrazanie_systemow_w_chmurze)
+- [Data mining](Eksploracja_danych)
+- [Functional programming](Programowanie_funkcyjne)
+- [Natural language processing](Przetwarzanie_jezyka_naturalnego)
+- [Seminar: Blockchain and its applications](Seminarium_Blockchain_i_jego_zastosowania)
+- Human-computer interaction
 
 ### Term 6:
-- [Sieci komputerowe](term6/Sieci%20komputerowe)
-- [Sztuczna inteligencja](term6/Sztuczna%20inteligencja)
-- [Kurs: Projektowanie i implementacja zaawansowanych aplikacji PHP](term6/Kurs:%20Projektowanie%20i%20implementacja%20zaawansowanych%20aplikacji%20PHP)
-- Projekt dyplomowy
+- [Computer networks](Sieci_komputerowe)
+- [Artificial intelligence](Sztuczna_inteligencja)
+- [Design and implementation of advanced PHP applications](Kurs_Projektowanie_i_implementacja_zaawansowanych_aplikacji_PHP)
+- Diploma project
 
 ### Term 7:
-- [Kurs projektowania aplikacji ASP.NET](term7/Kurs%20projektowania%20aplikacji%20ASP.NET)
+- [Designing ASP.NET applications](Kurs_projektowania_aplikacji_ASPNET)

@@ -1,0 +1,21 @@
+{% extends "base.jinja2" %}
+
+{% from "macros/form.jinja2" import render_form, render_field %}
+
+{% block content %}
+    <div class="mb-5">
+        <h1>Create wallet</h1>
+        <p>
+            If you want to recover a wallet from a mnemonic phrase,
+            paste it in the "Mnemonic" field.
+        </p>
+        <p>
+            If you want to create a new wallet, leave the field empty.
+        </p>
+    </div>
+
+    {% call render_form(form) %}
+        {{ render_field(form.currency) }}
+        {{ render_field(form.mnemonic) }}
+    {% endcall %}
+{% endblock %}

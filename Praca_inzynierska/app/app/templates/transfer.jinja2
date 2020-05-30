@@ -1,0 +1,28 @@
+{% extends "base.jinja2" %}
+
+{% from "macros/form.jinja2" import render_form, render_field %}
+
+{% block content %}
+    <form class="form-inline mb-5">
+        <label class="mr-3" for="num-recipients-select">Number of recipients</label>
+        <input
+                id="num-recipients-select"
+                class="form-control mr-3"
+                type="number"
+                min="1"
+                value="{{ request.args.get("num-recipients", "1") }}"
+                name="num-recipients"
+        >
+        <input class="btn btn-outline-secondary" type="submit" value="Set">
+    </form>
+
+    {% call render_form(form) %}
+        {{ render_field(form.private_key) }}
+        {% for recipient in form.recipients %}
+            <div class="form-row">
+                {{ render_field(recipient.address, "col") }}
+                {{ render_field(recipient.amount, "col") }}
+            </div>
+        {% endfor %}
+    {% endcall %}
+{% endblock %}

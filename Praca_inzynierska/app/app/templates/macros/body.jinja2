@@ -1,0 +1,11 @@
+{% macro render_card(title=None) %}
+    <div class="card mb-3 {% for cls in varargs %} {{ cls }} {% endfor %}">
+        <div class="card-body">
+            {% if title %}
+                <h1 class="card-title">{{ title }}</h1>
+            {% endif %}
+
+            {{ caller() }}
+        </div>
+    </div>
+{% endmacro %}

@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+
+  bitcoin:
+    image: ruimarinho/bitcoin-core:0.17-alpine
+    container_name: bitcoin
+    ports:
+      - 18443:18443
+    command: -regtest=1 -printtoconsole -rpcallowip=0.0.0.0/0 -rpcuser=test -rpcpassword=test
+
+  ethereum:
+    image: trufflesuite/ganache-cli:v6.4.2-beta.0
+    container_name: ethereum
+    ports:
+      - 8545:8545
+    command: --hostname 0.0.0.0 --account="0x5d3550e5c12b9f7b22164fd423a9fbe2ad2359bd549f8bc9885235e03216f2ae,1000000000000000000000000"
+
+  database:
+    image: postgres:11
+    container_name: database
+    ports:
+      - 5432:5432
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql

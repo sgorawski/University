@@ -1,0 +1,122 @@
+\chapter{For programmers}
+
+The primary programming language used in the project is Python.
+It was chosen because of its conciseness,
+a vast array of open source third-party tools available,
+such as libraries and frameworks,
+and support for multiple programming paradigms,
+such as imperative and object-oriented,
+with functional and declarative elements.
+
+The source code was kept in the Git \cite{git} version control system
+and written using PyCharm \cite{pycharm} tool by JetBrains
+on an educational license,
+which can be too heavy for a small project,
+but provides excellent support for code navigation and refactoring
+in larger ones.
+
+\section{Library}
+
+\subsection{Structure}
+
+The library consists of two major classes,
+named \texttt{Bitcoin} and \texttt{Ethereum}.
+They provide a unified interface for performing operations
+on respective blockchains by exposing the following methods:
+\begin{itemize}
+    \item \texttt{create\_wallet},
+    \item \texttt{get\_balance},
+    \item \texttt{send\_money},
+\end{itemize}
+which should be self-descriptive.
+
+There is also a class that provides an abstraction over the networking details,
+which are pretty much the same in both blockchains,
+as was described before.
+The class is called \texttt{RpcProxy} and upon being instantiated with an URL
+to an appropriate network node,
+is passed to \texttt{Bitcoin} or \texttt{Ethereum} by dependency injection \cite{di}.
+This allows for significant code reuse between respective currencies' classes.
+
+\subsection{Tools} \label{6:lib:tools}
+
+The following third-party dependencies were used to provide the library's functionality:
+\begin{itemize}
+    \item \texttt{pywallet} -- a library used for creating both Bitcoin and Ethereum wallets,
+    chosen because of its universality,
+    \item \texttt{eth-account} -- a collection of Ehtereum-specific utilities,
+    used mostly for signing transactions with private keys
+    (in Bitcoin this was done by the node itself),
+    \item \texttt{requests} -- a tool used for making HTTP requests,
+    offering a minimalistic interface better than its equivalents from the standard library;
+    one of the most widely used Python libraries and a de facto standard in the industry.
+\end{itemize}
+
+For development, a unit testing framework \texttt{pytest} was also used,
+providing a clean, declarative style interface superior to the standard library.
+This one is not required for the library to work, though.
+
+To test the integration with actual cryptocurrency networks,
+the nodes were run as Docker containers using the Docker Compose utility,
+exposing their ports for the manual and unit tests to use.
+For Bitcoin, the image used was an official implementation Bitcoin Core \cite{bitcoin-core}
+available as a Docker image \texttt{ruimarinho/bitcoin-core}.
+Ethereum was tested against Ganache \cite{ganache},
+a tool designed specifically for such use cases,
+available as a Docker image \texttt{trufflesuite/ganache-cli}.
+
+The entire library is completely independent of the web application;
+it is packaged with \texttt{setuptools} to be used as if it were an external dependency.
+
+\section{Web Application}
+
+\subsection{Structure}
+
+The application consists of:
+
+\begin{itemize}
+    \item request handling functions,
+    \item a module exposing the library classes dynamically by currency,
+    \item a module for integration with the Coinlayer API,
+    \item an ORM mapping database relations to Python objects,
+    \item templates for response rendering,
+    \item database migrations stored as Python modules.
+\end{itemize}
+
+\subsection{Tools}
+
+The application was created using Flask \cite{flask}, a popular Python web framework.
+It is a modular tool which does not enforce any opninionated project structure,
+which was desirable due to this project not being a typical CRUD backend.
+Said popularity was another major advantage,
+as there is now a vast array of guides and answered questions on the web.
+
+The ORM and toolkit used for database operations is SQLAlchemy \cite{sa},
+also one of the most popular Python tools of its category.
+It allows for easy query construction and integrates seamlessly with Flask
+thanks to the \texttt{flask-sqlalchemy} plugin.
+Another plugin was \texttt{flask-migrate},
+used to generate and apply database migrations with Alembic \cite{alembic}.
+
+Web forms were created with the help of WTForms \cite{wtforms}
+and its respective plugin \texttt{flask-wtf}.
+This tool makes generating HTML easier, and it comes with built-in
+input validation.
+
+The \texttt{requests} library described
+in \ref{6:lib:tools} was used to fetch cryptocurrency prices
+from the Coinlayer API.
+
+PostgreSQL \cite{postgres} was chosen as a database for the project,
+due to popularity and its useful features.
+For development, it was set up as a Docker container
+along with testnet nodes and ran with Docker Compose.
+
+HTML responses were generated with Jinja2 templating engine,
+which is bundled with Flask as a sensible default option.
+For styling and responsiveness Bootstrap \cite{bootstrap} CSS \cite{css} framework was used,
+chosen because of popularity, ease of use and good looking design.
+
+Last but not least, charts for viewing balances and values over time
+were generated in JavaScript,
+with the help of the Chart.js \cite{chartjs} library.

@@ -1,0 +1,124 @@
+\chapter{Description and analysis of the subject}
+
+To decide on the best approach to the challenge,
+first an analysis of desired properties and features of a solution
+shall be conducted.
+After that the technologies that the project will have to work with
+will be looked into, with the goal to determine how are they similar,
+and at the same time, how they differ.
+
+\section{Definition of the goal}
+
+To compile a list of features that ought to be demanded
+from a crypto wallet management application,
+we can compare it to services used by more traditional
+internet banking.
+As other applications of the blockchain technology,
+for example smart contracts,
+are out of this thesis' scope,
+focus is to be on financial management.
+
+The core functionality that the project cannot be considered complete without is to be:
+\begin{itemize}
+    \item creating cryptocurrency wallets,
+    \item checking the amount of funds,
+    \item making transfers.
+\end{itemize}
+All of the above should function in a similar way
+from the end user's perspective
+across all supported cryprocurrencies.
+
+With these implemented an user should have sufficient control
+over their crypto assets,
+allowing him to participate in either personal or proffesional
+financial operations over the cryptocurrency networks.
+
+Some additional features, that would be convenient to have,
+however will not be considered essential could be:
+\begin{itemize}
+    \item saving wallets' balance history,
+    \item insight into value of the crypto assets (e.g. in US dollars),
+    \item ability to import wallets used previously with other services.
+\end{itemize}
+
+The project should provide all this functionality
+while remaining stable and portable,
+prove resistant to predictable user errors
+and ensure that managed assets' security will not be compromised.
+The user experience ought to be simple,
+and the interface should be clean and focused on the most important elements,
+with function taking precedence over form.
+
+\section{Technology overview}
+
+The project will have to integrate with two blockchain generations:
+first generation, represented by Bitcoin, the oldest and most known
+cryptocurrency, and second generation, represented by Ethereum.
+Although these cryptocurrencies have a lot in common
+-- they both are based on blockchain, after all
+-- they differ even in what they were to be.
+
+Bitcoin was created as a peer-to-peer electronic cash system,
+aiming to provide an alternative to traditional banking
+-- performed through financial institutions
+-- with a concept of a global,
+distributed ledger of transactions,
+secured from being mangled with by proof-of-work
+in form of using computational power to mine blocks of transactions,
+thus preventing them from being retroactively changed.
+
+The premise of Ethereum was a bit different,
+as it was focused more on distributed computation,
+aiming to deliver what can be thought of as a decentralized computer,
+with global state made of accounts containing information such as balance,
+being secured by the blockchain technology.
+The solution used currently for mining blocks is also proof-of-work,
+although that is said to change in near future.
+
+\subsection{Similarities}
+
+Both technologies are interacted with through asymmetric cryptography
+-- users are identified by their addresses and authorize operations
+by signing data with their private keys.
+In the core essence, a cryptocurrency wallet is all about its private key.
+A public key is coupled with the private key,
+and then an address is derived from the public key
+as an additional layer of security.
+This is true for both blockchains
+-- even though the format of keys and addresses differs,
+underlying principle remains the same.
+
+\subsection{Differences}
+
+As was hinted before, Ethereum accounts are stateful by nature,
+Bitcoin ones, however, are not.
+This difference is apparent when certain information needs to be
+recovered from the blockchain.
+It is often the case when it's saved as part of the Ethereum network's
+global state and the extraction is straightforward.
+Bitcoin is not based on a notion of any global state,
+so in theory crawling an entire blochchain
+might be required for reconstructing the current situation.
+
+A good example of this is wallet balance
+-- a part of the account state in Ethereum, easy to recover.
+Bitcoin does not however deal with accounts directly,
+it deals only with transactions;
+so this quite basic piece of information might require
+tracing all transactions somehow associated with a given wallet,
+possibly many years into the history of Bitcoin.
+
+\subsection{Conclusions}
+
+Seamless integration of the project with both blockchains,
+with details abstracted away under a shared interface
+might prove a nontrivial task,
+as there are quite substantial
+differences in how these function.
+
+However, the similarities between Bitcoin and Ethereum
+make the same task seem sensible and worth the effort,
+as for an end user dealing with cryptocurrencies,
+both are in their essence just digital assets,
+so providing an unified way to manage them
+sounds like an useful idea.

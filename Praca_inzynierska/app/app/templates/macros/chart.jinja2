@@ -1,0 +1,39 @@
+{% macro render_timeseries(id, label, color) %}
+    <canvas id="{{ id }}"></canvas>
+    <script>
+        var ctx = document.getElementById('{{ id }}').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: "{{ label }}",
+                    borderColor: "{{ color }}",
+                    fill: false,
+                    data: [
+                        {{ caller() }}
+                    ]
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        type: 'time'
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                elements: {
+                    line: {
+                        tension: 0
+                    }
+                }
+            }
+        });
+    </script>
+{% endmacro %}

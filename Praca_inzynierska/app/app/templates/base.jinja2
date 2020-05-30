@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Crypto Wallets Management
+        {% endblock %}
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    >
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <script src="{{ url_for('static', filename='Chart.bundle.min.js') }}"></script>
+</head>
+<body>
+    {% include "navbar.jinja2" %}
+    {% include "messages.jinja2" %}
+
+    <div class="container px-5 py-5">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

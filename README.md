@@ -48,7 +48,7 @@ Courses I've taken (directory names in Polish, so that they can be more easily f
 - [Computer networks](Sieci_komputerowe)
 - [Artificial intelligence](Sztuczna_inteligencja)
 - [Design and implementation of advanced PHP applications](Kurs_Projektowanie_i_implementacja_zaawansowanych_aplikacji_PHP)
-- Diploma project
+- [Diploma project](Praca_inzynierska)
 
 ### Term 7:
 - [Designing ASP.NET applications](Kurs_projektowania_aplikacji_ASPNET)

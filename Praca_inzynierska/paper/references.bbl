@@ -1,0 +1,152 @@
+\begin{thebibliography}{99}
+
+\bibitem{bitcoin-white-paper}
+Satoshi Nakamoto. Bitcoin: A Peer-to-Peer Electronic Cash System.
+\\\url{https://bitcoin.org/bitcoin.pdf}
+
+\bibitem{blockchain-generations}
+Stephan Cummings. The Four Blockchain Generations.
+\\\url{https://medium.com/altcoin-magazine/the-four-blockchain-generations-5627ef666f3b}
+
+\bibitem{cryptocurrency-list}
+Cryptocurrency List by Coinlore.
+\\\url{https://www.coinlore.com/all_coins}
+
+\bibitem{ethereum-white-paper}
+Vitalik Buterin. A Next-Generation Smart Contract and Decentralized Application Platform.
+\\\url{https://github.com/ethereum/wiki/wiki/White-Paper}
+
+\bibitem{currencies-popularity}
+CoinMarketCap cryptocurrency statistics.
+\\\url{https://coinmarketcap.com/all/views/all}
+
+\bibitem{copay}
+Copay: A secure Bitcoin and Bitcoin Cash wallet platform.
+\\\url{https://github.com/bitpay/copay}
+
+\bibitem{mew}
+My Ether Wallet: Client-side interface helping you interact with the Ethereum blockchain.
+\\\url{https://github.com/MyEtherWallet/MyEtherWallet}
+
+\bibitem{copay-attack}
+John E. Dunn. JavaScript library used for sneak attack on Copay Bitcoin wallet.
+\\\url{https://nakedsecurity.sophos.com/2018/11/28/javascript-library-used-for-sneak-attack-on-copay-bitcoin-wallet/}
+
+\bibitem{javascript}
+Javascript, Mozilla Developer Network web docs.
+\\\url{https://developer.mozilla.org/docs/Web/JavaScript}
+
+\bibitem{electron}
+Electron.js project website.
+\\\url{https://electronjs.org}
+
+\bibitem{bitcoin-addresses}
+Technical background of version 1 Bitcoin addresses.
+\\\url{https://en.bitcoin.it/wiki/Technical_background_of_version_1_Bitcoin_addresses}
+
+\bibitem{utxos}
+Sudhir Khatwani. What Are Unspent Transaction Outputs (UTXOs)?
+\\\url{https://coinsutra.com/unspent-transaction-outputs-utxos}
+
+\bibitem{http}
+P. J. Leach, T. Berners-Lee, J. C. Mogul, L. Masinter, R. T. Fielding, J. Gettys.
+Hypertext Transfer Protocol - HTTP/1.1, IETF RFC 2616.
+\\\url{https://tools.ietf.org/html/rfc2616}
+
+\bibitem{json}
+T. Bray. The JavaScript Object Notation (JSON) Data Interchange Format, IETF RFC 7159.
+\\\url{https://tools.ietf.org/html/rfc7159}
+
+\bibitem{json-rpc}
+JSON-RPC 1.0 Specification.
+\\\url{https://www.jsonrpc.org/specification_v1}
+
+\bibitem{html}
+HTML5. A vocabulary and associated APIs for HTML and XHTML.
+\\\url{https://www.w3.org/TR/2010/WD-html5-20100624}
+
+\bibitem{html-forms}
+HTML 5.2 Forms. W3C Recommendation, 14 December 2017.
+\\\url{https://www.w3.org/TR/html52/sec-forms.html}
+
+\bibitem{ux}
+User experience definitions.
+\\\url{http://www.allaboutux.org/ux-definitions}
+
+\bibitem{coinlayer}
+Coinlayer API - Free, Real-time Crypto Rates API.
+\\\url{https://coinlayer.com}
+
+\bibitem{api}
+David Emery. Standards, APIs, Interfaces and Bindings.
+\\\url{https://web.archive.org/web/20150116081559/http://www.acm.org/tsc/apis.html}
+
+\bibitem{python}
+The official home of the Python Programming Language.
+\\\url{https://www.python.org}
+
+\bibitem{docker}
+Docker: Enterprise Container Platform.
+\\\url{https://www.docker.com}
+
+\bibitem{venv}
+Virtual Environments and Packages — Python 3.7.3 documentation.
+\\\url{https://docs.python.org/3/tutorial/venv.html}
+
+\bibitem{pip}
+Pip: The PyPA recommended tool for installing Python packages.
+\\\url{https://pypi.org/project/pip}
+
+\bibitem{git}
+Git: A free and open source distributed version control system.
+\\\url{https://git-scm.com}
+
+\bibitem{pycharm}
+PyCharm: the Python IDE for Professional Developers by JetBrains.
+\\\url{https://www.jetbrains.com/pycharm}
+
+\bibitem{di}
+James Shore. Dependency Injection Demystified.
+\\\url{https://www.jamesshore.com/Blog/Dependency-Injection-Demystified.html}
+
+\bibitem{bitcoin-core}
+Bitcoin Core official website.
+\\\url{https://bitcoincore.org}
+
+\bibitem{ganache}
+Ganache CLI: Fast Ethereum RPC client for testing and development.
+\\\url{https://github.com/trufflesuite/ganache-cli}
+
+\bibitem{flask}
+Flask: A Python Microframework.
+\\\url{http://flask.pocoo.org}
+
+\bibitem{sa}
+SQLAlchemy - The Database Toolkit for Python.
+\\\url{https://www.sqlalchemy.org}
+
+\bibitem{alembic}
+Alembic: A lightweight database migration tool.
+\\\url{https://alembic.sqlalchemy.org/en/latest}
+
+\bibitem{wtforms}
+WTForms Documentation.
+\\\url{https://wtforms.readthedocs.io/en/stable}
+
+\bibitem{postgres}
+PostgreSQL: The World's Most Advanced Open Source Relational Database.
+\\\url{https://www.postgresql.org}
+
+\bibitem{bootstrap}
+Bootstrap: The most popular HTML, CSS, and JS library in the world.
+\\\url{https://getbootstrap.com}
+
+\bibitem{css}
+All CSS specifications.
+\\\url{https://www.w3.org/Style/CSS/specs.html}
+
+\bibitem{chartjs}
+Chart.js: Open source HTML5 Charts for your website.
+\\\url{https://www.chartjs.org}
+
+\end{thebibliography}

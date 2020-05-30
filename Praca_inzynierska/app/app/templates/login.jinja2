@@ -1,0 +1,12 @@
+{% extends "base.jinja2" %}
+
+{% from "macros/form.jinja2" import render_form, render_field %}
+
+{% block content %}
+    <h1 class="mb-5">View wallet</h1>
+
+    {% call render_form(form) %}
+        {{ render_field(form.currency) }}
+        {{ render_field(form.address) }}
+    {% endcall %}
+{% endblock %}

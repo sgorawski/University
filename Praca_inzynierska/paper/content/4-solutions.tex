@@ -1,0 +1,135 @@
+\chapter{Description of applied solutions}
+
+The entire project consists of two parts:
+\begin{itemize}
+    \item a library,
+    which provides a unified interface for connecting to and performing operations on the blockchains,
+    \item a web application using that library,
+    which provides a convenient interface for the users and a couple of extra features.
+\end{itemize}
+
+Such separation makes it easy to potentially change the user interface, e.g. to a command line one,
+while being able to preserve a convenient way of interacting with the blockchains.
+It also allows for a better control over the project's dependencies,
+-- where the library isn't cluttered with requirements of any web framework
+-- and makes testing easier.
+Core functionality of the library can be fully verified without being restricted by the user interface. Application tests, on the other hand, can have the library calls mocked out,
+enabling them to be performed without access to the cryptocurrency testnets,
+which makes setting up particular scenarios easier.
+
+\section{Library}
+
+The library is essentially a set of classes with an unified interface for typical wallet management operations, i.e.:
+\begin{itemize}
+    \item creating a new wallet or retrieving one,
+    \item checking balance on a given wallet,
+    \item sending money to other wallets of given currency,
+\end{itemize}
+which shall be explained in more detail below.
+
+\subsection{Creating wallets}
+
+This operation is performed nearly the same way on either blockchain.
+First, a private key is either randomly generated, or recovered from a mnemonic phrase.
+Next, a public key is retrieved from the private key, and then an address is derived from it.
+The public key is not really relevant to the user,
+as the address is used in its stead to provide an additional layer of security \cite{bitcoin-addresses}.
+Expected format of these pieces of data may differ (e.g. it's hexadecimal in Ethereum),
+but the underlying principle remains the same.
+Overall, the private key, the address and a mnemonic phrase
+allowing to easily recover this wallet later are returned.
+
+A question may arise whether the mnemonic phrase is required, since a private key
+already provides control over a wallet?
+Essentially, it is not, and the information stored in it is equivalent,
+however its format makes it easier for humans to remember,
+than a key which is a long, seemingly random sequence of characters.
+
+Theoretically, this whole procedure is independent from the blockchain,
+as a wallet is just a combination of keys and can be generated offline.
+In principle, that is the case, as it should be in a decentralized network.
+However, there is a catch -- in the case of Bitcoin a wallet's address is imported by a node for indexing.
+This will be explained in the following subsection.
+
+\subsection{Checking balances}
+
+Retrieving the amount of money available on a given address works a bit differently in the two networks.
+The Ethereum accounts are stateful by nature, storing that information directly in themselves
+-- all it takes to view it is a single remote procedure call to our node in the network.
+
+In Bitcoin, however, this is not the case -- only transactions are stored in the blockchain,
+balances are not. In order to determine how much money does one have at their disposal,
+they would have to crawl the chain tracing the flow of money related to their address,
+possibly many blocks in, even to the very beginning of Bitcoin.
+
+In practice Bitcoin node implementations provide a solution for this,
+indexing transactions related to given addresses,
+which makes it possible to retrieve all unspent transactions outputs \cite{utxos} for an address
+without crawling the blockchain every time.
+Each of these UTXOs (Unspent Transaction Outputs) can be used to make a transfer,
+which means that the balance of a wallet is a sum of their amounts.
+
+\newpage
+
+\subsection{Making transfers}
+
+The last operation is rather easy in the case of Ethereum,
+where a transaction is constructed by specifying sender, recipient, amount
+and the appropriate gas price.
+The latter serves (in a rather indirect way) as fee for block miners
+and can be inferred from network activity using a built-in procedure of the node.
+There is also \textit{nonce}, which is like an account's transcation counter
+-- its appropriate value is just a number of our unconfirmed transactions in the network.
+
+When making a transfer to more than one recipient (let us say there are $n$),
+$n$ transactions are created, with \textit{nonce} iteratively incremented for each one.
+The downside of this simple approach is that the gas price must be provided separately,
+so we end up paying $n$ miner fees for all of the transactions.
+
+As was described earlier, Bitcoin deals with transfers, not with accounts,
+and this results in a more complex way of creating a transaction.
+Some of our unspent transaction outputs must be selected to serve as input to the new transactions,
+and they must be spent entirely.
+If their total value is too high,
+our own address is added as one of the recipients to receive change.
+After that step we end up with a transaction object with some inputs
+-- worth in total $x$ BTC
+-- and recipients (including us) to receive in total $y$ BTC.
+The difference between $x$ and $y$ serves as miners fee, like gas price in Ethereum.
+The good aspect of this procedure is that it is only paid once,
+no matter the number of recipients.
+
+After creating a transaction object of either currency,
+it is signed with our wallet's private key and broadcasted to the network,
+waiting to be included in the blockchain.
+
+\subsection{Networking}
+
+The actual communication with the node of a given cryptocurrency's network is conducted via HTTP \cite{http},
+using JSON \cite{http} format for remote procedure calls.
+As it turned out, the JSON-RPCs \cite{json-rpc} used by Bitcoin and Ethereum are standardized,
+sharing the same format for requests and responses and differing only in details.
+This allowed to encapsulate network communication details of both currencies in a single class.
+
+For each required procedure call, a request is made to a specific node.
+The response is then checked for whether it is associated to this request (by an embedded ID).
+Lastly, in case of a success response relevant data is extracted from it and returned,
+and in case of an error response, the error is handled in an appropriate way.
+
+\section{Web application}
+
+The web application aims to provide a clean web interface for the users.
+It listens to HTTP requests and returns server-side rendered HTML \cite{html} templates as responses.
+Users communicate with server using HTML forms \cite{html-forms}, and their requests are handled by appropriate functions,
+which usually use the library's methods to interact with the blockchains.
+
+Aside from allowing users to perform basic operations mentioned in the Library section,
+the application provides some extra functionality for better user experience \cite{ux}.
+First of all, the balance history for all wallets is saved in a database,
+allowing the user to see how it changed over time plotted on a graph.
+Secondly, the application provides insight into actual value of the crypto assets in dollars
+by integration with the Coinlayer \cite{coinlayer} service.
+The prices are retrieved from their API \cite{api}
+and cached in the database, to avoid flooding the service with requests.
+Wallet's balance value is also tracked, saved in the database and
+presented to the user in form of a graph.

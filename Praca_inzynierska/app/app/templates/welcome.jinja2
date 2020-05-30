@@ -1,0 +1,17 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+    <div class="mb-5">
+        <h1>Hello</h1>
+        <p>
+            To view your wallet and make transfers, please click the "View wallet"
+            button in the top right corner.
+        </p>
+        <p>
+            If you don't have a wallet yet or want to recover it from a mnemonic phrase,
+            please click the button below.
+        </p>
+    </div>
+
+    <a class="btn btn-primary" href="{{ url_for('wallets.create') }}">Create wallet</a>
+{% endblock %}

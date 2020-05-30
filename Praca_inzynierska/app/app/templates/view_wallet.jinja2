@@ -1,0 +1,107 @@
+{% extends "base.jinja2" %}
+
+{% from "macros/body.jinja2" import render_card %}
+{% from "macros/chart.jinja2" import render_timeseries %}
+
+{% macro render_value_with_unit(value, unit) %}
+    <div class="input-group {% for cls in varargs %} {{ cls }} {% endfor %}">
+        <input class="form-control" type="text" readonly placeholder="{{ value }}">
+        <div class="input-group-append">
+            <span class="input-group-text">
+                {{ unit }}
+            </span>
+        </div>
+    </div>
+{% endmacro %}
+
+{% block content %}
+
+    {% call render_card("Balance over time [{}]".format(session['currency'].upper())) %}
+        {% call render_timeseries("balance", "Amount", "#dd0000") %}
+            {% for balance in balances %}
+                {
+                    x: {{ balance.timestamp | tojson }},
+                    y: {{ balance.amount | tojson }}
+                },
+            {% endfor %}
+        {% endcall %}
+    {% endcall %}
+
+    {% call render_card("Current balance") %}
+        <div class="row justify-content-start m-3">
+            {% with balance = balances[-1] %}
+                <span class="col-form-label">On the wallet there is</span>
+                {{ render_value_with_unit(balance.amount, balance.currency.upper(), "col-3") }}
+                <span class="col-form-label">worth</span>
+                {{ render_value_with_unit(balance.value_usd, "$", "col-3") }}
+                <span class="col-form-label">as of {{ balance.timestamp.strftime("%Y %b %d, %H:%M") }}.</span>
+            {% endwith %}
+        </div>
+
+        <a class="btn btn-primary mt-3" href="{{ url_for('wallets.transfer') }}">
+            Make transfer
+        </a>
+    {% endcall %}
+
+    {% call render_card("Value over time [$]") %}
+        {% call render_timeseries("value", "$", "#00dd00") %}
+            {% for balance in balances %}
+                {
+                    x: {{ balance.timestamp | tojson }},
+                    y: {{ balance.value_usd | tojson }}
+                },
+            {% endfor %}
+        {% endcall %}
+    {% endcall %}
+
+    {% call render_card("Balances history") %}
+        <div class="table-responsive text-nowrap">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Date and time</th>
+                        <th>Amount {{ session['currency'].upper() }}</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for balance in balances %}
+                        <tr>
+                            <td>{{ balance.timestamp.strftime("%Y %b %d, %H:%M") }}</td>
+                            <td>{{ balance.amount }}</td>
+                            <td>{{ balance.value_usd }} $</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endcall %}
+
+    {% if transfers %}
+        {% call render_card("Transfers history") %}
+            <div class="table-responsive text-nowrap">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Date and time</th>
+                            <th>Address</th>
+                            <th>Amount {{ session['currency'].upper() }}</th>
+                            <th>Transaction ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for transfer in transfers %}
+                            <tr>
+                                <td>{{ transfer.timestamp.strftime("%Y %b %d, %H:%M") }}</td>
+                                <td>{{ transfer.to_address }}</td>
+                                <td>{{ transfer.amount }}</td>
+                                <td>{{ transfer.transaction_id }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endcall %}
+    {% endif %}
+
+{% endblock %}

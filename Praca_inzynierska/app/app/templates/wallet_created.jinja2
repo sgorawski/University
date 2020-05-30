@@ -1,0 +1,18 @@
+{% extends "base.jinja2" %}
+
+{% from "macros/body.jinja2" import render_card %}
+
+{% block content %}
+    {% call render_card("Private key") %}
+        <p>{{ private_key }}</p>
+    {% endcall %}
+
+
+    {% call render_card("Mnemonic") %}
+        <p>{{ mnemonic }}</p>
+    {% endcall %}
+
+    <a class="btn btn-primary" href="{{ url_for('wallets.index') }}">
+        Go to homepage
+    </a>
+{% endblock %}

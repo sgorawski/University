@@ -1,0 +1,27 @@
+{% macro render_field(field) %}
+    <div class="form-group {% for cls in varargs %} {{ cls }} {% endfor %}">
+        <dt>{{ field.label }}</dt>
+        <dd>{{ field(class="form-control", **kwargs) }}</dd>
+        {% if field.errors %}
+            <ul>
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro render_form(form, method="post") %}
+    <form
+            method={{ method }}
+            class="px-5 {% for cls in varargs %} {{ cls }} {% endfor %}"
+            {% for k, v in kwargs.items() %} {{ k }}="{{ v }}" {% endfor %}
+    >
+        {{ form.hidden_tag() }}
+        <dl>
+            {{ caller() }}
+        </dl>
+        {{ form.submit(class="btn btn-primary float-right") }}
+    </form>
+{% endmacro %}

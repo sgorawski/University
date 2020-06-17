@@ -25,5 +25,3 @@ Struktura:
 - `detailed`: omówienie danego zagadnienia w formacie **pdf**,
 - `brief`: krótka notatka, którą można było mieć na egzaminie, w formacie **txt**,
 - `extras`: dodatkowe materiały, obecnie tylko ze strony [arsenica](http://arsenicrose.pl/).
-
-Brakuje chyba dwóch krótkich notatek, można robić Pull Requesty (i zachęcam).

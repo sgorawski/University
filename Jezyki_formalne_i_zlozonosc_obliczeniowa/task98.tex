@@ -1,0 +1,128 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[boxed]{algorithm}
+\usepackage{algorithmic}
+\usepackage{nopageno}
+\usepackage{hyperref}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\reduces}{\le_\mathit{rek}}
+\renewcommand{\complement}{\overline}
+
+\begin{document}
+
+\begin{flushright}
+\emph{Sławomir Górawski}
+\end{flushright}
+
+\noindent\textbf{Zadanie 98.}
+\emph{(Hierarchia arytmetyczna)}.
+Niech $f \colon \N \times \N \to \N$
+będzie pewną ustaloną obliczalną bijekcją.
+Oznaczmy klasę zbiorów rekurencyjnych jako $\Sigma_0$.
+Dla danego $\Sigma_i$
+niech $\Pi_i = \{ A \subseteq \N \mid \N \setminus A \in \Sigma_i \}$,
+zaś $A \in \Sigma_{i + 1}$,
+jeśli istnieje $B \in \Pi_i$
+takie że $A = \{ n \in \N \mid \exists m f(n, m) \in B\}$.
+Niech $L$ będzie zbiorem numerów tych niepustych funkcji rekurencyjnych,
+których dziedzina jest skończona.
+Jakie jest najmniejsze $i$ dla którego zachodzi $L \in \Sigma_i$?
+
+\paragraph{Rozwiązanie.}
+Odpowiedź to 2. Pokażemy, że:
+\begin{enumerate}
+    \item $L \in \Sigma_2$,
+    \item $L \notin \Sigma_1$.
+\end{enumerate}
+Intuicja z:
+\url{https://www.wikiwand.com/en/Tarski-Kuratowski_algorithm}.
+
+\paragraph{1.}
+Niech $B$ będzie zbiorem takich $f(n, f(m, k))$,
+że $n$ jest numerem funkcji rekurencyjnej,
+której największym elementem dziedziny jest $m$
+i $\phi_n(m)$ zwraca wynik w $k$ krokach.
+
+Pokażemy, że $B \in \Pi_1$.
+$\Pi_1$ to rodzina zbiorów co-r.e.
+Pokażemy, że $B \reduces \complement{K}$.
+Niech $r \colon \N \to \N$ będzie redukcją,
+która dla $x = f(n, f(m, k))$ (znamy je, bo $f$ jest bijekcją)
+zwraca numer takiego programu:
+
+\begin{algorithm}[H]
+    \begin{algorithmic}[1]
+        \STATE wczytaj \_
+        \STATE uruchom $k$ kroków $\phi_n(m)$
+        \STATE jeżeli nie otrzymano wyniku, zwróć 1
+        \STATE inteligentnie uruchom $\phi_n(i)$ dla każdego $i > m$, \\
+            jeżeli coś zwrócił to zwróć 1
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{proof}
+    Pokażemy, że $x \in B \iff r(x) \in \complement{K}$.
+    
+    \begin{enumerate}
+        \item Dla $x = f(n, f(m, k)) \in B$:
+            \begin{itemize}
+                \item $\phi_n(m)$ zwróci wynik,
+                \item $\phi_n(i)$ nic nie zwróci dla każdego $i > m$,
+                \item program się zapętli,
+                \item $r(x) \in \complement{K}$.
+            \end{itemize}
+        \item Dla $x = f(n, f(m, k)) \notin B$ mamy 2 możliwości:
+            \begin{enumerate}
+                \item $\phi_n(m)$ nie zwróci wyniku i program zwróci 1,
+                \item $\phi_n$ zwróci wynik dla $m$
+                    oraz dla jakiegoś $i > m$ i program zwróci 1.
+            \end{enumerate}
+            
+            W obu przypadkach $r(x) \notin \complement{K}$.
+    \end{enumerate}
+\end{proof}
+
+\paragraph{2.}
+$\Sigma_1$ to rodzina zbiorów r.e.
+Pokażemy, że $\complement{K} \reduces L$.
+Niech $r \colon \N \to \N$ będzie redukcją,
+która dla $n$ zwraca numer takiego programu:
+
+\begin{algorithm}[H]
+    \begin{algorithmic}[1]
+        \STATE wczytaj m
+        \STATE jeżeli $m = 1$, zwróć 1
+        \STATE uruchom $\phi_n(n)$
+        \STATE zwróć 1
+    \end{algorithmic}
+\end{algorithm}
+
+\begin{proof}
+    Pokażemy, że $n \in \complement{K} \iff r(n) \in L$.
+    
+    \begin{enumerate}
+        \item Dla $n \in \complement{K}$:
+            \begin{itemize}
+                \item $\phi_n(n)$ nie zatrzyma się nigdy,
+                \item $\phi_{r(n)}$ dla 1 zwróci 1
+                    a dla innych argumentów się zapętli,
+                \item dziedzina $\phi_{r(n)}$ to $\{ 1 \}$,
+                \item $r(n) \in L$.
+            \end{itemize}
+        \item Dla $n \notin \complement{K}$:
+            \begin{itemize}
+                \item $\phi_n(n)$ zwróci wynik,
+                \item dla każdego argumentu $\phi_{r(n)}$ zwróci 1,
+                \item dziedzina $\phi_{r(n)}$ to $\N$,
+                \item $r(n) \notin L$.
+            \end{itemize}
+    \end{enumerate}
+\end{proof}
+
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{nopageno}
+\usepackage{fullpage}
+
+\begin{document}
+
+\begin{flushright}
+\textit{Sławomir Górawski}
+\end{flushright}
+
+\bigskip
+
+\noindent\textbf{Zadanie 77.}
+Niech $L \subseteq \Sigma^*$ będzie CFL.
+Czy wynika z tego, że $L_{3/4}$ jest CFL?
+
+\bigskip
+
+\noindent
+Nie. Rozwiązanie opiera się na intuicji, że wiele języków,
+w których długości co najmniej 3 różnych wystąpień symboli są ze sobą związane,
+nie jest CFL (np. $\{ a^n b^n a^n : n \in \mathbb{N} \}$).
+$L_{3/4}$ rozumiemy jako język taki że dla każdego $w \in L_{3/4}$
+możemy znaleźć $v \in \Sigma^*$, dla którego $|v| = |w|/3$ i $wv \in L$.
+Niech:
+\[
+    L = \{ a^n b^m a^m b^n : n, m \in \mathbb{N} \}.
+\]
+$L$ jest CFL, ponieważ istnieje generująca go CFG:
+\begin{align*}
+    & S \rightarrow aSb \; | \; T \\
+    & T \rightarrow bTa \; | \; \varepsilon.
+\end{align*}
+Wtedy:
+\[
+    L_{3/4} \supset \{
+        a^n b^m a^{(m + n) / 2} : n, m \in \mathbb{N} \land n \le m
+    \}.
+\]
+(Do $L_{3/4}$ należą też słowa z $b$ na końcu, dla $n > m$,
+ale nie są one istotne dla tego rozwiązania.)
+Pokażemy, że $L_{3/4}$ nie jest CFL.
+
+\begin{proof}
+    Załóżmy nie wprost, że $L_{3/4}$ jest CFL.
+    Użyjemy lematu o pompowaniu dla CFL.
+    Niech $p$ -- stała z lematu.
+    Weźmy $s = a^p b^p a^p$. $s \in L_{3/4}$.
+    Niech $s = uvwxy$ tak że $|vx| \ge 1$ i $|vwx| \le p$.
+    Mamy dwie możliwości:
+    \begin{enumerate}
+        \item $vwx$ zawiera się w pierwszych 2/3 $s$.
+        Wtedy $vx$ jest postaci $a^i b^j, \; i, j \in \mathbb{N}$.
+        Usuńmy $v$ oraz $x$ z $s$, otrzymując
+        $uwy = a^{p - i} b^{p - j} a^p$, gdzie $i + j \ge 1$.
+        Z lematu $\forall_{k \in \mathbb{N}} \; u v^k w x^k y \in L_{3/4}$,
+        więc w szczególności $uwy \in L_{3/4}$.
+        Z definicji $L_{3/4}$ $uwy$ musi być postaci
+        $a^n b^m a^{(m + n) / 2}, \; n, m \in \mathbb{N}$.
+        Możemy to rozpisać:
+        \begin{align*}
+            (m + n) / 2 & = p && \text{(Długość ostatniego ciągu symboli $b$)} \\
+            (p - i + p - j) / 2 & = p && (n = p - i, \; m = p - j) \\
+            2p - i - j & = 2p \\
+            i + j & = 0,
+        \end{align*}
+        co daje sprzeczność z założeniem, że $|vx| = i + j \ge 1$.
+        
+        \item $vwx$ zawiera się w ostatnich 2/3 $s$.
+        Wtedy $vx$ jest postaci $b^i a^j, \; i, j \in \mathbb{N}$.
+        Niech $uwy = a^p b^{p - i} a^{p - j}$, gdzie $i + j\ge 1$.
+        Z lematu $uwy \in L_{3/4}$.
+        Teraz mamy do rozpatrzenia:
+        \begin{enumerate}
+            \item $i > 0$.
+            Wtedy w $uwy$ symboli $b$ jest mniej ($p - i$) niż symboli $a$ przed nimi ($p$).
+            Jeśli $uwy$ należy do $L_{3/4}$, to musi być postaci
+            $a^n b^m a^{(m + n) / 2}$, gdzie $ n \le m$.
+            Dla $uwy$ $n = p$ oraz $m = p - i$, co daje sprzeczność z $n \le m$.
+            \item $i = 0$. Wtedy $j \ge 1$.
+            Jeśli $uwy = a^p b^{p - i} a^{p - j} = a^p b^p a^{p - j}$ należy do $L_{3/4}$,
+            to musi być postaci $a^n b^m a^{(m + n) / 2}$,
+            z czego wynikają równości:
+            \begin{align*}
+                (m + n) / 2 & = p - j && \text{(Długość ostatniego ciągu symboli $b$)} \\
+                (p + p) / 2 & = p - j && (m = n = p) \\
+                j & = 0,
+            \end{align*}
+            co daje sprzeczność z wynikającym z założenia $j \ge 1$.
+        \end{enumerate}
+    \end{enumerate}
+\end{proof}
+
+\end{document}

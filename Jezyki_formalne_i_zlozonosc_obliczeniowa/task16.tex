@@ -1,0 +1,45 @@
+\documentclass{article}
+
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{nopageno}
+
+\title{JFiZO, 2. lista zdalna}
+\author{Sławomir Górawski}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent\textbf{Zadanie 16.}
+Czy istnieje wyrażenie regularne $\phi$,
+oznaczające jakiś niepusty język regularny,
+takie że $L_{a\phi} = L_{\phi b}$?
+Czy istnieje wyrażenie regularne $\phi$,
+oznaczające jakiś niepusty język
+regularny, takie że $L_{a^*\phi} = L_{\phi b^*}$?
+
+\paragraph{1.}
+Nie. Dowód przeprowadzimy nie wprost.
+Załóżmy, że istnieje wyrażenie regularne $\phi$
+takie, że $\phi \neq \emptyset$ i $L_{a\phi} = L_{\phi b}$.
+Niech x to największa liczba taka,
+że każde słowo $w$ z $L_\phi$ zaczyna się od $a^x$.
+Weźmy dowolne słowo $w$ z $L_\phi$
+które ma na początku $x$ symboli $a$.
+Wtedy słowo $wb$ należy do $L_{\phi b}$,
+natomiast nie może należeć do $L_{a\phi}$,
+gdyż każde słowo z $L_{a\phi}$ ma na początku
+co najmniej $x + 1$ symboli $a$.
+Zatem $L_{a\phi} \neq L_{\phi b}$, co daje sprzeczność.
+
+\paragraph{2.}
+Tak. Takie wyrażenie to $\phi = a^*b^*$, dla którego zachodzi:
+
+\[
+    a^*\phi = a^*a^*b^* = a^*b^* = a^*b^*b^* = \phi b^*,
+\]
+z czego wynika, że $L_{a^*\phi} = L_\phi = L_{\phi b^*}$.
+
+\end{document}

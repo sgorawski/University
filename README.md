@@ -4,9 +4,9 @@ Assignments and solutions for my Computer Science studies at the University of W
 
 This repository is focused on practical assignments which required writing code.
 
-I have no materials from term 1, and barely any from term 2.
-
 Courses I've taken (directory names in Polish, so that they can be more easily found by anyone interested):
+
+## Undergraduate studies (B.Eng.)
 
 ### Term 1:
 - Logic for Computer Science
@@ -52,3 +52,13 @@ Courses I've taken (directory names in Polish, so that they can be more easily f
 
 ### Term 7:
 - [Designing ASP.NET applications](Kurs_projektowania_aplikacji_ASPNET)
+
+## Graduate studies (M.Sc.)
+
+(in progress)
+
+### Term 1:
+- [Formal languages and computational complexity](Jezyki_formalne_i_zlozonosc_obliczeniowa)
+- [Text mining](Eksploracja_tekstow)
+- [Seminar: Software testing](Seminarium_Testowanie_oprogramowania)
+- Distributed algorithms

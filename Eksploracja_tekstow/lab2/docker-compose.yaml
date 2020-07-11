@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+
+  store:
+    image: redis
+    container_name: store
+    ports:
+      - 6379:6379

@@ -1,0 +1,142 @@
+\documentclass{article}
+
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{babel}
+\usepackage[style=dutch]{csquotes}
+
+\title{Rozwiązanie zadania 78}
+\author{Sławomir Górawski}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\noindent\textbf{Zadanie 78.}
+Pokaż że dla każdego transducera Moore’a istnieje równoważny transducer Mealy’ego.
+Pokaż że dla każdego transducera Mealy’ego istnieje \\
+równoważny transducer Moore’a.
+
+\paragraph{1.}
+Weźmy dowolny transducer Moore'a $T$.
+Pokażemy, że da się skonstruować dla niego transducer Mealy'ego $T'$
+taki, że $f_{T'} = f_T$.
+
+Idea rozwiązania opiera się na tym,
+że transducer Moore'a generuje słowa przy wchodzeniu do nowych stanów,
+a Mealy'ego -- podczas przechodzenia z jednego stanu do drugiego.
+Jeśli mamy symbol $a$,
+który powoduje przejście ze stanu $q_1$ do $q_2$,
+to w transudcerze Moore'a wpływ na generowanie słowa ma $q_2$,
+a w Mealy'ego -- $q_1$ i $a$.
+Można dla każdemu takiemu przejściu w transducerze Mealy'ego $T'$
+przypisać słowo generowane przez stan,
+w którym znalazłby się transducer Moore'a $T$ po wykonaniu tego przejścia.
+
+Formalnie: niech
+$T = \langle \Sigma, \Sigma_1, Q, q_0, \delta, \sigma \rangle$.
+Zdefiniujmy
+$\sigma' : Q \times \Sigma \rightarrow \Sigma_1^*$
+w następujący sposób:
+$\sigma'(q, a) = \sigma(\delta(a, q))$.
+Teraz możemy skonstruowac transducer Mealy'ego
+$T' = \langle \Sigma, \Sigma_1, Q, q_0, \delta, \sigma' \rangle$.
+Pokażemy indukcyjnie,
+że $f_{T'}(w) = f_T(w)$ dla każdego $w \in \Sigma^*$ o długości $n$,
+dla każdego $n \in \mathbb{N}$.
+
+\begin{proof}
+Podstawa indukcji: weźmy $n = 0$, jedyne słowo długości $0$ to $\varepsilon$,
+$f_{T'}(\varepsilon) = \varepsilon = f_T(\varepsilon)$.
+Krok indukcyjny: dla danego $n$ załóżmy,
+że $f_{T'}(w) = f_T(w)$
+dla każdego $w \in \Sigma^*$ długości $n$.
+Weźmy dowolne $v \in \Sigma^*$ długości $n + 1$.
+Następnie:
+
+\begin{align*}
+    f_{T'}(v) & = f_{T'}(wa)
+    && \text{($a \in \Sigma$)} \\
+    & = (f_{T'}(w))\sigma'(\hat{\delta}(w, q_0), a) \\
+    & = (f_T(w))\sigma'(\hat{\delta}(w, q_0), a)
+    && \text{(z założenia indukcyjnego)} \\
+    & = (f_T(w))\sigma(\delta(a, \hat{\delta}(w, q_0))
+    && \text{(z definicji $\sigma'$)} \\
+    & = (f_T(w))\sigma(\hat{\delta}(wa, q_0)) \\
+    & = f_T(wa) \\
+    & = f_T(v)
+\end{align*}
+Pokazaliśmy, że $f_{T'}(v) = f_T(v)$
+dla każdego $v \in \Sigma^*$ długości $n$, $n \in \mathbb{N}$.
+\end{proof}
+
+\newpage
+
+\paragraph{2.}
+Weźmy dowolny transducer Mealy'ego $T'$.
+Pokażemy, że da się skonstruować dla niego transducer Moore'a $T''$
+taki, że $f_{T''} = f_{T'}$.
+
+Nawiązując do intuicji z $a$, $q_1$ i $q_2$ z poprzedniego punktu,
+potrzebujemy w $q_2$ \enquote{zakodować} informacje z $a$ i $q_1$.
+Aby uzyskać poprawne działanie $T''$ w ogólnym przypadku,
+musimy rozszerzyć zbiór stanów $T'$ o informacje dot.
+symboli, jakie zostały wczytane przy przejściu do danego stanu,
+a konkretnie -- każdy stan $T''$ musi reprezentować to,
+jaki stan był wcześniej,
+jaki stan byłby w danym momencie w $T'$
+i jaki symbol wywołał przejście.
+
+Formalnie: niech
+$T' = \langle \Sigma, \Sigma_1, Q', q_0', \delta', \sigma' \rangle$.
+Wtedy
+$T'' = \langle \Sigma, \Sigma_1, Q'', q_0'', \delta'', \sigma'' \rangle$, gdzie:
+
+\begin{align*}
+    & Q'' = Q' \times Q' \times \Sigma \\
+    & q_0'' = \langle \_, q_0', \_ \rangle \\
+    & \delta''(a, \langle \_, q, \_ \rangle)
+    = \langle q, \delta'(a, q), a \rangle \\
+    & \sigma''(\langle q, \_, a \rangle) = \sigma'(q, a)
+\end{align*}
+Konwencja: \enquote{\_} oznacza dowolną wartość odpowiedniego typu,
+która nie jest istotna w danym kontekście.
+
+Pokażemy indukcyjnie, że $T''$ i $T'$ są równoważne.
+
+\begin{proof}
+Podstawa indukcji -- jak w punkcie 1.
+Krok indukcyjny: dla danego $n$ załóżmy,
+że $f_{T'}(w) = f_T(w)$
+dla każdego $w \in \Sigma^*$ długości $n$.
+Weźmy dowolne $v \in \Sigma^*$ długości $n + 1$.
+Następnie:
+
+\begin{align*}
+    f_{T''}(v) & = f_{T''}(wa)
+    && \text{($a \in \Sigma$)} \\
+    & = (f_{T''}(w))\sigma''(\hat{\delta''}(wa, q_0)) \\
+    & = (f_{T'}(w))\sigma''(\hat{\delta''}(wa, q_0))
+    && \text{(z założenia indukcyjnego)} \\
+    & = (f_{T'}(w))\sigma''(\delta''(a, \hat{\delta''}(w, q_0)) \\
+    & = (f_{T'}(w))\sigma''(\delta''(
+        a, \langle \_, \hat{\delta'}(w, q_0), \_ \rangle
+    )) \\
+    & = (f_{T'}(w))\sigma''(
+        \langle \hat{\delta'}(w, q_0), \_, a \rangle
+    )
+    && \text{(z definicji $\delta''$)} \\
+    & = (f_{T'}(w))\sigma'(\hat{\delta}(w, q_0), a)
+    && \text{(z definicji $\sigma''$)} \\
+    & = f_{T'}(wa) \\
+    & = f_{T'}(v)
+\end{align*}
+Pokazaliśmy, że $f_{T''}(v) = f_{T'}(v)$
+dla każdego $v \in \Sigma^*$ długości $n$, $n \in \mathbb{N}$.
+\end{proof}
+
+\end{document}

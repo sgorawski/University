@@ -6,7 +6,7 @@ This repository is focused on practical assignments which required writing code.
 
 Courses I've taken (directory names in Polish, so that they can be more easily found by anyone interested):
 
-## Undergraduate studies (B.Eng.)
+## Undergraduate studies (B.Sc.)
 
 ### Term 1:
 - Logic for Computer Science

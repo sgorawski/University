@@ -32,14 +32,12 @@ public class GraphView extends StackPane {
     }
 
     public void initGridView(Iterable<Edge> edges, Iterable<Vertex> vertices) {
-        for (Vertex vertex: vertices
-                ) {
+        for (Vertex vertex : vertices) {
             addVertex(vertex);
             addLabel(vertex);
         }
 
-        for (Edge edge: edges
-             ) {
+        for (Edge edge : edges) {
             addEdge(edge);
         }
     }
@@ -68,14 +66,16 @@ public class GraphView extends StackPane {
         vertex.setOnMouseDragged(e -> {
             double deltaX = e.getX() - mouseLoc.get().getX();
             double deltaY = e.getY() - mouseLoc.get().getY();
-            if (vertex.getCenterX() + deltaX >= 0)
+            if (vertex.getCenterX() + deltaX >= 0) {
                 vertex.setCenterX(vertex.getCenterX() + deltaX);
-            else
+            } else {
                 vertex.setCenterX(0);
-            if (vertex.getCenterY() + deltaY >= 0)
+            }
+            if (vertex.getCenterY() + deltaY >= 0) {
                 vertex.setCenterY(vertex.getCenterY() + deltaY);
-            else
+            } else {
                 vertex.setCenterY(0);
+            }
 
             mouseLoc.set(new Point2D(e.getX(), e.getY()));
         });
@@ -87,38 +87,55 @@ public class GraphView extends StackPane {
         Label label = new Label(text);
         label.getStyleClass().add("grid-label");
 
-        label.layoutXProperty().bind(Bindings.createDoubleBinding(() -> {
-            Bounds b = n.getBoundsInParent();
-            return b.getMinX() + b.getWidth() / 2 + 8;
-        }, n.boundsInParentProperty()));
-        label.layoutYProperty().bind(Bindings.createDoubleBinding(() -> {
-            Bounds b = n.getBoundsInParent();
-            return b.getMinY() + b.getHeight() / 2 - 4;
-        }, n.boundsInParentProperty()));
-
+        label.layoutXProperty().bind(Bindings.createDoubleBinding(
+            () -> {
+                Bounds b = n.getBoundsInParent();
+                return b.getMinX() + b.getWidth() / 2 + 8;
+            },
+            n.boundsInParentProperty()
+        ));
+        label.layoutYProperty().bind(Bindings.createDoubleBinding(
+            () -> {
+                Bounds b = n.getBoundsInParent();
+                return b.getMinY() + b.getHeight() / 2 - 4;
+            },
+            n.boundsInParentProperty()
+        ));
         return label;
     }
 
     private Line createConnection(Node n1, Node n2) {
         Line line = new Line();
 
-        line.startXProperty().bind(Bindings.createDoubleBinding(() -> {
-            Bounds b = n1.getBoundsInParent();
-            return b.getMinX() + b.getWidth() / 2;
-        }, n1.boundsInParentProperty()));
-        line.startYProperty().bind(Bindings.createDoubleBinding(() -> {
-            Bounds b = n1.getBoundsInParent();
-            return b.getMinY() + b.getHeight() / 2;
-        }, n1.boundsInParentProperty()));
+        line.startXProperty().bind(Bindings.createDoubleBinding(
+            () -> {
+                Bounds b = n1.getBoundsInParent();
+                return b.getMinX() + b.getWidth() / 2;
+            },
+            n1.boundsInParentProperty()
+        ));
+        line.startYProperty().bind(Bindings.createDoubleBinding(
+            () -> {
+                Bounds b = n1.getBoundsInParent();
+                return b.getMinY() + b.getHeight() / 2;
+            },
+            n1.boundsInParentProperty()
+        ));
 
-        line.endXProperty().bind(Bindings.createDoubleBinding(() -> {
-            Bounds b = n2.getBoundsInParent();
-            return b.getMinX() + b.getWidth() / 2;
-        }, n2.boundsInParentProperty()));
-        line.endYProperty().bind(Bindings.createDoubleBinding(() -> {
-            Bounds b = n2.getBoundsInParent();
-            return b.getMinY() + b.getHeight() / 2;
-        }, n2.boundsInParentProperty()));
+        line.endXProperty().bind(Bindings.createDoubleBinding(
+            () -> {
+                Bounds b = n2.getBoundsInParent();
+                return b.getMinX() + b.getWidth() / 2;
+            },
+            n2.boundsInParentProperty()
+        ));
+        line.endYProperty().bind(Bindings.createDoubleBinding(
+            () -> {
+                Bounds b = n2.getBoundsInParent();
+                return b.getMinY() + b.getHeight() / 2;
+            },
+            n2.boundsInParentProperty()
+        ));
 
         return line;
     }

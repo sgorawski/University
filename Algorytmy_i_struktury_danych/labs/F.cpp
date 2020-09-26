@@ -20,6 +20,7 @@ void makeSet(std::vector<Element> &elements, int x);
 int main()
 {
 	int n, m, T, h;
+
 	scanf("%d %d", &n, &m);
 	std::vector<int> heights(n * m);
 	std::vector<Element> elements(n * m);
@@ -41,9 +42,9 @@ int main()
 	scanf("%d", &T);
 	std::vector<int> days(T);
 	std::vector<int> lands(T);
-	for (auto i = 0; i < T; i++)
+	for (auto i = 0; i < T; i++) {
 		scanf("%d", &days[i]);
-	
+	}
 	// process
 
 	int day_index = T - 1, lands_count = 0;
@@ -62,26 +63,31 @@ int main()
 		lands_count++;
 
 		// check fields around
-		if (index > 0 && (index - 1) % m != (m - 1))
+		if (index > 0 && (index - 1) % m != (m - 1)) {
 			areas_around.insert(find(elements, index - 1));
-		if (index < n*m - 1 && (index + 1) % m != 0)
+		}
+		if (index < n*m - 1 && (index + 1) % m != 0) {
 			areas_around.insert(find(elements, index + 1));
-		if (index - m >= 0)
+		}
+		if (index - m >= 0) {
 			areas_around.insert(find(elements, index - m));
-		if (index + m < n * m) 
+		}
+		if (index + m < n * m) {
 			areas_around.insert(find(elements, index + m));
+		}
 
 		// remove -1 from set if exists
-		if (areas_around.find(-1) != areas_around.end())
+		if (areas_around.find(-1) != areas_around.end()) {
 			areas_around.erase(areas_around.begin());
-		
+		}
+
 		// update lands count
 		lands_count -= areas_around.size();
 
 		// unite elements
 		for (auto area : areas_around) {
 			unite(elements, area, find(elements, index));
-		}		
+		}
 	}
 
 	// fill in remaining days
@@ -91,8 +97,9 @@ int main()
 		day_index--;
 	}
 
-	for (auto l : lands)
+	for (auto l : lands) {
 		printf("%d ", l);
+	}
 	printf("\n");
 
 	return 0;
@@ -104,11 +111,9 @@ void unite(std::vector<Element> &elements, int x_root, int y_root)
 {
 	if (elements[x_root].rank > elements[y_root].rank) {
 		elements[y_root].parent = x_root;
-	}
-	else if (elements[x_root].rank < elements[y_root].rank) {
+	} else if (elements[x_root].rank < elements[y_root].rank) {
 		elements[x_root].parent = y_root;
-	}
-	else if (x_root != y_root) {
+	} else if (x_root != y_root) {
 		elements[y_root].parent = x_root;
 		elements[x_root].rank++;
 	}
@@ -116,10 +121,12 @@ void unite(std::vector<Element> &elements, int x_root, int y_root)
 
 int find(std::vector<Element> &elements, int x)
 {
-	if (elements[x].parent == -1)
+	if (elements[x].parent == -1) {
 		return -1;
-	if (elements[x].parent == x)
+	}
+	if (elements[x].parent == x) {
 		return x;
+	}
 	elements[x].parent = find(elements, elements[x].parent);
 	return elements[x].parent;
 }

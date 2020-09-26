@@ -22,14 +22,23 @@ def index():
     query = request.args.get('query')
     if query:
         query = '%%%s%%' % query
-        articles = Article.query.filter(
-            Article.title.like(query) | Article.content.like(query)).order_by(
-            Article.timestamp.desc()).all()
-        users = User.query.filter(
-            User.username.like(query) | User.email.like(query)).order_by(
-            User.username.desc()).all()
+        articles = (
+            Article.query
+            .filter(Article.title.like(query) | Article.content.like(query))
+            .order_by(Article.timestamp.desc())
+            .all()
+        )
+        users = (
+            User.query
+            .filter(User.username.like(query) | User.email.like(query))
+            .order_by(User.username.desc())
+            .all()
+        )
         return render_template(
-            'core/search.html', articles=articles, users=users)
+            'core/search.html',
+            articles=articles,
+            users=users,
+        )
     articles = Article.query.order_by(Article.timestamp.desc()).all()
     return render_template('core/index.html', articles=articles)
 

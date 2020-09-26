@@ -4,7 +4,6 @@ from mdb.parser import parse_md
 
 
 class MDParserTests(TestCase):
-    """docstring"""
 
     def test_parse_clean_markdown(self):
         text = """**bold**_italics_

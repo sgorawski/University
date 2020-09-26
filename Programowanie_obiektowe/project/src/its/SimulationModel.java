@@ -19,7 +19,7 @@ public class SimulationModel extends GraphModel {
         String[] verticesNames;
         ArrayList<Vertex> verticesOrder = new ArrayList<>();
         ArrayList<Vertex> verticesOrderRv = new ArrayList<>();
-        for (LineData lineData: linesData
+        for (LineData lineData : linesData
                 ) {
             verticesNames = lineData.getVerticesNames();
             verticesOrder.clear();
@@ -34,8 +34,13 @@ public class SimulationModel extends GraphModel {
         }
     }
 
-    public Collection<Line> getLines() { return lines; }
-    public Collection<Vehicle> getVehicles() { return vehicles; }
+    public Collection<Line> getLines() {
+        return lines;
+    }
+
+    public Collection<Vehicle> getVehicles() {
+        return vehicles;
+    }
 
     public Vehicle createVehicle(Line line) {
         Vehicle vehicle = new Vehicle(line);
@@ -46,8 +51,7 @@ public class SimulationModel extends GraphModel {
 
     public Collection<Vehicle> moveVehicles(double deltaTime, double vmax, double distance) {
         ArrayList<Vehicle> vehiclesToRemove = new ArrayList<>();
-        for (Vehicle vehicle: vehicles
-             ) {
+        for (Vehicle vehicle : vehicles) {
              if (!vehicle.move(deltaTime, vmax, distance)) {
                  vehiclesToRemove.add(vehicle);
              }

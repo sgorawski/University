@@ -4,7 +4,7 @@
 
 #include <cstdio>
 
-int main() 
+int main()
 {
 	unsigned long long a, b;
 	scanf("%lld %lld", &a, &b);

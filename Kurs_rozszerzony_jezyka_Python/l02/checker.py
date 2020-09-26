@@ -5,9 +5,11 @@ def values_variations(length):
     """
     if length <= 0:
         return [[]]
-    return (prev + [new]
-            for prev in values_variations(length - 1)
-            for new in [True, False])
+    return (
+        [*prev, new]
+        for prev in values_variations(length - 1)
+        for new in [True, False]
+    )
 
 
 def is_tautology(formula, vars_list):

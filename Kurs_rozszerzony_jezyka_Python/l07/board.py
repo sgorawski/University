@@ -29,12 +29,11 @@ class Board(Gtk.DrawingArea):
     def fire(self, angle, initial_velocity):
         self.projectile_positions = compute_throw(angle, initial_velocity)
         self.queue_draw()
-        if (self.enemy.x <=
-                self.projectile_positions[-1][0] +
-                self.cannon_x + self.cannon_size <=
-                self.enemy.x + self.enemy.width):
-            return True
-        return False
+        return (
+            self.enemy.x
+            <= self.projectile_positions[-1][0] + self.cannon_x + self.cannon_size
+            <= self.enemy.x + self.enemy.width
+        )
 
     def __draw(self, da, cr):
         # bounds
@@ -47,26 +46,32 @@ class Board(Gtk.DrawingArea):
 
     def __draw_setup(self, cr):
         # ground
-        cr.rectangle(0,
-                     self.height - self.ground_height,
-                     self.width,
-                     self.ground_height)
+        cr.rectangle(
+            0,
+            self.height - self.ground_height,
+            self.width,
+            self.ground_height,
+        )
         cr.set_source_rgb(0.7, 0.7, 0.7)
         cr.fill()
 
         # cannon
-        cr.rectangle(self.cannon_x,
-                     self.height - self.cannon_size,
-                     self.cannon_size,
-                     self.cannon_size)
+        cr.rectangle(
+            self.cannon_x,
+            self.height - self.cannon_size,
+            self.cannon_size,
+            self.cannon_size,
+        )
         cr.set_source_rgb(0, 0.6, 0)
         cr.fill()
 
         # enemy
-        cr.rectangle(self.enemy.x,
-                     self.height - self.enemy.height,
-                     self.enemy.width,
-                     self.enemy.height)
+        cr.rectangle(
+            self.enemy.x,
+            self.height - self.enemy.height,
+            self.enemy.width,
+            self.enemy.height,
+        )
         cr.set_source_rgb(0.8, 0.1, 0.1)
         cr.fill()
 

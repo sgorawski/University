@@ -4,15 +4,17 @@ def correct(line):
 
     while not line[start_index].isalnum():
         start_index += 1
-    while (line[end_index - 1] not in ['.', '!', '?']
-           and not line[end_index - 1].isalnum()
-           and end_index > 1):
+    while (
+        line[end_index - 1] not in ['.', '!', '?']
+        and not line[end_index - 1].isalnum()
+        and end_index > 1
+    ):
         end_index -= 1
     if line[end_index - 1] not in ['.', '!', '?']:
         line = line[:end_index] + '.'
         end_index += 1
 
-    return line[start_index].upper() + line[start_index + 1:end_index]
+    return line[start_index].upper() + line[start_index + 1 : end_index]
 
 
 def sentences(stream):

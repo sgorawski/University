@@ -23,8 +23,10 @@ class Browser:
             urls = url_parser.urls
             url_parser.close()
         urls = map(self.__correct, urls)
-        return filter(lambda url: url not in self.visited
-                      and self.__is_valid(url), urls)
+        return filter(
+            lambda url: url not in self.visited and self.__is_valid(url),
+            urls,
+        )
 
     def __is_valid(self, url):
         if urlparse(url).netloc:

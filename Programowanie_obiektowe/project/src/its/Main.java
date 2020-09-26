@@ -186,7 +186,9 @@ public class Main extends Application {
     private String toggleStop(SimulationController controller) {
         if (!controller.stop) {
             controller.stop = true;
-            if (controller.pause) togglePause(controller);
+            if (controller.pause) {
+                togglePause(controller);
+            }
             controller.reset();
             return "Start";
         }

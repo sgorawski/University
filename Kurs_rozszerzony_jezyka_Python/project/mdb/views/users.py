@@ -19,11 +19,19 @@ def index(username):
     """User profile view, including profile picture,
     and a list of the user's articles."""
     user = User.query.filter_by(username=username).first_or_404()
-    articles = Article.query.filter_by(
-        author=user).order_by(Article.timestamp.desc()).all()
+    articles = (
+        Article.query
+        .filter_by(author=user)
+        .order_by(Article.timestamp.desc())
+        .all()
+    )
     can_modify = current_user == user
     return render_template(
-        'users/index.html', user=user, articles=articles, can_modify=can_modify)
+        'users/index.html',
+        user=user,
+        articles=articles,
+        can_modify=can_modify,
+    )
 
 
 @users.route('/register', methods=['GET', 'POST'])
@@ -36,8 +44,11 @@ def register():
 
     form = UserRegisterForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data,
-                    password=form.password.data)
+        user = User(
+            username=form.username.data,
+            email=form.email.data,
+            password=form.password.data,
+        )
         db.session.add(user)
         db.session.commit()
         flash("Registration successful")
@@ -73,8 +84,11 @@ def delete(username):
     available to profile owner and admin.
     """
     user = User.query.filter_by(username=username).first_or_404()
-    if (current_user != user or not current_user.is_admin
-            or (current_user.is_admin and user.is_admin)):
+    if (
+        current_user != user
+        or not current_user.is_admin
+        or (current_user.is_admin and user.is_admin)
+    ):
         return redirect(url_for('core.index'))
 
     db.session.delete(user)

@@ -10,7 +10,9 @@ Requirements:
 - flask-login
 
 
-For the best experience I recomment using a virtual environment. To create and activate one in the project folder (`mdb-project`) execute the following commands:
+For the best experience I recomment using a virtual environment.
+To create and activate one in the project folder (`mdb-project`)
+execute the following commands:
 ```
 $ python3 -m venv venv
 $ source venv/bin/activate
@@ -24,6 +26,10 @@ $ flask db migrate
 $ flask db upgrade
 $ flask run
 ```
-You will be informed about server IP address and port in the command line (it should be `localhost:5000`). To use the application, just open it in the browser.
+You will be informed about server IP address
+and port in the command line (it should be `localhost:5000`).
+To use the application, just open it in the browser.
 
-Please be aware that all data is stored locally, therefore the application database will not contain any after cloning the repository.
+Please be aware that all data is stored locally,
+therefore the application database will not contain any
+after cloning the repository.

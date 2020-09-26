@@ -46,8 +46,10 @@ class User(UserMixin, db.Model):
         a retro-style pixel art is returned.
         """
         email_hash = md5(self.email.lower().encode('utf-8')).hexdigest()
-        return ("https://www.gravatar.com/avatar/%s?d=retro&s=%s" %
-                (email_hash, size))
+        return (
+            "https://www.gravatar.com/avatar/%s?d=retro&s=%s"
+            % (email_hash, size),
+        )
 
 
 class Article(db.Model):

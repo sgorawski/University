@@ -23,13 +23,11 @@ public class GraphModel {
     // DATA LOADING AND SAVING
     public void readDataFromFiles(String verticesPath, String edgesPath) throws IOException {
         List<Vertex> vertices = DataParser.readVerticesFromFile(verticesPath);
-        for (Vertex v: vertices
-             ) {
+        for (Vertex v : vertices) {
             addVertex(v);
         }
         List<EdgeData> edges = DataParser.readEdgesFromFile(edgesPath);
-        for (EdgeData edge: edges
-             ) {
+        for (EdgeData edge : edges) {
             addEdge(edge.getStartName(), edge.getFinishName(), edge.getCost());
         }
     }

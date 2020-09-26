@@ -45,9 +45,11 @@ public class Sidebar extends VBox {
         slider.setSnapToTicks(true);
 
         slider.valueProperty().addListener((observableValue, previous, now) -> {
-            if (!slider.isValueChanging()
-                    || now.doubleValue() == slider.getMax()
-                    || now.doubleValue() == slider.getMin()) {
+            if (
+                !slider.isValueChanging()
+                || now.doubleValue() == slider.getMax()
+                || now.doubleValue() == slider.getMin()
+            ) {
                 controller.vehiclesVMax = slider.getValue() / 3.6;
             }
         });
@@ -63,9 +65,11 @@ public class Sidebar extends VBox {
         slider.setBlockIncrement(1);
 
         slider.valueProperty().addListener((observableValue, previous, now) -> {
-            if (!slider.isValueChanging()
-                    || now.doubleValue() == slider.getMax()
-                    || now.doubleValue() == slider.getMin()) {
+            if (
+                !slider.isValueChanging()
+                || now.doubleValue() == slider.getMax()
+                || now.doubleValue() == slider.getMin()
+            ) {
                 controller.speedUp = (int) slider.getValue();
             }
         });
@@ -81,9 +85,11 @@ public class Sidebar extends VBox {
         slider.setBlockIncrement(50);
 
         slider.valueProperty().addListener((observableValue, previous, now) -> {
-            if (!slider.isValueChanging()
-                    || now.doubleValue() == slider.getMax()
-                    || now.doubleValue() == slider.getMin()) {
+            if (
+                !slider.isValueChanging()
+                || now.doubleValue() == slider.getMax()
+                || now.doubleValue() == slider.getMin()
+            ) {
                 controller.distance = slider.getValue();
             }
         });

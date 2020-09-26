@@ -1,6 +1,5 @@
 require_relative 'array'
 
-
 class Function
   def initialize(form)
     @form = form

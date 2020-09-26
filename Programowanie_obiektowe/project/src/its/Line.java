@@ -20,8 +20,14 @@ public class Line {
     public String getLineID() {
         return lineID;
     }
-    public String getColor() { return color; }
-    public int getFrequency() { return frequency; }
+
+    public String getColor() {
+        return color;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
 
     public boolean hasNextEdge(Vertex currentLoc) {
         int index = track.indexOf(currentLoc);
@@ -37,6 +43,3 @@ public class Line {
         return track.get(0).getEdge(track.get(1));
     }
 }
-
-/*
- */

@@ -30,5 +30,7 @@ class Controls(Gtk.Box):
         self.pack_end(self.fire_btn, False, False, 10)
 
     def get_angle_and_velocity(self):
-        return (float(self.angle_control.get_text()),
-                float(self.velocity_control.get_text()))
+        return (
+            float(self.angle_control.get_text()),
+            float(self.velocity_control.get_text()),
+        )

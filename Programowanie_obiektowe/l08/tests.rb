@@ -1,7 +1,6 @@
 require_relative 'integer'
 require_relative 'open'
 
-
 # ZADANIE 1
 # factors tests
 p 6.factors

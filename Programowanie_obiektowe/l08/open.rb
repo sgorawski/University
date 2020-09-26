@@ -1,6 +1,5 @@
 require_relative 'encrypted'
 
-
 class Open
   def initialize(text)
     @text = text
@@ -15,4 +14,3 @@ class Open
     @text
   end
 end
-

@@ -21,8 +21,10 @@ class And(Formula):
         return "(%s ∧ %s)" % (self.left_expr, self.right_expr)
 
     def evaluate(self, vars_values):
-        return (self.left_expr.evaluate(vars_values)
-                and self.right_expr.evaluate(vars_values))
+        return (
+            self.left_expr.evaluate(vars_values)
+            and self.right_expr.evaluate(vars_values)
+        )
 
 
 class Or(Formula):
@@ -34,8 +36,10 @@ class Or(Formula):
         return "(%s ∨ %s)" % (self.left_expr, self.right_expr)
 
     def evaluate(self, vars_values):
-        return (self.left_expr.evaluate(vars_values)
-                or self.right_expr.evaluate(vars_values))
+        return (
+            self.left_expr.evaluate(vars_values)
+            or self.right_expr.evaluate(vars_values)
+        )
 
 
 class Implies(Formula):
@@ -47,8 +51,10 @@ class Implies(Formula):
         return "(%s ⇒ %s)" % (self.left_expr, self.right_expr)
 
     def evaluate(self, vars_values):
-        return ((not self.left_expr.evaluate(vars_values))
-                or self.right_expr.evaluate(vars_values))
+        return (
+            (not self.left_expr.evaluate(vars_values))
+            or self.right_expr.evaluate(vars_values)
+        )
 
 
 class Equivalence(Formula):
@@ -60,7 +66,12 @@ class Equivalence(Formula):
         return "(%s ⇔ %s)" % (self.left_expr, self.right_expr)
 
     def evaluate(self, vars_values):
-        return ((self.left_expr.evaluate(vars_values)
-                and self.right_expr.evaluate(vars_values))
-                or ((not self.left_expr.evaluate(vars_values))
-                and (not self.right_expr.evaluate(vars_values))))
+        return (
+            (
+                self.left_expr.evaluate(vars_values)
+                and self.right_expr.evaluate(vars_values)
+            ) or (
+                (not self.left_expr.evaluate(vars_values))
+                and (not self.right_expr.evaluate(vars_values))
+            )
+        )

@@ -14,9 +14,10 @@ class Integer
   end
 
   def verbally
-    digits = ['zero', 'one', 'two', 'three', 'four', 'five',
-              'six', 'seven', 'eight', 'nine']
+    digits = [
+      'zero', 'one', 'two', 'three', 'four', 'five',
+      'six', 'seven', 'eight', 'nine'
+    ]
     self.digits.reverse.collect{|x| digits[x]}.join(' ')
   end
 end
-

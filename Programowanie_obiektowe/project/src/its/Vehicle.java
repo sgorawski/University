@@ -50,7 +50,10 @@ public class Vehicle extends Circle {
 
     private double adjustSpeed(double vmax, double deltaTime, double distance) {
         Collection<Double> obstaclesLocations =
-                currentEdge.currentVehicles.stream().map(vh -> vh.progress).filter(p -> p > progress).collect(Collectors.toList());
+                currentEdge.currentVehicles.stream()
+                .map(vh -> vh.progress)
+                .filter(p -> p > progress)
+                .collect(Collectors.toList());
         if (!obstaclesLocations.isEmpty()) {
             double distToObstacle = Collections.min(obstaclesLocations) - progress;
             return Math.min(Math.max(0, distToObstacle - distance), vmax * deltaTime);

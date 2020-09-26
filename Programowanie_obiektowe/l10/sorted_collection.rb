@@ -7,7 +7,6 @@ class Node
   end
 end
 
-
 class SortedCollection
   def initialize
     @head = nil

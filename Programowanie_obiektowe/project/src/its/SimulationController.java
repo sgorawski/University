@@ -28,8 +28,7 @@ public class SimulationController {
     }
 
     public void initializeNewVehicles() {
-        for (Line ln : model.getLines()
-                ) {
+        for (Line ln : model.getLines()) {
             if (iteration % (ln.getFrequency() * 60) == 0) {
                 Vehicle newVehicle = model.createVehicle(ln);
                 Platform.runLater(() -> view.addVehicle(newVehicle));

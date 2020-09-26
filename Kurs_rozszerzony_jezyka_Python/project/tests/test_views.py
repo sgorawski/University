@@ -8,7 +8,6 @@ from mdb.models import User, Article
 
 
 class LayoutTests(MdbTestCase):
-    """docstring"""
 
     def test_user_anonymous(self):
         response = self.app.get('/')
@@ -28,7 +27,6 @@ class LayoutTests(MdbTestCase):
 
 
 class IndexViewTests(MdbTestCase):
-    """docstring"""
 
     def test_no_articles(self):
         response = self.app.get('/')
@@ -44,7 +42,6 @@ class IndexViewTests(MdbTestCase):
 
 
 class LoginViewTests(MdbTestCase):
-    """docstring"""
 
     def test_valid_credentials(self):
         response = self.login("test-user", "testpwd")
@@ -68,7 +65,6 @@ class LoginViewTests(MdbTestCase):
 
 
 class UsersViewTests(MdbTestCase):
-    """docstring"""
 
     def test_user_anonymous(self):
         response = self.app.get('/users/test-user')
@@ -110,7 +106,6 @@ class UsersViewTests(MdbTestCase):
 
 
 class ArticlesViewTests(MdbTestCase):
-    """docstring"""
 
     def setUp(self):
         super().setUp()
@@ -153,7 +148,6 @@ class ArticlesViewTests(MdbTestCase):
 
 
 class AdminViewTests(MdbTestCase):
-    """docstring"""
 
     def test_visible_for_admin_only(self):
         response = self.app.get('/admin', follow_redirects=True)
@@ -181,4 +175,3 @@ class AdminViewTests(MdbTestCase):
         response = self.app.get('/admin/articles')
         self.assertContains("test-title-1", response)
         self.assertContains("test-title-2", response)
-

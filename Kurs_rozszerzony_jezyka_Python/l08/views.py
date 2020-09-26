@@ -13,8 +13,8 @@ class ContactsListView(Frame):
         col_ids = ("first_name", "surname", "phone", "email", "last_edited")
         self.contacts_list = Treeview(self, columns=col_ids, show='headings')
         for col_id, text in zip(
-                col_ids,
-                ["First name", "Surname", "Phone", "Email", "Last edited"]
+            col_ids,
+            ["First name", "Surname", "Phone", "Email", "Last edited"],
         ):
             self.contacts_list.column(col_id, stretch=True, width=160)
             self.contacts_list.heading(col_id, text=text)
@@ -45,13 +45,16 @@ class ContactsListView(Frame):
         for contact_fields in contacts:
             rowid, values = str(contact_fields[0]), contact_fields[1:]
             self.contacts_list.insert(
-                '', 'end', text=rowid, values=values)
+                '', 'end', text=rowid, values=values
+            )
         self.log()
 
     def get_selected_contacts_ids(self):
         focused_rows = self.contacts_list.selection()
-        return map(lambda focus: self.contacts_list.item(focus)['text'],
-                   focused_rows)
+        return map(
+            lambda focus: self.contacts_list.item(focus)['text'],
+            focused_rows,
+        )
 
     def log(self, message=''):
         self.console_text.set(message)
@@ -72,8 +75,8 @@ class ContactFieldsView(Frame):
         # Displaying values and handling entries
         fields = Frame(self)
         for i, (field_name, field_var) in enumerate(zip(
-                ["First name:", "Surname:", "Phone:", "Email:"],
-                [self.first_name, self.surname, self.phone, self.email]
+            ["First name:", "Surname:", "Phone:", "Email:"],
+            [self.first_name, self.surname, self.phone, self.email],
         )):
             label = Label(fields, text=field_name)
             entry = Entry(fields, textvariable=field_var)
@@ -94,17 +97,19 @@ class ContactFieldsView(Frame):
 
     def set_values(self, first_name="", surname="", phone="", email=""):
         for arg_val, var in zip(
-                [first_name, surname, phone, email],
-                [self.first_name, self.surname, self.phone, self.email]
+            [first_name, surname, phone, email],
+            [self.first_name, self.surname, self.phone, self.email],
         ):
             var.set(arg_val)
         self.log()
 
     def get_values(self):
-        return (self.first_name.get(),
-                self.surname.get(),
-                self.phone.get(),
-                self.email.get())
+        return (
+            self.first_name.get(),
+            self.surname.get(),
+            self.phone.get(),
+            self.email.get(),
+        )
 
     def log(self, message=''):
         self.console_text.set(message)

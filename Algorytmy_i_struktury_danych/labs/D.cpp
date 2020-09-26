@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <exception>
 
-class NotFound : std::exception { } nf;
+class NotFound : std::exception {} nf;
 
 const int MAX_NODES_COUNT = 50000;
 
@@ -48,39 +48,38 @@ int main()
 	Treap bst = Treap();
 
 	char operation;
-	long long key, found_key;
+	long long key;
+	long long found_key;
+
 	while (operations_count--) {
 		scanf("%c %lld%*c", &operation, &key);
 		switch (operation) {
-			case 'I':
-				bst.insert(key);
-				break;
-			case 'D':
-				try {
-					bst.remove(key);
-					printf("OK\n");
-				}
-				catch (NotFound) {
-					printf("BRAK\n");
-				}
-				break;
-			case 'U':
-				try {
-					found_key = bst.upper(key);
-					printf("%lld\n", found_key);
-				}
-				catch (NotFound) {
-					printf("BRAK\n");
-				}
-				break;
-			case 'L':
-				try {
-					found_key = bst.lower(key);
-					printf("%lld\n", found_key);
-				}
-				catch (NotFound) {
-					printf("BRAK\n");
-				}
+		case 'I':
+			bst.insert(key);
+			break;
+		case 'D':
+			try {
+				bst.remove(key);
+				printf("OK\n");
+			} catch (NotFound) {
+				printf("BRAK\n");
+			}
+			break;
+		case 'U':
+			try {
+				found_key = bst.upper(key);
+				printf("%lld\n", found_key);
+			} catch (NotFound) {
+				printf("BRAK\n");
+			}
+			break;
+		case 'L':
+			try {
+				found_key = bst.lower(key);
+				printf("%lld\n", found_key);
+			} catch (NotFound) {
+				printf("BRAK\n");
+			}
 		}
 	}
 
@@ -120,35 +119,40 @@ void Treap::remove(long long key)
 long long Treap::upper(long long key)
 {
 	auto found_node = upper(key, root, nullptr);
-	if (!found_node)
+	if (!found_node) {
 		throw nf;
+	}
 	return found_node->key;
 }
 
 long long Treap::lower(long long key)
 {
 	auto found_node = lower(key, root, nullptr);
-	if (!found_node)
+	if (!found_node) {
 		throw nf;
+	}
 	return found_node->key;
 }
 
 Node* Treap::insert(long long key, Node* root)
 {
-	if (!root)
+	if (!root) {
 		return new Node(key);
-	if (root->key == key)					// no duplicates
+	}
+	if (root->key == key) {					// no duplicates
 		return root;
-	
+	}
 	if (root->key > key) {
 		root->left = insert(key, root->left);
-		if (root->left->priority > root->priority)	// restore heap ordering
+		if (root->left->priority > root->priority) {	// restore heap ordering
 			root = rotateRight(root);
+		}
 	}
 	else {
 		root->right = insert(key, root->right);
-		if (root->right->priority > root->priority)
+		if (root->right->priority > root->priority) {
 			root = rotateLeft(root);
+		}
 	}
 
 	return root;
@@ -156,28 +160,26 @@ Node* Treap::insert(long long key, Node* root)
 
 Node* Treap::remove(long long key, Node* root)
 {
-	if (!root)								// key not found
+	if (!root) {								// key not found
 		throw nf;
-	
-	if (root->key > key)
+	}
+
+	if (root->key > key) {
 		root->left = remove(key, root->left);
-	else if (root->key < key)
+	} else if (root->key < key) {
 		root->right = remove(key, root->right);
-	else {
+	} else {
 		auto temp = root;
 		if (!root->left) {						// no left child
 			root = root->right;
 			delete temp;
-		}
-		else if (!root->right) {					// no right child
+		} else if (!root->right) {					// no right child
 			root = root->left;
 			delete temp;
-		}
-		else if (root->left->priority > root->right->priority) {	// both children
+		} else if (root->left->priority > root->right->priority) {	// both children
 			root = rotateRight(root);
 			root->right = remove(key, root->right);
-		}
-		else {								// both children, case 2
+		} else {							// both children, case 2
 			root = rotateLeft(root);
 			root->left = remove(key, root->left);
 		}
@@ -188,23 +190,29 @@ Node* Treap::remove(long long key, Node* root)
 
 Node* Treap::upper(long long key, Node* root, Node* upper_node)
 {
-	if (!root)					// no upper key found
+	if (!root) {					// no upper key found
 		return upper_node;
-	if (root->key == key)
+	}
+	if (root->key == key) {
 		return root;
-	if (root->key < key)				// search right subtree
+	}
+	if (root->key < key) {				// search right subtree
 		return upper(key, root->right, upper_node);
+	}
 	return upper(key, root->left, root);		// else search left subtree
 }
 
 Node* Treap::lower(long long key, Node* root, Node* lower_node)
 {
-	if (!root)					// implementation symmetrical to Treap::upper
+	if (!root) {					// implementation symmetrical to Treap::upper
 		return lower_node;
-	if (root->key == key)
+	}
+	if (root->key == key) {
 		return root;
-	if (root->key > key)
+	}
+	if (root->key > key) {
 		return lower(key, root->left, lower_node);
+	}
 	return lower(key, root->right, root);
 }
 
@@ -226,8 +234,9 @@ Node* Treap::rotateRight(Node* x)
 
 void Treap::deleteSubtree(Node* root)
 {
-	if (!root)
+	if (!root) {
 		return;
+	}
 	deleteSubtree(root->left);
 	deleteSubtree(root->right);
 	delete root;

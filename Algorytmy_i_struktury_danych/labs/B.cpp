@@ -8,7 +8,7 @@ class Digraph {
 private:
 	using Node = std::pair<int, int>;
 	using Edge = std::pair<Node, Node>;
-	
+
 	std::vector<Edge> edges;
 	std::map<Node, int> paths;
 
@@ -20,7 +20,8 @@ public:
 
 	void loadEdges()
 	{
-		Node from, to;
+		Node from;
+		Node to;
 		for (auto&& edge : edges) {
 			scanf("%d %d", &from.first, &from.second);
 			scanf("%d %d", &to.first, &to.second);
@@ -37,7 +38,8 @@ public:
 	{
 		paths[edges[0].first] = 1;
 
-		Node from, to;
+		Node from;
+		Node to;
 		for (auto edge : edges) {
 			from = edge.first;
 			to = edge.second;
@@ -55,19 +57,20 @@ public:
 	}
 };
 
-
 int main()
 {
-	int height, width, edges_count;
+	int height;
+	int width;
+	int edges_count;
 	const int MOD = 999979;
 	scanf("%d %d %d", &height, &width, &edges_count);
 
-	Digraph dg = Digraph(edges_count);
+	auto dg = Digraph(edges_count);
 
 	dg.loadEdges();
 	dg.topoSort();
 	dg.countPathsMod(MOD);
-	
+
 	printf("%d\n", dg.getPathsCountAtNode(height, width));
 
 	return 0;

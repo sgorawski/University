@@ -28,8 +28,7 @@ public class SimulationView extends GraphView {
     }
 
     public void removeVehicles(Collection<Vehicle> vehiclesToRemove) {
-        for (Vehicle veh: vehiclesToRemove
-             ) {
+        for (Vehicle veh : vehiclesToRemove) {
             vehiclesPane.getChildren().remove(veh);
             labelsPane.getChildren().remove(vehiclesLabels.get(veh));
             vehiclesLabels.remove(veh);

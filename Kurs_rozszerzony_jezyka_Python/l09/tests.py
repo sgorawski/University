@@ -28,8 +28,10 @@ class DatabaseTests(unittest.TestCase):
         ]
         with sqlite3.connect(self.test_db_filename) as conn:
             c = conn.cursor()
-            c.executemany("INSERT INTO Contacts VALUES (?, ?, ?, ?, ?)",
-                          self.test_contacts)
+            c.executemany(
+                "INSERT INTO Contacts VALUES (?, ?, ?, ?, ?)",
+                self.test_contacts,
+            )
 
     def tearDown(self):
         """Deletes test database"""
@@ -76,8 +78,10 @@ class DatabaseTests(unittest.TestCase):
             "New", "Contact", "123456789", "new@mail.com"
         )
         self.test_db.add_contact(new_contact)
-        self.assertIn(new_contact.get_fields(),
-                      self.__fetch_all_contacts_from_db())
+        self.assertIn(
+            new_contact.get_fields(),
+            self.__fetch_all_contacts_from_db(),
+        )
 
     def test_update_contact(self):
         """Updates contact and checks if updated exists in database."""
@@ -85,8 +89,10 @@ class DatabaseTests(unittest.TestCase):
             "Updated", "Contact", "000000000", "updated@mail.com"
         )
         self.test_db.update_contact(updated_contact, 1)
-        self.assertIn(updated_contact.get_fields(),
-                      self.__fetch_all_contacts_from_db())
+        self.assertIn(
+            updated_contact.get_fields(),
+            self.__fetch_all_contacts_from_db(),
+        )
 
     def test_delete_contact(self):
         """
@@ -95,8 +101,10 @@ class DatabaseTests(unittest.TestCase):
         """
         for test_record, rowid in zip(self.test_contacts, [1, 2, 3]):
             self.test_db.delete_contact(rowid)
-            self.assertNotIn(test_record,
-                             self.__fetch_all_contacts_from_db())
+            self.assertNotIn(
+                test_record,
+                self.__fetch_all_contacts_from_db(),
+            )
 
 
 class ContactTests(unittest.TestCase):

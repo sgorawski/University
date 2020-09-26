@@ -1,8 +1,6 @@
 #include <cstdio>
 #include <stack>
 
-#define NONE 0
-
 class Tree {
 private:
 	struct Node {
@@ -17,8 +15,9 @@ public:
 	Tree(int nodes_count)
 	{
 		nodes = new Node[nodes_count + 1];
-		for (auto i = 0; i <= nodes_count; i++)
-			nodes[i] = {NONE, NONE};
+		for (auto i = 0; i <= nodes_count; i++) {
+			nodes[i] = {0, 0};
+		}
 		pre_order = new int[nodes_count + 1]();
 		post_order = new int[nodes_count + 1]();
 	}
@@ -39,7 +38,8 @@ public:
 
 	void dfs()
 	{
-		int current, next;
+		int current;
+		int next;
 		int pre_counter = 1;
 		int post_counter = 1;
 		std::stack<int> to_visit;
@@ -47,15 +47,16 @@ public:
 		while (!to_visit.empty()) {
 			current = to_visit.top();
 			to_visit.pop();
-			if (post_order[current])
+			if (post_order[current]) {
 				continue;
-			if (pre_order[current])
+			}
+			if (pre_order[current]) {
 				post_order[current] = post_counter++;
-			else {
+			} else {
 				to_visit.push(current);
 				pre_order[current] = pre_counter++;
 				next = nodes[current].left_child;
-				while (next != NONE) {
+				while (next != 0) {
 					to_visit.push(next);
 					next = nodes[next].right_sibling;
 				}
@@ -65,17 +66,20 @@ public:
 
 	bool isAncestor(int node1, int node2)
 	{
-		return (pre_order[node1] < pre_order[node2] &&
-				post_order[node1] > post_order[node2]);
+		return (
+			pre_order[node1] < pre_order[node2]
+			&& post_order[node1] > post_order[node2]
+		);
 	}
 };
 
-
 int main()
 {
-	int nodes_count, queries_count, parent;
+	int nodes_count;
+	int queries_count;
+	int parent;
 	scanf("%d %d", &nodes_count, &queries_count);
-	Tree tree = Tree(nodes_count);
+	auto tree = Tree(nodes_count);
 
 	for (auto i = 2; i <= nodes_count; i++) {
 		scanf("%d", &parent);
@@ -83,7 +87,8 @@ int main()
 	}
 	tree.dfs();
 
-	int node1, node2;
+	int node1;
+	int node2;
 	while (queries_count--) {
 		scanf("%d %d", &node1, &node2);
 		printf("%s\n", tree.isAncestor(node1, node2) ? "TAK" : "NIE");

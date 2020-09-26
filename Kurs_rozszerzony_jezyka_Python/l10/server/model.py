@@ -49,14 +49,20 @@ class Database:
         """
         with sqlite3.connect(self.db_filename) as conn:
             conn.create_function(
-                "REGEXP", 2,
-                lambda reg, item: re.search(reg, item, re.I) is not None
+                "REGEXP",
+                2,
+                lambda reg, item: re.search(reg, item, re.I) is not None,
             )
             c = conn.cursor()
-            c.execute("SELECT rowid, * FROM Contacts "
-                      "WHERE first_name REGEXP ?1 OR surname REGEXP ?1 "
-                      "OR phone REGEXP ?1 OR email REGEXP ?1 "
-                      "OR last_edited REGEXP ?1", (regex, ))
+            c.execute(
+                (
+                    "SELECT rowid, * FROM Contacts "
+                    "WHERE first_name REGEXP ?1 OR surname REGEXP ?1 "
+                    "OR phone REGEXP ?1 OR email REGEXP ?1 "
+                    "OR last_edited REGEXP ?1"
+                ),
+                (regex,),
+            )
             return c.fetchall()
 
     def get_contact_fields(self, rowid):
@@ -68,7 +74,7 @@ class Database:
         """
         with sqlite3.connect(self.db_filename) as conn:
             c = conn.cursor()
-            c.execute("SELECT * FROM Contacts WHERE rowid = ?", (rowid, ))
+            c.execute("SELECT * FROM Contacts WHERE rowid = ?", (rowid,))
             return c.fetchone()
 
     def add_contact(self, first_name, surname, phone, email, last_edited):
@@ -77,8 +83,10 @@ class Database:
         """
         with sqlite3.connect(self.db_filename) as conn:
             c = conn.cursor()
-            c.execute("INSERT INTO Contacts VALUES (?, ?, ?, ?, ?)",
-                      (first_name, surname, phone, email, last_edited))
+            c.execute(
+                "INSERT INTO Contacts VALUES (?, ?, ?, ?, ?)",
+                (first_name, surname, phone, email, last_edited),
+            )
 
     def update_contact(
             self, rowid, first_name, surname, phone, email, last_edited):
@@ -87,12 +95,16 @@ class Database:
         """
         with sqlite3.connect(self.db_filename) as conn:
             c = conn.cursor()
-            c.execute("UPDATE Contacts SET first_name = ?, surname = ?,"
-                      "phone = ?, email = ?, last_edited = ? WHERE rowid = ?",
-                      (first_name, surname, phone, email, last_edited, rowid))
+            c.execute(
+                (
+                    "UPDATE Contacts SET first_name = ?, surname = ?,"
+                    "phone = ?, email = ?, last_edited = ? WHERE rowid = ?"
+                ),
+                (first_name, surname, phone, email, last_edited, rowid),
+            )
 
     def delete_contact(self, rowid):
         """Deletes contact found by id."""
         with sqlite3.connect(self.db_filename) as conn:
             c = conn.cursor()
-            c.execute("DELETE FROM Contacts WHERE rowid = ?", (rowid, ))
+            c.execute("DELETE FROM Contacts WHERE rowid = ?", (rowid,))

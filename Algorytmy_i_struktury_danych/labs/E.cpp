@@ -7,8 +7,9 @@ int main()
 	int K, L;
 	scanf("%d %d", &K, &L);
 	std::vector<int> f(L);
-	for (auto i = 0; i < L; i++)
+	for (auto i = 0; i < L; i++) {
 		scanf("%d", &f[i]);
+	}
 
 	std::vector<int> A(L + 1), B(L + 1);
 	A[L] = B[L] = 0;
@@ -23,13 +24,17 @@ int main()
 	std::vector<std::vector<int>> opts(L + 1, std::vector<int>(K, L));
 
 	T[L][0] = 0;
-	for (auto i = L - 1; i >= 0; i--)
+	for (auto i = L - 1; i >= 0; i--) {
 		T[i][0] = S(i, L - 1);
-	
+	}
+
 	std::vector<int> ids(K);
 	for (auto j = 1; j < K; j++) {
 		for (auto i = L - j; i >= 0; i--) {
-			int si, cc, cost = INT_MAX;
+			int si;
+			int cc;
+			int cost = INT_MAX;
+
 			for (auto s = i + 1; s <= L - j; s++) {
 				cc = T[s][j - 1] + S(i, s - 1);
 				if (cc < cost) {
@@ -42,9 +47,10 @@ int main()
 		}
 
 	}
-	
+
 	printf("%d\n", T[0][K - 1]);
-	int i = 0, prev_i;
+	int i = 0;
+	int prev_i;
 	for (auto j = K - 1; j >= 0; j--) {
 		prev_i = i;
 		i = opts[i][j];

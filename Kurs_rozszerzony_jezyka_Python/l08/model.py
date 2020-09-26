@@ -22,44 +22,62 @@ class Model:
     def search_contacts(self, regex):
         with sqlite3.connect(self.db_name) as conn:
             conn.create_function(
-                "REGEXP", 2,
-                lambda reg, item: re.search(reg, item, re.I) is not None
+                "REGEXP",
+                2,
+                lambda reg, item: re.search(reg, item, re.I) is not None,
             )
             c = conn.cursor()
-            c.execute("SELECT rowid, * FROM Contacts "
-                      "WHERE first_name REGEXP ?1 OR surname REGEXP ?1 "
-                      "OR phone REGEXP ?1 OR email REGEXP ?1 "
-                      "OR last_edited REGEXP ?1", (regex, ))
+            c.execute(
+                (
+                    "SELECT rowid, * FROM Contacts "
+                    "WHERE first_name REGEXP ?1 OR surname REGEXP ?1 "
+                    "OR phone REGEXP ?1 OR email REGEXP ?1 "
+                    "OR last_edited REGEXP ?1"
+                ),
+                (regex,),
+            )
             return c.fetchall()
 
     def get_contact_fields(self, rowid):
         with sqlite3.connect(self.db_name) as conn:
             c = conn.cursor()
-            c.execute("SELECT * FROM Contacts WHERE rowid = ?", (rowid, ))
+            c.execute("SELECT * FROM Contacts WHERE rowid = ?", (rowid,))
             return c.fetchone()[:-1]
 
     def add_contact(self, contact):
         with sqlite3.connect(self.db_name) as conn:
             c = conn.cursor()
-            c.execute("INSERT INTO Contacts VALUES (?, ?, ?, ?, ?)",
-                      contact.get_fields())
+            c.execute(
+                "INSERT INTO Contacts VALUES (?, ?, ?, ?, ?)",
+                contact.get_fields(),
+            )
 
     def update_contact(self, contact, rowid):
         fields = contact.get_fields()
         with sqlite3.connect(self.db_name) as conn:
             c = conn.cursor()
-            c.execute("UPDATE Contacts SET first_name = ?, surname = ?,"
-                      "phone = ?, email = ?, last_edited = ? WHERE rowid = ?",
-                      fields + (rowid, ))
+            c.execute(
+                (
+                    "UPDATE Contacts SET first_name = ?, surname = ?,"
+                    "phone = ?, email = ?, last_edited = ? WHERE rowid = ?"
+                ),
+                (*fields, rowid),
+            )
 
     def delete_contact(self, rowid):
         with sqlite3.connect(self.db_name) as conn:
             c = conn.cursor()
-            c.execute("DELETE FROM Contacts WHERE rowid = ?", (rowid, ))
+            c.execute("DELETE FROM Contacts WHERE rowid = ?", (rowid,))
 
     class Contact:
-        def __init__(self, first_name, surname,
-                     phone, email, last_edited=None):
+        def __init__(
+            self,
+            first_name,
+            surname,
+            phone,
+            email,
+            last_edited=None,
+        ):
             if not first_name or not surname:
                 raise ValueError("Fields must not be empty")
             if not phone.isdigit() or len(phone) != 9:
@@ -77,5 +95,10 @@ class Model:
             self.last_edited = last_edited
 
         def get_fields(self):
-            return (self.first_name, self.surname, self.phone,
-                    self.email, self.last_edited)
+            return (
+                self.first_name,
+                self.surname,
+                self.phone,
+                self.email,
+                self.last_edited,
+            )

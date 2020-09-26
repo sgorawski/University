@@ -15,11 +15,12 @@ Matrix mtxMultMod(Matrix a, Matrix b, int m)
 
 Matrix fastMtxPowMod(Matrix a, int exp, int m)
 {
-	if (exp == 0)
+	if (exp == 0) {
 		return {{{1, 0}, {0, 1}}};
+	}
 	Matrix x = fastMtxPowMod(a, exp/2, m);
 	x = mtxMultMod(x, x, m);
-	return (exp % 2 == 0 ? x : mtxMultMod(a, x, m));
+	return exp % 2 == 0 ? x : mtxMultMod(a, x, m);
 }
 
 int fibMod(int n, int m)

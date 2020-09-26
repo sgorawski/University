@@ -42,8 +42,7 @@ public class Vertex extends Circle {
     }
 
     boolean containsEdge(Vertex finish) {
-        for (Edge edge: outgoingEdges
-             ) {
+        for (Edge edge : outgoingEdges) {
             if (edge.getFinishVertex() == finish) {
                 return true;
             }
@@ -52,8 +51,7 @@ public class Vertex extends Circle {
     }
 
     Edge getEdge(Vertex finish) {
-        for (Edge edge: outgoingEdges
-                ) {
+        for (Edge edge : outgoingEdges) {
             if (edge.getFinishVertex() == finish) {
                 return edge;
             }
@@ -62,8 +60,7 @@ public class Vertex extends Circle {
     }
 
     void removeEdge(Vertex finish) {
-        for (Edge edge: outgoingEdges
-             ) {
+        for (Edge edge : outgoingEdges) {
             if (edge.getFinishVertex() == finish) {
                 outgoingEdges.remove(edge);
             }

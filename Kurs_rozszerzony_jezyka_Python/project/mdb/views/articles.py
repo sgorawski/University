@@ -22,10 +22,16 @@ def index(title):
     """
     article = Article.query.filter_by(title=title).first_or_404()
     text = parse_md(article.content)
-    can_modify = (current_user == article.author
-                  or not current_user.is_anonymous and current_user.is_admin)
-    return render_template('articles/index.html', article=article,
-                           text=text, can_modify=can_modify)
+    can_modify = (
+        current_user == article.author
+        or (not current_user.is_anonymous and current_user.is_admin)
+    )
+    return render_template(
+        'articles/index.html',
+        article=article,
+        text=text,
+        can_modify=can_modify,
+    )
 
 
 @articles.route('/create', methods=['GET', 'POST'])
@@ -36,8 +42,11 @@ def create():
     """
     form = ArticleCreateForm()
     if form.validate_on_submit():
-        article = Article(title=form.title.data, content=form.content.data,
-                          author=current_user)
+        article = Article(
+            title=form.title.data,
+            content=form.content.data,
+            author=current_user,
+        )
         db.session.add(article)
         db.session.commit()
         return redirect(url_for('articles.index', title=article.title))

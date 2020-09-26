@@ -37,7 +37,8 @@ def update_contact(contact_id, first_name, surname, phone, email):
     verify_fields(first_name, surname, phone, email)
     last_edited = date.today().isoformat()
     server.update_contact(
-        contact_id, first_name, surname, phone, email, last_edited)
+        contact_id, first_name, surname, phone, email, last_edited
+    )
 
 
 def delete_contact(contact_id):
